@@ -12,7 +12,7 @@
 			</note>
 		</entita>
 		<entita id="2">
-			<nome>FORNITORE</nome>
+			<nome>FORNITORE_ANAGRAFICA</nome>
 			<idesterna>false</idesterna>
 			<note>
 				<documentazione></documentazione>
@@ -252,6 +252,16 @@
 		</relazione>
 		<relazione>
 			<nome>COMPILA</nome>
+			<associazioni>
+			</associazioni>
+			<note>
+				<documentazione></documentazione>
+				<vincoli></vincoli>
+				<altro></altro>
+			</note>
+		</relazione>
+		<relazione>
+			<nome>F_A</nome>
 			<associazioni>
 			</associazioni>
 			<note>
