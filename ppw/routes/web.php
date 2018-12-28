@@ -47,3 +47,16 @@ Route::prefix('amministrazione')->group(function(){
 
     });
 });
+
+
+
+/**
+ *
+ * Testing Route
+ */
+
+Route::view('test', 'test');
+Route::view('testForm', 'testForm');
+
+
+Route::get('/req/{testo}', 'TestRoute@form');

@@ -11,4 +11,9 @@ class TestRoute extends Controller
     public function default($name = "prova"){
         return "Sei nella pagina $name";
     }
+
+    public function form(Request $request){
+        $name = $request->input('testo');
+        return $name;
+    }
 }
