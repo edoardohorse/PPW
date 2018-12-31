@@ -11,6 +11,7 @@
     <body>
         <ul>
             <li><a href="testForm">Test Form</a></li>
+            <li><a href="testAjax">Test Ajax</a></li>
         </ul>
     </body>
 </html>

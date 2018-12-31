@@ -16,4 +16,13 @@ class TestRoute extends Controller
         $name = $request->input('testo');
         return $name;
     }
+
+    public function ajaxGET($val = "NULL"){
+        return "Richiesta ajax: $val";
+    }
+    public function ajaxPOST(Request $req){
+        $name = $req->input('name');
+        $surname = $req->input('surname');
+        return "Richiesta ajax: $name, $surname";
+    }
 }

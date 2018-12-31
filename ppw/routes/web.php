@@ -57,6 +57,10 @@ Route::prefix('amministrazione')->group(function(){
 
 Route::view('test', 'test');
 Route::view('testForm', 'testForm');
+Route::view('testAjax', 'testAjax');
 
+Route::prefix('/req/')->group(function(){
+    Route::get('{testo?}',              'TestRoute@ajaxGET');
+    Route::post('',   'TestRoute@ajaxPOST');
 
-Route::get('/req/{testo}', 'TestRoute@form');
+});
