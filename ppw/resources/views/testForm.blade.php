@@ -1,17 +1,15 @@
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@include('test',['name'=>'Form'])
 
-        <title>Test Form</title>
-
-
-    </head>
-    <body>
         <h2>Provo ad inviare un form al server</h2>
 
-        <form method="GET" action="/req">
+        <form method="GET" action="/reqForm">
+            @csrf
+            <input type="text" name="testo">
+            <input type="submit">
+        </form>
+
+        <form method="POST" action="/reqForm">
+            @csrf
             <input type="text" name="testo">
             <input type="submit">
         </form>

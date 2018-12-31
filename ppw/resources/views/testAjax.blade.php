@@ -1,23 +1,5 @@
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@include('test',['name'=>'Ajax'])
 
-        <title>Test Form</title>
-
-        <meta name="csrf-token" content="{{ csrf_token() }}" />
-    </head>
-    <style>
-        div{
-            border:1px solid black;
-            border-radius: 5px;
-            margin:1em;
-            padding:1em;
-        }
-
-    </style>
-    <body>
         <h2>Provo ad inviare un form al server</h2>
 
 
@@ -41,7 +23,7 @@
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script>
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
             function inviaGET(){
                 var str = $('#textG').val()
                 $.get(`/req/${str}`, function(data, status){
@@ -52,10 +34,15 @@
                 });
             }
 
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             function inviaPOST(){
                 var name = $('input[name="name"]').val()
                 var surname = $('input[name="surname"]').val()
-                $.post('/req', {name:name, surname:surname, data: {_token: CSRF_TOKEN, message:$(".getinfo").val()},}, function(data, status){
+                $.post('/req', {name:name, surname:surname, }, function(data, status){
                     var res = "Data: " + data + "\nStatus: " + status;
                     $("#resultPOST").text(res)
                     console.log(res);
@@ -64,4 +51,13 @@
             }
         </script>
     </body>
+    <style>
+        div{
+            border:1px solid black;
+            border-radius: 5px;
+            margin:1em;
+            padding:1em;
+        }
+
+    </style>
 </html>

@@ -1,17 +1,15 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Lista dei Test</title>
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
+        <title>Test {{$name}}</title>
 
 
     </head>
     <body>
-        <ul>
-            <li><a href="testForm">Test Form</a></li>
-            <li><a href="testAjax">Test Ajax</a></li>
-        </ul>
-    </body>
-</html>
+    <h1>Test {{$name}}</h1>
+    <div>
+        <a href="test">← Torna ai test</a>
+    </div>
