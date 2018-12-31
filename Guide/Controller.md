@@ -13,7 +13,7 @@ php artisan make:controller {nome_controller}
 - Middleware Controller
 - Resource Controller
 
-##Basic Controller
+## Basic Controller
 Classico controller in cui sono definiti metodi chiamati all'interno di una route:
 ```
 Route:get('/home', 'NomeController@NomeMetodo');
