@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Collaborator extends Model
 {
     public function transactions(){
-        return $this->hasMany('App\Transaction');
+
+        return $this->hasMany('App\Transaction','collaboratore_id');
+
     }
 }
