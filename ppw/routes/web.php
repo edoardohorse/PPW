@@ -12,6 +12,9 @@
     https://laravel.com/docs/5.7/routing
 */
 
+use App\Tools\RequestView;
+
+
 Route::get('/', function () {
     return view('welcome');
 });
