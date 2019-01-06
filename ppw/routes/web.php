@@ -55,12 +55,20 @@ Route::prefix('amministrazione')->group(function(){
  * Testing Route
  */
 
-Route::view('test', 'test');
+Route::view('test', 'testIndex');
 Route::view('testForm', 'testForm');
 Route::view('testAjax', 'testAjax');
+Route::view('testFile', 'testFile');
 
-Route::prefix('/req/')->group(function(){
-    Route::get('{testo?}',              'TestRoute@ajaxGET');
-    Route::post('',   'TestRoute@ajaxPOST');
-
+Route::prefix('/reqAjax/')->group(function(){
+    Route::get('{testo?}',  'TestRoute@ajaxGET');
+    Route::post('',         'TestRoute@ajaxPOST');
 });
+
+Route::prefix('/reqForm/')->group(function(){
+    Route::get('',  'TestRoute@formGET');
+    Route::post('',         'TestRoute@formPOST');
+});
+
+
+Route::post('/testFile','TestRoute@fileUpload');
