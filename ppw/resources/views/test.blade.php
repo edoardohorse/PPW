@@ -11,5 +11,5 @@
     <body>
     <h1>Test {{$name}}</h1>
     <div>
-        <a href="test">← Torna ai test</a>
+        <a href="{{route('test',[],false)}}">← Torna ai test</a>
     </div>

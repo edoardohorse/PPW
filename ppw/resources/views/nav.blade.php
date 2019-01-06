@@ -1,9 +1,8 @@
 <div class="links">
-    <a href="/login">Login</a>
     <a href="/home">Home</a>
     <div class="group" data-name="Amministrazione">
         <div class="group" data-name="Personale">
-            <a href="/amministrazione/personale/collab-interni">Collaboratori interni</a>
+            <a href="{{ GET_RELATIVE_ROUTE('collab-interni') }}">{{ GET_NAME_ROUTE('collab-interni')  }}</a>
             <a href="/amministrazione/personale/collab-esterni">Collaboratori esterni</a>
             <a href="/amministrazione/personale/stagisti">Stagisti</a>
             <a href="/amministrazione/personale/insegnanti">Insegnanti</a>
