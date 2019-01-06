@@ -105,23 +105,8 @@
                     Ricevuti
                 </div>
 
-                <div class="links">
-                    <a href="/login">Login</a>
-                    <a href="/home">Home</a>
-                    <div class="group" data-name="Amministrazione">
-                        <div class="group" data-name="Personale">
-                            <a href="/amministrazione/personale/collab-interni">Collaboratori interni</a>
-                            <a href="/amministrazione/personale/collab-esterni">Collaboratori esterni</a>
-                            <a href="/amministrazione/personale/stagisti">Stagisti</a>
-                            <a href="/amministrazione/personale/insegnanti">Insegnanti</a>
-                        </div>
+                @include('nav')
 
-                        <div class="group" data-name="Pagamenti">
-                            <a href="/amministrazione/pagamenti/effettuati">Effettuati</a>
-                            <a href="/amministrazione/pagamenti/ricevuti">Ricevuti</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </body>
