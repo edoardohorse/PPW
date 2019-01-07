@@ -2,10 +2,10 @@
     <a href="/home">Home</a>
     <div class="group" data-name="Amministrazione">
         <div class="group" data-name="Personale">
-            <a href="{{ GET_RELATIVE_ROUTE('collab-interni') }}">{{ GET_NAME_ROUTE('collab-interni')  }}</a>
-            <a href="/amministrazione/personale/collab-esterni">Collaboratori esterni</a>
-            <a href="/amministrazione/personale/stagisti">Stagisti</a>
-            <a href="/amministrazione/personale/insegnanti">Insegnanti</a>
+            <a href="{{ GET_VIEW('collab-interni')  ->nameRoute}}">{{GET_VIEW('collab-interni') ->namePage}}</a>
+            <a href="{{ GET_VIEW('collab-esterni')  ->nameRoute}}">{{GET_VIEW('collab-esterni') ->namePage}}</a>
+            <a href="{{ GET_VIEW('stagisti')        ->nameRoute}}">{{GET_VIEW('stagisti')       ->namePage}}</a>
+            <a href="{{ GET_VIEW('insegnanti')      ->nameRoute}}">{{GET_VIEW('insegnanti')     ->namePage}}</a>
         </div>
 
         <div class="group" data-name="Pagamenti">

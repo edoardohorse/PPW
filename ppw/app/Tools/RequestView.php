@@ -6,12 +6,12 @@ class RequestView
 {
 
     private $req;
+    private $nameView;
     private $nameRoute;
     private $namePage;
     private $data;
 
-    public function __construct($name, $req, $abs = false, $data = [])
-    {
+    public function __construct(array $view){
 
     }
 

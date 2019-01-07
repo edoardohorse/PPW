@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 class TestRoute extends Controller
 {
     public function default($name = "prova"){
-        return "Sei nella pagina $name";
+//        return "Sei nella pagina $name";
+
+        var_dump(route('Welcome'));
     }
 
     public function formGET(Request $request){

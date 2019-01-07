@@ -1,0 +1,44 @@
+{
+  "views": [
+    {
+      "req": "/home",
+      "nameView": "main",
+      "nameRoute": "welcome",
+      "namePage": "Welcome",
+      "data": [
+        {
+          "prop": "nomeAutore",
+          "data": "Edoardo Cavallo"
+        }
+      ]
+    },
+    {
+      "req": "collab-interni",
+      "nameView": "main",
+      "nameRoute": "collab-interni",
+      "namePage": "Collaboratori interni",
+      "data": []
+    },
+    {
+      "req": "collab-esterni",
+      "nameView": "main",
+      "nameRoute": "collab-esterni",
+      "namePage": "Collaboratori esterni",
+      "data": []
+    },
+    {
+      "req": "stagisti",
+      "nameView": "main",
+      "nameRoute": "stagisti",
+      "namePage": "Stagisti",
+      "data": []
+    },
+    {
+      "req": "insegnanti",
+      "nameView": "main",
+      "nameRoute": "insegnanti",
+      "namePage": "Insegnanti",
+      "data": []
+    }
+  ]
+}
