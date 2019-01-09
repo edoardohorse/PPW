@@ -22,18 +22,12 @@ Possono essere passati parametri alle rotte direttamente nell'url.
 ```
 ... ->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
 ```
-<<<<<<< HEAD
-
-=======
 ---
->>>>>>> master
 ## [Named Routes](https://laravel.com/docs/5.7/routing#named-routes)
 Le rotte possono essere nominate in modo tale da generare url.
 
     ... ->name('profile');
 
-<<<<<<< HEAD
-=======
 Ha senso dare il nome alle rotte perché permette di eseguire redirect in modo 
 più astratto ad esempio:
 
@@ -61,7 +55,6 @@ Si possono effettuare anche redirect tramite il nome delle rotte
 
 ---
 
->>>>>>> master
 ## [Fallback Routes](https://laravel.com/docs/5.7/routing#fallback-routes)
 Sono route che permettono di risolvere le richieste inattese come errore 404
 
