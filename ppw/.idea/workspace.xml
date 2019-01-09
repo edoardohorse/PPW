@@ -34,6 +34,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
@@ -54,12 +55,19 @@
         </entry>
       </file>
     </leaf>
+=======
+    <leaf />
+>>>>>>> 8d99c376382285abe6871851be9e490aec5ba5c5
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+<<<<<<< HEAD
         <entry key="$PROJECT_DIR$/.." value="feature_middleware" />
+=======
+        <entry key="$PROJECT_DIR$/.." value="feature_route_test" />
+>>>>>>> 8d99c376382285abe6871851be9e490aec5ba5c5
       </map>
     </option>
   </component>
@@ -180,6 +188,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+<<<<<<< HEAD
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -245,12 +254,15 @@
           <select />
         </subPane>
       </pane>
+=======
+      <pane id="ProjectPane" />
+>>>>>>> 8d99c376382285abe6871851be9e490aec5ba5c5
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.gitignore" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.composer" />
@@ -301,13 +313,20 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="2889000" />
+=======
+    <option name="totallyTimeSpent" value="3386000" />
+>>>>>>> 8d99c376382285abe6871851be9e490aec5ba5c5
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="1912" y="-6" width="1936" height="1056" extended-state="6" />
     <layout>
+<<<<<<< HEAD
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.38456374" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1444563" />
+>>>>>>> 8d99c376382285abe6871851be9e490aec5ba5c5
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -321,7 +340,11 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
+<<<<<<< HEAD
       <window_info active="true" anchor="bottom" id="Event Log" order="11" side_tool="true" visible="true" weight="0.3286119" />
+=======
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" visible="true" weight="0.3286119" />
+>>>>>>> 8d99c376382285abe6871851be9e490aec5ba5c5
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -364,6 +387,7 @@
               <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
                 <collection />
               </option>
+<<<<<<< HEAD
               <option name="COLUMN_ORDER">
                 <list>
                   <option value="0" />
@@ -372,11 +396,30 @@
                   <option value="3" />
                 </list>
               </option>
+=======
+>>>>>>> 8d99c376382285abe6871851be9e490aec5ba5c5
             </State>
           </value>
         </entry>
       </map>
     </option>
+<<<<<<< HEAD
+=======
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+>>>>>>> 8d99c376382285abe6871851be9e490aec5ba5c5
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/config/database.php">
@@ -396,6 +439,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_03_100551_create_users_site_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -417,5 +461,31 @@
         </state>
       </provider>
     </entry>
+=======
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestRoute.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/testFile.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="88" selection-start-line="5" selection-start-column="88" selection-end-line="5" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/test.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+>>>>>>> 8d99c376382285abe6871851be9e490aec5ba5c5
   </component>
 </project>
