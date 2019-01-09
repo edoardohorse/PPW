@@ -8,5 +8,4 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-/.idea/laravel-plugin.xml
-/.idea/workspace.xml
+/.idea
