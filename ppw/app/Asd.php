@@ -12,10 +12,9 @@ class Asd extends Model
 
     }
 
-     public function member(){
+    public function member(){
 
         return $this->belongsToMany('App\Member','asd_member','member_id','asd_id');
 
     }
-
 }

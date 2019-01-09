@@ -14,13 +14,12 @@ class CreateAsdMemberTable extends Migration
     public function up()
     {
         Schema::create('asd_member', function (Blueprint $table) {
-                $table->integer('asd_id')->unsigned();
-                $table->string('member_id');
-                $table->unique(['asd_id','member_id']); //Array di colonne, indica univocità tra le coppie di id
-                $table->softDeletes();
-                $table->timestamps();
-            });
-
+            $table->integer('asd_id')->unsigned();
+            $table->string('member_id');
+            $table->unique(['asd_id','member_id']); //Array di colonne, indica univocità tra le coppie di id
+            $table->softDeletes();
+            $table->timestamps();
+        });
     }
 
     /**

@@ -14,8 +14,7 @@ class CreateUsersSiteTable extends Migration
     public function up()
     {
         Schema::create('users_site', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('email')->unique();
+            $table->string('email')->primary();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

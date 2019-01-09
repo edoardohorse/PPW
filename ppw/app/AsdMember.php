@@ -2,10 +2,7 @@
 
 namespace App;
 
-
 use Illuminate\Database\Eloquent\Model;
-
-
 
 class AsdMember extends Model
 {
