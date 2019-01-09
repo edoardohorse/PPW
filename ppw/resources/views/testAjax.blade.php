@@ -26,7 +26,7 @@
 
             function inviaGET(){
                 var str = $('#textG').val()
-                $.get(`/req/${str}`, function(data, status){
+                $.get(`/reqAjax/${str}`, function(data, status){
                     var res = "Data: " + data + "\nStatus: " + status;
                     $("#resultGET").text(res)
                     console.log(res);
@@ -42,7 +42,7 @@
             function inviaPOST(){
                 var name = $('input[name="name"]').val()
                 var surname = $('input[name="surname"]').val()
-                $.post('/req', {name:name, surname:surname, }, function(data, status){
+                $.post('/reqAjax', {name:name, surname:surname, }, function(data, status){
                     var res = "Data: " + data + "\nStatus: " + status;
                     $("#resultPOST").text(res)
                     console.log(res);

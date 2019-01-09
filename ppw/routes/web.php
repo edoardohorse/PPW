@@ -14,14 +14,14 @@
 
 use App\Tools\RequestView;
 
+//
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home',function(){
-    return 'Sei nella home';
-});
+//Route::get('/home',function(){
+//    return 'Sei nella home';
+//});
 
 /**
  * // Risponde direttamene con una view
