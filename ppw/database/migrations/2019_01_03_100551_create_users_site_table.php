@@ -16,8 +16,11 @@ class CreateUsersSiteTable extends Migration
         Schema::create('user_sites', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('name');
+            $table->string('surname');
             $table->string('password');
             $table->rememberToken();
+            $table->string('type');
             $table->timestamps();
 
         });
