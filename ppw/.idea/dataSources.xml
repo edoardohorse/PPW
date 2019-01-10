@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="testLaravel@localhost" uuid="e0a0ee9f-211f-4d73-b8d7-099c5afc063d">
+    <data-source source="LOCAL" name="testLaravel@localhost" uuid="66482511-f186-44a2-9d70-35de7e171076">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
