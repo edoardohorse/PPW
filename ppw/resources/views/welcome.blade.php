@@ -61,6 +61,10 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            div{
+                margin:2em;
+            }
         </style>
     </head>
     <body>
@@ -84,14 +88,37 @@
                     Laravel
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div>
+                    <form action="{{route('testAge')}}" method="POST">
+                        @csrf
+                        <span>Sezione Privata (VM 14)</span>
+                        <label for="age">Età</label>
+                        <input type="number" name="age" max="100" min="10" value="14">
+                        <input type="submit">
+                    </form>
                 </div>
+
+                <div>
+                    <form action="{{route('testRole')}}" method="POST">
+                        @csrf
+                        <span>Sezione Privata (VM 18) e per admin</span>
+                        <label for="age">Età</label>
+                        <input type="number" name="age" max="100" min="10" value="18">
+                        <br>
+                        <label for="role">Ruolo</label>
+                        <select name="role">
+                            <option value="admin">admin</option>
+                            <option value="user">user</option>
+                        </select>
+                        <input type="submit">
+                    </form>
+                </div>
+
+
+
+
+
+                {{--<a href="{{route('privata')}}"--}}
             </div>
         </div>
     </body>

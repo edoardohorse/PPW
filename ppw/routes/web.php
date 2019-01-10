@@ -11,6 +11,26 @@
 |
 */
 
+//use App\Http\Middleware\TestMiddlewareAge;
+
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::view('/testAge', 'testAge')->name('testAge');
+Route::view('/testRole', 'testRole')->name('testRole');
+
+Route::post('/testAge',function(){
+    return 'Sei nella pagina privata';
+})  ->name('testAge')
+    ->middleware('testAge');
+    /*
+     * oppure
+     *
+     * ->middleware(\App\Http\Middleware\TestMiddlewareAge::class);
+     * */
+
+Route::post('/testRole',function(){
+    return 'Sei maggiorenne ed admin';
+})  ->name('testRole')
+    ->middleware('testRole:admin,18');
