@@ -25,8 +25,8 @@ class CreateTransactionsTable extends Migration
             $table->double('importo');
             $table->integer('asd_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned()->nullable();
-            $table->integer('fornitore_id')->unsigned()->nullable();
-            $table->integer('collaboratore_id')->unsigned()->nullable();
+            $table->integer('provider_id')->unsigned()->nullable();
+            $table->integer('collaborator_id')->unsigned()->nullable();
             $table->timestamps();
         });
         Schema::table('transactions', function (Blueprint $table){
@@ -44,15 +44,16 @@ class CreateTransactionsTable extends Migration
 
         Schema::table('transactions', function (Blueprint $table) {
 
-            $table->foreign('fornitore_id')->references('id')->on('providers')->onDelete('cascade');
+            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
 
         });
 
         Schema::table('transactions', function (Blueprint $table) {
 
-            $table->foreign('collaboratore_id')->references('id')->on('collaborators')->onDelete('cascade');
+            $table->foreign('collaborator_id')->references('id')->on('collaborators')->onDelete('cascade');
 
         });
+
     }
 
     /**

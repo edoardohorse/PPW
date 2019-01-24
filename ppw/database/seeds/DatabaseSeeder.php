@@ -12,11 +12,31 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            AsdTransactionSeeder::class,
-            UserTransactionSeeder::class,
-            ProviderTransactionSeeder::class,
-            CollaboratorTransactionSeeder::class,
-            AsdMemberSeeder::class,
+
+            DisciplineSeed::class,
+            AsdSeed::class,
+            MemberSeed::class,
+            UserSeed::class,
+            PackageUserSeed::class,
+            UserSiteSeed::class,
+            ProviderSeed::class,
+            AsdMemberSeed::class,
+            CollaboratorSeed::class,
+            TaxDataSeed::class,
+            CardSeed::class,
+            CourseUserSeed::class,
+            InternalSeed::class,
+            TeacherSeed::class,
+            InternalCourseSeed::class,
+            TeacherCourseSeed::class,
+            PackageCourseSeed::class,
+            SchedulingCourseSeed::class,
+            RoomSchedulingSeed::class,
+
+
+
+
+
         ]);
 
     }

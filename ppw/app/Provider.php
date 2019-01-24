@@ -6,9 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Provider extends Model
 {
-    public function transactions(){
+    public function transaction(){
 
-        return $this->hasMany(Transaction::class ,'fornitore_id'); //la convenzione lo vuole in inglese(provider) io dato che l'ho scritto in italiano devo fare così
+        return $this->hasMany(Transaction::class);
 
     }
+
+    public function member (){
+
+        return $this->belongsTo('App\Member');
+    }
+
 }

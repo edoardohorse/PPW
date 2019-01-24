@@ -23,8 +23,20 @@ class CreateUsersTable extends Migration
             $table->string('provincia');
             $table->date('data_nascita');
             $table->string('genere');
-            $table->boolean('tipo');
+            $table->string('tipo')->nullable();
+            $table->integer('member_id')->unsigned();
+            $table->integer('asd_id')->unsigned();
+
             $table->timestamps();
+        });
+
+        Schema::table('users', function(Blueprint $table){
+
+            $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
+        });
+        Schema::table('users', function(Blueprint $table){
+
+            $table->foreign('asd_id')->references('id')->on('asds')->onDelete('cascade');
         });
     }
 

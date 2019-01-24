@@ -14,7 +14,8 @@ class CreateMembersTable extends Migration
     public function up()
     {
         Schema::create('members', function (Blueprint $table) {
-            $table->string('cod_fiscale')->primary();
+            $table->increments('id');
+            $table->string('cod_fiscale');
             $table->string('numero_cell');
             $table->string('numero_tel');
             $table->string('email')->unique();
@@ -27,8 +28,13 @@ class CreateMembersTable extends Migration
             $table->string('note');
             $table->string('p_iva');
 
+
             $table->timestamps();
+
+
         });
+
+
     }
 
     /**

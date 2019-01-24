@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
+class MemberSeed extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\User',10)->create();
+        factory(App\Member::class, 10)->create();
     }
 }

@@ -23,9 +23,16 @@ class CreateProvidersTable extends Migration
             $table->string('provincia');
             $table->string('tipo_fornitura');
             $table->string('note');
-
+            $table->integer('member_id')->unsigned();
             $table->timestamps();
         });
+
+        Schema::table('providers', function(Blueprint $table){
+
+            $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
+
+        });
+
     }
 
     /**

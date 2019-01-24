@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AsdTransactionSeeder extends Seeder
+class AsdSeed extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class AsdTransactionSeeder extends Seeder
         {
             foreach(range(1, 5) as $i)
             {
-                $asd->transactions()->save(factory(App\Transaction::class)->make());
+                $asd->transaction()->save(factory(App\Transaction::class)->make());
 
             }
         });

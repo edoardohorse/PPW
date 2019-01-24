@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 
 
-class AsdMemberSeeder extends Seeder
+class AsdMemberSeed extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,7 +18,7 @@ class AsdMemberSeeder extends Seeder
                $asd->each(function($asd_id) use($member){
                    App\AsdMember::create([
                        'asd_id' => $asd_id,
-                       'member_id' => $member->cod_fiscale
+                       'member_id' => $member->id
                    ]);
                });
            });

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ProviderTransactionSeeder extends Seeder
+class CollaboratorSeed extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,11 +11,13 @@ class ProviderTransactionSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Provider::class, 1)->create()->each(function(App\Provider $provider)
+
+
+        factory(App\Collaborator::class, 1)->create()->each(function(App\Collaborator $collaborator)
         {
             foreach(range(1, 5) as $i)
             {
-                $provider->transactions()->save(factory(App\Transaction::class)->make());
+                $collaborator->transaction()->save(factory(App\Transaction::class)->make());
             }
         });
 
