@@ -16,6 +16,7 @@ P = Pagina
             - Iscritti     (M)
                 - Allievi           (P)     
                 - Tessere           (P)
+                - Fondatori         (P)
             - Fornitori             (P)
         - Gestione attività         (M)
             - Discipline            (P)        
