@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -12,13 +13,11 @@ class MainController extends Controller
      *
      * @return bool
      */
-    private function checkSignedASD(){
-        // Mi collego al db
+    private function isASDAlreadySigned(){
 
         // Controllo se esiste almeno una tupla nella tabella ASD
-
-
-        // Ritorna true se esiste altrimenti false
+        // ritorna true se esiste altrimenti false
+        return DB::table('asds')->first() == null? false : true;
     }
 
 
@@ -27,5 +26,14 @@ class MainController extends Controller
     }
 
     public function firstSignInASD(){
+        // se l'ASD è già registrata fa il redirect alla B005
+        if( $this->isASDAlreadySigned()){
+//            return 'Gia registrata';
+            return route('');
+        }
+        else{
+//            return 'Non registrata';
+            return route('');
+        }
     }
 }
