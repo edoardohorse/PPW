@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// A000
+Route::get('/','MainController@index');
+
+// A010
+Route::get('/signInASD','MainController@firstSignInASD');
+
+// A020
+
+
