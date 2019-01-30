@@ -16,17 +16,18 @@ class CreateMembersTable extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->increments('id');
             $table->string('cod_fiscale');
-            $table->string('numero_cell');
-            $table->string('numero_tel');
+            $table->string('numero_cell')->nullable();
+            $table->string('numero_tel')->nullable();
             $table->string('email')->unique();
-            $table->date('data_stipula_ass');
-            $table->date('scadenza_ass');
-            $table->integer('numero_ass');
-            $table->date('data_cert_medico');
-            $table->date('scadenza_cert_med');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->date('data_stipula_ass')->nullable();
+            $table->date('scadenza_ass')->nullable();
+            $table->integer('numero_ass')->nullable();
+            $table->date('data_cert_medico')->nullable();
+            $table->date('scadenza_cert_med')->nullable();
             $table->string('ruolo');
-            $table->string('note');
-            $table->string('p_iva');
+            $table->string('note')->nullable();
+            $table->string('p_iva')->nullable();
 
 
             $table->timestamps();

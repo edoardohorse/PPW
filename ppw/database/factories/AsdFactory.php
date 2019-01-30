@@ -12,6 +12,7 @@ $factory->define(App\Asd::class, function (Faker $faker) {
         'citta'=>$faker->city,
         'fax'=>$faker->numberBetween($min = 100000, $max = 999999),
         'email'=>$faker->companyEmail,
+        'cod_fiscale'=>$faker->iban(),
         'p_iva'=>$faker->numberBetween($min = 10000000, $max = 99999999),
         'cap'=>$faker->postcode,
         'provincia'=>$faker->word

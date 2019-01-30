@@ -9,6 +9,7 @@ $factory->define(App\Member::class, function (Faker $faker) {
         'numero_cell'=>$faker->phoneNumber,
         'numero_tel'=>$faker->phoneNumber,
         'email'=>$faker->email,
+        'email_verified_at' => now(),
         'data_stipula_ass'=>$faker->date($min=now()),
         'scadenza_ass'=>$faker->date($min=now()),
         'numero_ass'=>$faker->randomNumber($nbDigits = NULL, $strict = false),

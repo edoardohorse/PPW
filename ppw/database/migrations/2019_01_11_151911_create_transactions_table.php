@@ -21,7 +21,7 @@ class CreateTransactionsTable extends Migration
             $table->dateTime('data');
             $table->string('tipo_fattura');
             $table->string('tipo_transazione');
-            $table->string('tipo_ricevuta');
+            $table->string('tipo_ricevuta')->nullable();
             $table->double('importo');
             $table->integer('asd_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned()->nullable();

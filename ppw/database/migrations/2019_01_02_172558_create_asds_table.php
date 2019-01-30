@@ -23,7 +23,7 @@ class CreateAsdsTable extends Migration
                 $table->string('citta');
                 $table->string('fax');
                 $table->string('email');
-
+                $table->string('cod_fiscale');
                 $table->string('p_iva');
                 $table->string('cap');
                 $table->string('provincia');
