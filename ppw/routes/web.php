@@ -17,11 +17,19 @@ Route::get('/', function () {
 
 
 // A000
-Route::get('/','MainController@index');
+Route::get('/','MainController@index')->name('A000');
 
 // A010
-Route::get('/signInASD','MainController@firstSignInASD');
+Route::get('/signInASD','MainController@firstSignInASD')->name('A010');
 
-// A020
+// B005
+Route::get('/login','MainController@firstSignInASD')->name('A010');
+
+
+// C000 - Chi siamo
+Route::view('/our_team','our_team')->name('C000');
+
+// C010 - Contatti
+Route::view('/contacts','contacts')->name('C010');
 
 
