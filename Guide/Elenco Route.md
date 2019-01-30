@@ -2,9 +2,9 @@ Codice gabbia logica | Tipo | Nome gabbia logica | view | Nome file | Rotta | Co
 -|-|-|-|-|-|-|
 [A000](#a000) | Pagina | Benvenuto | welcome | welcome.blade.php | /welcome | MainController  
 [A010](#a010) | Pagina | Registrazione ASD | boot | boot.blade.php | /boot | MainController 
-[A011](#a011) | Pagina | Registrazione ASD effettuata | boot_done | boot_done.blade.php | /boot_done | MainController 
-[A020](#a020) | Pagina | Registrazione finita | boot_finished | boot_finished.blade.php | /boot_finished | MainController 
-[A030](#a030) | Pagina | Registrazione socio fondatore | boot_socio | boot_socio.blade.php | /boot_socio | MainController 
+[A011](#a011) | Pagina | Registrazione ASD effettuata |	boot_asd_done	| boot_asd_done.blade.php	| /boot_asd_done |	MainController
+[A025](#a025)|	Pagina | Registrazione socio fondatore|	boot_socio|	boot_socio.blade.php|	/boot_socio	|MainController
+[A030](#a030)|	Pagina | Registrazione finita|	boot_finished|	boot_finished.blade.php	|/boot_finished|	MainController
 [B005](#b005) | Pagina | Accedi al Gestionale | login | login.blade.php | /login | MainController
 [B006](#b006) | Pagina | Login effettuato | login_done | login_done.blade.php | /login_done | MainController 
 [B007](#b007) | Pagina | Login fallito | login_failure | login_failure.blade.php | /login_failure | MainController 
@@ -50,7 +50,7 @@ Codice gabbia logica | Tipo | Nome gabbia logica | view | Nome file | Rotta | Co
  Messaggio di registrazione riuscita per l'ASD
 
 ---
-## A020
+## A025
  Successivamente la registrazione ASD si deve registrare il primo socio fondatore (è mostrata solo una volta)
 
 ---
