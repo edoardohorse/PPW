@@ -20,12 +20,13 @@ class CreateMembersTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
-
+        }
+        );
             Schema::table('members', function (Blueprint $table) {
 
                 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             });
-        });
+
     }
 
     /**
