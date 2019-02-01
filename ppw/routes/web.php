@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +15,8 @@
 
 Route::view('/','before_login/welcome');
 
-//Route::view('/header','before_login/header_main');
-
-
 Route::view('/boot','before_login/boot');
+Route::view('/boot_done','before_login/boot_done');
 
 Route::view('/boot_socio','before_login/boot_socio');
 

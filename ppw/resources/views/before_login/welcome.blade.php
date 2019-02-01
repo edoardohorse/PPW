@@ -1,20 +1,16 @@
-@include('before_login/header_main')
+@extends('before_login.main')
 
-<style>
 
-    .position-panel{
+@section('body')
 
-        margin-top: 5%;
-    }
-</style>
+    @include('before_login/header_before_login')
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<div class="container text-center position-panel">
-    <h2>Benvenuto nel tuo gestionale</h2>
-    <div class="panel panel-default">
-        <div class="panel-body mx-auto d-block">Registra la tua ASD e inizia ad usare il gestionale. Clicca sul pulsante e compila il form di registrazione</div>
-        <button>Registra</button>
+    <div class="container text-center position-panel">
+        <h2>Benvenuto nel tuo gestionale</h2>
+        <div class="panel panel-default">
+            <div class="panel-body mx-auto d-block">Registra la tua ASD e inizia ad usare il gestionale. Clicca sul pulsante e compila il form di registrazione</div>
+            <button class="position-button">Registra</button>
+        </div>
     </div>
-</div>
+
+@endsection

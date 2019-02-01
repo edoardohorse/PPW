@@ -11,9 +11,6 @@
 
 @section('title','Registrazione')
 
-
-
-
 @section('body')
 @include('before_login/header_before_login')
     <form id="example-advanced-form" action="#">

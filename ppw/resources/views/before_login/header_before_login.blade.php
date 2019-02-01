@@ -1,10 +1,5 @@
 <header>
-    <style>
-        .nav-background {
-            background-color: #38c172;
-        }
-
-    </style>
+    @include('before_login/lib')
 
     <div class="container">
         <div class="row">

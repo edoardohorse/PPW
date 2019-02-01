@@ -1,5 +1,8 @@
-@include('before_login/header_main')
+@extends('before_login.main')
 
+@section('body')
+
+    @include('before_login/header_before_login')
 
 <div class="container text-center position-panel">
 
@@ -26,3 +29,4 @@
     </div>
 </div>
 
+@endsection
