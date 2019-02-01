@@ -11,8 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/','before_login/welcome');
 
-Route::view('/header','header_main');
+//Route::view('/header','before_login/header_main');
+
+
+Route::view('/boot','before_login/boot');
+
+Route::view('/boot_socio','before_login/boot_socio');
+
+Route::view('/boot_socio1','before_login/boot_socio1');

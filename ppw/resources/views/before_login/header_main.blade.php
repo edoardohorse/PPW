@@ -1,4 +1,4 @@
-@include('include_bootstrap')
+@include('before_login.include_bootstrap')
 
 <style>
     .nav-background {

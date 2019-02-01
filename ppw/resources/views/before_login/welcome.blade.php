@@ -1,4 +1,4 @@
-@include('header_main')
+@include('before_login/header_main')
 
 <style>
 
