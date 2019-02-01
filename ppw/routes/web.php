@@ -21,3 +21,7 @@ Route::view('/boot','before_login/boot');
 Route::view('/boot_socio','before_login/boot_socio');
 
 Route::view('/boot_socio1','before_login/boot_socio1');
+
+Route::view('/step0','forms/step0');
+Route::view('/provastep','before_login/provastep');
+Route::view('/provatesto','before_login/provatesto');
