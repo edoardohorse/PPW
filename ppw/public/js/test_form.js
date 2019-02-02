@@ -1,4 +1,8 @@
-let form = $('#form')
+let form = $('#form').steps({
+    headerTag: "h3",
+    bodyTag: "section",
+    transitionEffect: "slide"
+});
 const URL = '/form/'
 
 $.ajaxSetup({
@@ -7,43 +11,14 @@ $.ajaxSetup({
     }
 });
 
-function fetchStep(n, callback = null){
-    const step = n
-    $.ajax({
-        url: `${URL}${n}`,
-        method: 'GET',
-        success: function(data){
-            // console.log(data)
-            if(callback)
-                callback(step, data)
-            // injectLayout(step, data)
-        }
-    })
-}
 
-function injectLayout(n, data){
-    debugger
+
+function fetchStep(title, url){
+
     form.steps("add", {
-        title: `Step ${n}`,
-        content: data
+        title: title,
+        contentMode: "async",
+        contentUrl: url
     });
 }
 
-
-// fetchStep(1, injectLayout)
-
-/*
-
-form.steps({
-    title: "Step Title",
-    contentMode: "async",
-    onInit: function(e, index){
-        fetchStep(1)
-    }
-})*/
-
-form.steps({
-    headerTag: "h3",
-    bodyTag: "section",
-    transitionEffect: "slide"
-});

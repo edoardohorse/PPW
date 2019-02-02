@@ -16,12 +16,10 @@
 
         <main id="form">
 
-            <h3>Primo</h3>
+            <h3>Primo step</h3>
             <section data-mode="async" data-url="/form/1"></section>
 
-            <h3>Secondo</h3>
-            <section data-mode="async" data-url="/form/2"></section>
-
+            {{--<h3>Misc step</h3>--}}
         </main>
 
 @endsection
