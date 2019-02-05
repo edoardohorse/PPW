@@ -12,7 +12,7 @@
 
 <head>
     <title>@yield('title')</title>
-    @include('before_login/lib')
+    @include('layout.lib')
 
 </head>
 
@@ -31,7 +31,7 @@
 
 </body>
 
-@include('before_login/lib_end')
+@include('layout.lib_end')
 
 
 </html>

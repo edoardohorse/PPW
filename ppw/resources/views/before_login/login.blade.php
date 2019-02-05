@@ -1,4 +1,4 @@
-@extends('before_login.main')
+@extends('layout.main')
 
 @section('title','Login')
 
