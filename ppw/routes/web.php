@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
+
 Route::view('/','before_login/welcome');
 
 Route::view('/boot','before_login/boot');
@@ -23,11 +23,10 @@ Route::view('/boot_finished','before_login/boot_finished');
 Route::view('/login','before_login/login');
 Route::view('/login_done','before_login/login_done');
 Route::view('/login_failure','before_login/login_failure');
+Route::view('/main','before_login/main_before');
 
-Route::view('/box','test-box/page');*/
-//Route::view('/step0','forms/step0');
-//Route::view('/provastep','before_login/provastep');
-//Route::view('/provatesto','before_login/provatesto');
+Route::view('/box','test-box/page');
+
 
 $n = ['name'=>'Christian', 'surname'=>'Meo'];
 

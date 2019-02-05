@@ -1,5 +1,5 @@
 <header>
-    @include('layout.lib')
+
 
     <div class="container">
         <div class="row">
