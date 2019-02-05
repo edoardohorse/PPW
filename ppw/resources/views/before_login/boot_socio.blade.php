@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('before_login.main_before')
 
 @section('lib_script')
     <script src="{{ asset('js/jquery.steps.js')  }}"></script>
