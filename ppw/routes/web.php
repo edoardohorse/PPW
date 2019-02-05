@@ -29,9 +29,10 @@ Route::view('/box','test-box/page');*/
 //Route::view('/provastep','before_login/provastep');
 //Route::view('/provatesto','before_login/provatesto');
 
+$n = ['name'=>'Christian', 'surname'=>'Meo'];
 
-Route::view('/homepage','homepage');
-Route::view('/managment','managment');
-Route::view('/secretariat','secretariat');
-Route::view('/mng_activity','mng_activity');
-Route::view('/report_stats','report_stats');
+Route::view('/homepage','homepage',$n);
+Route::view('/managment','managment',$n);
+Route::view('/secretariat','secretariat',$n);
+Route::view('/mng_activity','mng_activity',$n);
+Route::view('/report_stats','report_stats',$n);

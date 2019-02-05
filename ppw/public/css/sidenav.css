@@ -1,0 +1,12 @@
+.menu{
+
+    border: 1px solid black;
+
+}
+
+.menu_link{
+    display: block;
+    text-align: center;
+    border: 1px solid black;
+    font-size: 17px;
+}
