@@ -18,8 +18,6 @@ class CreateMembersTable extends Migration
             $table->string('cod_fiscale');
             $table->string('numero_cell')->nullable();
             $table->string('numero_tel')->nullable();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->date('data_stipula_ass')->nullable();
             $table->date('scadenza_ass')->nullable();
             $table->integer('numero_ass')->nullable();

@@ -15,21 +15,23 @@ class CreateAsdsTable extends Migration
     {
         Schema::create('asds', function (Blueprint $table) {
 
-                $table->increments('id');
-                $table->string('nome');
-                $table->string('logo');
-                $table->string('numero_tel');
-                $table->string('indirizzo');
-                $table->string('citta');
-                $table->string('fax');
-                $table->string('email');
-                $table->string('cod_fiscale');
-                $table->string('p_iva');
-                $table->string('cap');
-                $table->string('provincia');
+            $table->increments('id');
+            $table->string('nome');
+            $table->string('logo');
+            $table->string('numero_tel');
+            $table->string('indirizzo');
+            $table->string('citta');
+            $table->string('fax');
+            $table->string('email');
+            $table->string('cod_fiscale');
+            $table->string('p_iva');
+            $table->string('cap');
+            $table->string('provincia');
+
 
             $table->timestamps();
-            });
+        });
+
     }
 
     /**

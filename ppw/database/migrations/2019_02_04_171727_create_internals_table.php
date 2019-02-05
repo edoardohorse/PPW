@@ -14,15 +14,15 @@ class CreateInternalsTable extends Migration
     public function up()
     {
         Schema::create('internals', function (Blueprint $table) {
-        $table->increments('id');
-        $table->integer('collaborator_id')->unsigned();
-        $table->timestamps();
-    });
+            $table->increments('id');
+            $table->integer('collaborator_id')->unsigned();
+            $table->timestamps();
+        });
 
-Schema::table('internals', function (Blueprint $table){
+        Schema::table('internals', function (Blueprint $table){
 
-    $table->foreign('collaborator_id')->references('id')->on('collaborators')->onDelete('cascade');
-});
+            $table->foreign('collaborator_id')->references('id')->on('collaborators')->onDelete('cascade');
+        });
     }
 
     /**

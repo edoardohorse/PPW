@@ -21,7 +21,7 @@ class CreatePackageUserTable extends Migration
         });
         Schema::table('package_user', function (Blueprint $table) {
 
-         $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
+            $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
         });
 
         Schema::table('package_user', function (Blueprint $table) {
@@ -29,6 +29,7 @@ class CreatePackageUserTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
+
     /**
      * Reverse the migrations.
      *

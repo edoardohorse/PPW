@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             PackageCourseSeed::class,
             SchedulingCourseSeed::class,
             RoomSchedulingSeed::class,
+            ReportSeed::class,
 
 
 

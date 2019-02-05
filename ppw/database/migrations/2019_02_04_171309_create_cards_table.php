@@ -23,9 +23,10 @@ class CreateCardsTable extends Migration
 
         Schema::table('cards', function (Blueprint $table) {
 
-             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
+
     /**
      * Reverse the migrations.
      *

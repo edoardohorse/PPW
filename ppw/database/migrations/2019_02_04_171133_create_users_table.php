@@ -38,6 +38,7 @@ class CreateUsersTable extends Migration
 
             $table->foreign('asd_id')->references('id')->on('asds')->onDelete('cascade');
         });
+
     }
 
     /**

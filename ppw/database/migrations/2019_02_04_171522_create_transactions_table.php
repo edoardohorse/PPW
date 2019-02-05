@@ -53,7 +53,6 @@ class CreateTransactionsTable extends Migration
             $table->foreign('collaborator_id')->references('id')->on('collaborators')->onDelete('cascade');
 
         });
-
     }
 
     /**

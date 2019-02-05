@@ -13,6 +13,8 @@ class CreateAsdMemberTable extends Migration
      */
     public function up()
     {
+
+
         Schema::create('asd_member', function (Blueprint $table) {
             $table->integer('asd_id')->unsigned();
             $table->integer('member_id')->unsigned();
@@ -30,6 +32,7 @@ class CreateAsdMemberTable extends Migration
 
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
         });
+
     }
 
     /**

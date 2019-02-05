@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use App\Report as Report;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Asd::class, function (Faker $faker) {
@@ -15,7 +16,8 @@ $factory->define(App\Asd::class, function (Faker $faker) {
         'cod_fiscale'=>$faker->iban(),
         'p_iva'=>$faker->numberBetween($min = 10000000, $max = 99999999),
         'cap'=>$faker->postcode,
-        'provincia'=>$faker->word
+        'provincia'=>$faker->word,
+
 
     ];
 });
