@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
+
 use App\Http\Requests\AsdFormRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -40,8 +42,10 @@ class MainController extends Controller
     }
 
     public function signInASD(AsdFormRequest $req){
+//        dd($req);
 
-        $validator = $req->validated();
+
+        $validator = Validator::make($req->all(),$req->rules());
 
         if($validator->fails()){
             return redirect('/boot')
@@ -51,7 +55,8 @@ class MainController extends Controller
 
         }
         else{
-            dd('Tutto ok ');
+//            dd($req);
+            return redirect('/boot-asd-done');
 //            $asd = new App\Asd();
 //
 //            $asd->nome = $request->name;

@@ -1,16 +1,9 @@
-@extends('master_boot.blade.php')
+@extends('layout.master_boot')
 
-@section('body')
+@section('title', 'Registrazione ASD')
 
-    @include('layout.master_boot_header')
+@section('h2', 'Registrazione avvenuta con successo')
 
+@section('panel-body')
 
-    <div class="container text-center position-panel">
-        <h2>Registrazione avvenuta con successo</h2>
-        <div class="panel panel-default">
-            <div class="panel-body mx-auto d-block">
-            <button class="position-button">Continua</button>
-        </div>
-        </div>
-    </div>
 @stop

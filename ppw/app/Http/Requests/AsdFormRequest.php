@@ -25,17 +25,17 @@ class AsdFormRequest extends FormRequest
     {
         return [
             '*'             => 'required',
-            'name'          => 'max:50 | unique',
-            'logo'          => 'file | mimes:jpeg,bmp,png',
-            'telefono'      => 'regex:/(01)[0-9]{9}/ | unique',
-            'indirizzo'     => 'max:150',
-            'citta'         => 'max:150',
-            'fax'           => 'regex:/(01)[0-9]{9}/ | unique',
-            'email'         => 'email|unique',
-            'iva'           => 'digits:11|unique',
-            'cap'           => 'digits:5',
-            'provincia'     => 'max:150',
-            'cod_fiscale'   => 'size:16'
+//            'name'          => 'max:50 | unique',
+//            'logo'          => 'file | mimes:jpeg,bmp,png',
+//            'telefono'      => 'regex:/(01)[0-9]{9}/ | unique',
+//            'indirizzo'     => 'max:150',
+//            'citta'         => 'max:150',
+//            'fax'           => 'regex:/(01)[0-9]{9}/ | unique',
+//            'email'         => 'email|unique',
+//            'iva'           => 'digits:11|unique',
+//            'cap'           => 'digits:5',
+//            'provincia'     => 'max:150',
+//            'cod_fiscale'   => 'size:16'
         ];
     }
 
