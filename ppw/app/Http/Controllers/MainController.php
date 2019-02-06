@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AsdFormRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -36,5 +37,26 @@ class MainController extends Controller
 //            return 'Non registrata';
             return view('boot/welcome', ['route' => 'A000']);
         }
+    }
+
+    public function signInASD(AsdFormRequest $req){
+
+        $validator = $req->validated();
+
+        if($validator->fails()){
+            return redirect('/boot')
+                ->withErrors($validator)
+                ->withInput();
+//            dd('Fallito');
+
+        }
+        else{
+            dd('Tutto ok ');
+//            $asd = new App\Asd();
+//
+//            $asd->nome = $request->name;
+
+        }
+
     }
 }

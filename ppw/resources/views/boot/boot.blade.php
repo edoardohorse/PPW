@@ -1,32 +1,18 @@
-@extends('master_boot.blade.php')
+@extends('layout.master_boot')
 
-@section('body')
+@section('title', 'Registrazione ASD')
 
-    @include('layout.master_boot_header')
+@section('h2')
+    Registrazione ASD
+@stop
 
-<div class="container text-center position-panel">
+@section('panel-body')
+    <form method="POST" action="/signInASD">
+        @csrf
 
-        <h2>Registrazione ASD </h2>
-    <div class="panel panel-default">
-        <div class="col-xs-12 col-sm-12 progress-container">
-        </div>
+            @include('forms/step0')
 
-        <div class="panel-body mx-auto d-block">
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
+        <input type="submit">
 
-            </form>
-            <button type="submit" onclick="progress()">Submit</button>
-
-        </div>
-    </div>
-</div>
-
+    </form>
 @stop
