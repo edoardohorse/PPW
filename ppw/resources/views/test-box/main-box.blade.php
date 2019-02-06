@@ -12,7 +12,7 @@
 
 <head>
     <title>@yield('title')</title>
-    @include('layout.lib')
+    @include('layout.master_lib')
 
 </head>
 
@@ -31,7 +31,7 @@
 
 </body>
 
-@include('layout.lib_end')
+@include('layout.master_lib-end')
 
 
 </html>

@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.master')
 
 @section('lib_css')
     <link rel="stylesheet" href = "{{ asset('css/before_login_style.css ') }}">
@@ -6,7 +6,7 @@
 @endsection
 
 @section('body')
-   @include('before_login/header_before_login')
+   @include('layout.master_boot_header')
 @endsection
 
 @section('lib_end')

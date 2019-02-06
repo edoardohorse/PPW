@@ -1,9 +1,9 @@
-@extends('before_login.main_before')
+@extends('master_boot.blade.php')
 
 
 @section('body')
 
-    @include('before_login/header_before_login')
+    @include('layout.master_boot_header')
 
     <div class="container text-center position-panel">
         <h2>Benvenuto nel tuo gestionale</h2>

@@ -2,7 +2,7 @@
 
 
 @section('body')
-    @include('before_login/header_before_login')
+    @include('layout.master_boot_header')
 
     @endsection
 @section('h2')

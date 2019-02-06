@@ -11,19 +11,19 @@
 |
 */
 
-Route::view('/','before_login/welcome');
+Route::view('/','boot/welcome');
 
-Route::view('/boot','before_login/boot');
-Route::view('/boot_done','before_login/boot_done');
+Route::view('/boot','boot/boot');
+Route::view('/boot_done','boot/boot_done');
 
-Route::view('/boot_socio','before_login/boot_socio');
+Route::view('/boot_socio','boot/boot_socio');
 
-Route::view('/boot_socio1','before_login/boot_socio1');
-Route::view('/boot_finished','before_login/boot_finished');
-Route::view('/login','before_login/login');
-Route::view('/login_done','before_login/login_done');
-Route::view('/login_failure','before_login/login_failure');
-Route::view('/main','before_login/main_before');
+Route::view('/boot_socio1','boot/boot_socio1');
+Route::view('/boot_finished','boot/boot_finished');
+Route::view('/login','boot/login');
+Route::view('/login_done','boot/login_done');
+Route::view('/login_failure','boot/login_failure');
+Route::view('/main','boot/main_before');
 
 Route::view('/box','test-box/page');
 

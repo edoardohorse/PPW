@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.master')
 
 @section('lib_css')
     <link rel="stylesheet" href="{{ asset('css/prv.css')  }}">
@@ -9,10 +9,10 @@
 
 @section('body')
 
-    @include('home/header')
+    @include('layout.master_home_header')
 
 
-    @include('home/sidenav')
+    @include('layout.master_home_sidenav')
 
     <main class="col-9 float-right container">
 

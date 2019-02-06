@@ -1,4 +1,4 @@
-{{--@include('before_login/include_libraries')--}}
+{{--@include('boot/include_libraries')--}}
 
 <!--   <label for="inputName">Nome</label>
         <input type="text" class="form-control" id="inputName" placeholder="Nome">
