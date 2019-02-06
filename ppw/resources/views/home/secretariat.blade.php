@@ -6,4 +6,4 @@
 
 
     <h1>Segreteria</h1>
-@endsection
+@stop

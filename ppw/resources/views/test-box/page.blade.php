@@ -1,19 +1,19 @@
 @extends('test-box.main-box')
 
+@section('title','Box')
 
-@section('body')
-    @include('layout.master_boot_header')
-
-    @endsection
 @section('h2')
     Login Utente
 @stop
 
 @section('panel-body')
     Autenticazione effettuata con successo
-    @stop
+@stop
+
+
 @section('button')
     Vai al gestionale
 @stop
 
 
+@section('redirect', '/login')

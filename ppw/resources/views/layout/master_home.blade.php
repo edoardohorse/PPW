@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ asset('css/prv.css')  }}">
     <link rel="stylesheet" href="{{ asset('css/header.css')  }}">
     <link rel="stylesheet" href="{{ asset('css/sidenav.css')  }}">
-@endsection
+@stop
 
 
 @section('body')
@@ -22,4 +22,4 @@
 
 
 
-@endsection
+@stop

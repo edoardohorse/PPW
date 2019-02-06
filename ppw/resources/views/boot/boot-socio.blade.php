@@ -2,11 +2,11 @@
 
 @section('lib_script')
     <script src="{{ asset('js/jquery.steps.js')  }}"></script>
-@endsection
+@stop
 
 @section('lib_end_script')
     <script src="{{ asset('js/form_jquery_steps.js')  }}"></script>
-@endsection
+@stop
 
 @section('title','Registrazione fondatore')
 
@@ -24,4 +24,4 @@
                 </div>
             </div>
         </div>
-       @endsection
+       @stop

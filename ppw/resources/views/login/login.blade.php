@@ -1,4 +1,4 @@
-@extends('master_boot.blade.php')
+@extends('layout.master_boot')
 
 @section('title','Login')
 
@@ -31,4 +31,4 @@
         </div>
     </div>
 
-@endsection
+@stop

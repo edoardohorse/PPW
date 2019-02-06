@@ -6,4 +6,4 @@
 
 
     <h1>Gestione attività</h1>
-@endsection
+@stop

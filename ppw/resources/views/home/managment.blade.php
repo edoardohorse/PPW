@@ -6,4 +6,4 @@
 
 
     <h1>Amministrazione</h1>
-@endsection
+@stop
