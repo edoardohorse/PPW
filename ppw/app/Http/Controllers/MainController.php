@@ -27,13 +27,14 @@ class MainController extends Controller
 
     public function firstSignInASD(){
         // se l'ASD è già registrata fa il redirect alla B005
+//        dd( $this->isASDAlreadySigned());
         if( $this->isASDAlreadySigned()){
 //            return 'Gia registrata';
-            return route('');
+            return view('boot/welcome', ['route' => 'B005']);
         }
         else{
 //            return 'Non registrata';
-            return route('');
+            return view('boot/welcome', ['route' => 'A000']);
         }
     }
 }
