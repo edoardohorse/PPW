@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Member extends Model
 {
-    public function user(){
+//    public $with = ['users'];
 
-        return $this->hasOne('App\User');
+
+    public function users(){
+
+        return $this->belongsTo('App\User');
     }
 }

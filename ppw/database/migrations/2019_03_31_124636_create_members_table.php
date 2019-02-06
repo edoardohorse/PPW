@@ -17,15 +17,15 @@ class CreateMembersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('surname');
-            $table->integer('user_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
         }
         );
-            Schema::table('members', function (Blueprint $table) {
 
-                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            });
+        Schema::table('members', function (Blueprint $table) {
+            $table->unsignedInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+        });
 
     }
 
