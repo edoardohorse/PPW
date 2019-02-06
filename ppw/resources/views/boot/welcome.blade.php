@@ -8,9 +8,14 @@
 
 
 
-@section('redirect-text')
-    Regiatrazione ASD
-@stop
+@if( $route   == 'B005')
+    @section('redirect', '/login')
+    @section('redirect-text', 'Login Gestione')
 
 
-@section('redirect', '/boot')
+@else
+    @section('redirect', '/boot')
+    @section('redirect-text', 'Registrazione ASD')
+@endif
+
+
