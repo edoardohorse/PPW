@@ -1,4 +1,4 @@
-@extends('test-box.main-box')
+@extends('layout.master_boot')
 
 @section('title','Box')
 
@@ -11,7 +11,7 @@
 @stop
 
 
-@section('button')
+@section('redirect-text')
     Vai al gestionale
 @stop
 
