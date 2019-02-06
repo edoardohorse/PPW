@@ -8,6 +8,7 @@ $factory->define(App\Member::class, function (Faker $faker) {
         'cod_fiscale'=>$faker->iban(),
         'numero_cell'=>$faker->phoneNumber,
         'numero_tel'=>$faker->phoneNumber,
+        'email'=>$faker->email,
         'data_stipula_ass'=>$faker->date($min=now()),
         'scadenza_ass'=>$faker->date($min=now()),
         'numero_ass'=>$faker->randomNumber($nbDigits = NULL, $strict = false),

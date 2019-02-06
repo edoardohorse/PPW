@@ -49,7 +49,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | UserSite Providers
+    | User Providers
     |--------------------------------------------------------------------------
     |
     | All authentication drivers have a user provider. This defines how the
@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\UserSite::class,
+            'model' => App\User::class,
         ],
 
         // 'users' => [

@@ -22,9 +22,4 @@ class Asd extends Model
 
         return $this->hasMany('App\User');
     }
-
-    public function report (){
-
-        return $this->HasMany('App\Report');
-    }
 }

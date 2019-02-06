@@ -8,7 +8,7 @@ class Provider extends Model
 {
     public function transaction(){
 
-        return $this->hasMany('App\Transaction');
+        return $this->hasMany(Transaction::class);
 
     }
 
