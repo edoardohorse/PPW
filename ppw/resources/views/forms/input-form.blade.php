@@ -3,6 +3,12 @@
 
     <label for="{{$input_name}}"> {{ $label  }}  </label>
 
+
+        <input type="{{$type}}" class="form-control" name="{{$input_name}}" id="{{$input_name}}" value="{{$value}}">
+
+
+{{--
+
     @if($errors->has($input_name))
         <input type="{{$type}}" class="form-control is-invalid" name="{{$input_name}}" id="{{$input_name}}" value="{{old($input_name)}}">
         <span class="help-block" role="alert">
@@ -16,5 +22,6 @@
         @endif
 
     @endif
+--}}
 
 </div>
