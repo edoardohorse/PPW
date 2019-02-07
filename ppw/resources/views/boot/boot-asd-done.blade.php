@@ -7,3 +7,10 @@
 @section('panel-body')
 
 @stop
+@section('redirect')
+    /boot-socio
+@stop
+
+@section('redirect-text')
+Continua
+@stop

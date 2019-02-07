@@ -1,18 +1,21 @@
-@extends('master_boot.blade.php')
-
-
-@section('body')
-
-    @include('layout.master_boot_header')
 
 
 
-    <div class="container text-center position-panel">
-        <h2>Registrazione socio fondatore</h2>
-        <div class="panel panel-default">
-            <div class="panel-body mx-auto d-block">Registrazione socio fondatore effettuata con successo</div>
             <button class="position-button">Vai al gestionale</button>
-        </div>
-    </div>
 
+@extends('layout.master_boot')
+
+@section('title', 'Registrazione socio fondatore')
+
+@section('h2', 'Registrazione socio fondatore effettuata con successo')
+
+@section('panel-body')
+
+@stop
+
+@section('redirect')
+/homepage
+@stop
+@section('redirect-text')
+Accedi al gestionale
 @stop
