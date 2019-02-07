@@ -7,7 +7,7 @@
 @stop
 
 @section('panel-body')
-    <form method="POST" action="/signInASD">
+    <form method="POST" action="/signInASD" enctype="multipart/form-data">
         @csrf
 
             @include('forms/step1')

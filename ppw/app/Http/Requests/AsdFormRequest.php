@@ -25,9 +25,9 @@ class AsdFormRequest extends FormRequest
     {
         return [
             '*'             => 'required',
-//            'name'          => 'max:50 | unique',
-//            'logo'          => 'file | mimes:jpeg,bmp,png',
-//            'telefono'      => 'regex:/(01)[0-9]{9}/ | unique',
+            'nome'          => 'max:50|unique:asds|required',
+            'logo'          => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'telefono'      => 'regex:/(01)[0-9]{9}/|unique',
 //            'indirizzo'     => 'max:150',
 //            'citta'         => 'max:150',
 //            'fax'           => 'regex:/(01)[0-9]{9}/ | unique',

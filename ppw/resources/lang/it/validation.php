@@ -54,7 +54,7 @@ return [
         'string'  => ':attribute deve contenere almeno :value caratteri.',
         'array'   => ':attribute deve contenere almeno :value elementi.',
     ],
-    'image'                => ":attribute deve essere un'immagine.",
+    'image'                => "Il :attribute deve essere un'immagine.",
     'in'                   => ':attribute selezionato non è valido.',
     'in_array'             => ':attribute non esiste in :other.',
     'integer'              => ':attribute deve essere un intero.',
@@ -77,10 +77,10 @@ return [
     'max'                  => [
         'numeric' => ':attribute non può essere superiore a :max.',
         'file'    => ':attribute non può essere più grande di :max kilobytes.',
-        'string'  => ':attribute non può essere più lungo di :max caratteri.',
+        'string'  => 'Il :attribute non può essere più lungo di :max caratteri.',
         'array'   => ':attribute non può contenere più di :max elementi.',
     ],
-    'mimes'                => ':attribute deve contenere un file di tipo: :values.',
+    'mimes'                => 'Il campo :attribute deve contenere un file di tipo: :values.',
     'mimetypes'            => ':attribute deve contenere un file di tipo: :values.',
     'min'                  => [
         'numeric' => ':attribute deve essere almeno :min.',
