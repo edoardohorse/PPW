@@ -42,10 +42,10 @@ Route::view('/box','test-box/page');
  * */
 
 $n = ['name'=>'Christian', 'surname'=>'Meo'];
-Route::view('/homepage','homepage',$n);
-Route::view('/managment','managment',$n);
-Route::view('/secretariat','secretariat',$n);
-Route::view('/mng-activity','mng-activity',$n);
-Route::view('/report-stats','report-stats',$n);
+Route::view('/homepage','home/homepage',$n);
+Route::view('/managment','home/managment',$n);
+Route::view('/secretariat','home/secretariat',$n);
+Route::view('/mng-activity','home/mng-activity',$n);
+Route::view('/report-stats','home/report-stats',$n);
 
 

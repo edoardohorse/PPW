@@ -1,4 +1,4 @@
-@extends('home.master_home')
+@extends('layout.master_home')
 
 @section('title','Report')
 
