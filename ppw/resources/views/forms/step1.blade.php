@@ -1,6 +1,3 @@
-
-
-
     @include('forms.input-form', [
                                 'type'      =>      'text',
                                 'label'     =>      'Nome ASD',
@@ -30,5 +27,3 @@
                                 'label'     =>      'Città',
                                 'input_name' =>     'citta'
                                 ])
-
-

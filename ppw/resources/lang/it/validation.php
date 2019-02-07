@@ -38,7 +38,7 @@ return [
     'digits_between'       => ':attribute deve essere compreso tra :min e :max caratteri.',
     'dimensions'           => 'Le dimensioni immagine di :attribute non sono valide',
     'distinct'             => ':attribute contiene dei valori duplicati',
-    'email'                => ':attribute deve essere un indirizzo email valido.',
+    'email'                => 'L\':attribute inserita deve essere un indirizzo email valido.',
     'exists'               => "L'elemento :attribute selezionato non è valido.",
     'file'                 => ':attribute deve essere un file.',
     'filled'               => ':attribute deve essere valorizzato.',
