@@ -19,13 +19,13 @@
 
             <h3>Step</h3>
             <section>
-                @include('forms/step1')
+                @include('forms/step1-boot')
             </section>
 
 
             <h3>Step</h3>
             <section>
-                @include('forms/step2')
+                @include('forms/step2-boot')
             </section>
 
         {{--<input type="submit" class="btn bnt-lg btn-primary">--}}

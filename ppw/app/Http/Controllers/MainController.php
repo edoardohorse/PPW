@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Requests\AsdFormRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Asd;
 
 class MainController extends Controller
 {
@@ -55,7 +56,23 @@ class MainController extends Controller
 
         }
         else{
-//            dd($req);
+            $fields = $req->all();
+            $asd = new Asd();
+//            $req->nome
+
+            $asd->nome          = $req['nome'];
+            $asd->numero_tel    = $req['numero_tel'];
+            $asd->logo          = $this->fileUpload($req, 'logo');
+            $asd->indirizzo     = $req['indirizzo'];
+            $asd->citta         = $req['citta'];
+            $asd->fax           = $req['fax'];
+            $asd->email         = $req['email'];
+            $asd->p_iva         = $req['p_iva'];
+            $asd->cap           = $req['cap'];
+            $asd->provincia     = $req['provincia'];
+            $asd->cod_fiscale   = $req['cod_fiscale'];
+//            dd($asd);
+            $asd->save();
             return redirect('/boot-asd-done');
 //            $asd = new App\Asd();
 //
@@ -63,5 +80,46 @@ class MainController extends Controller
 
         }
 
+    }
+
+
+    private function fileUpload(Request $request, $nameField){
+        $file = $request->file($nameField);
+        $destinationPath = '/uploads';
+//        dd($request);
+//        dd($file);
+        if (isset($file)) {
+
+
+           /* //Display File Name
+            echo 'File Name: ' . $file->getClientOriginalName();
+            echo '<br>';
+
+            //Display File Extension
+            echo 'File Extension: ' . $file->getClientOriginalExtension();
+            echo '<br>';
+
+            //Display File Real Path
+            echo 'File Real Path: ' . $file->getRealPath();
+            echo '<br>';
+
+            //Display File Size
+            $size  = round($file->getSize()/(pow(1024,2)),2);
+            echo "File Size:  $size MB";
+            echo '<br>';
+
+            //Display File Mime Type
+            echo 'File Mime Type: ' . $file->getMimeType();*/
+
+            //Move Uploaded File
+
+            // public_path() è un helper che ritorna il path intero della cartella public
+            //  con move sposto il file nella directorty indicato nel primo parametro
+            //  e assegno il nome con il secondo.
+            $file->move(public_path($destinationPath), $file->getClientOriginalName());
+            return $destinationPath.'/'.$file->getClientOriginalName();
+        }
+
+        return null;
     }
 }
