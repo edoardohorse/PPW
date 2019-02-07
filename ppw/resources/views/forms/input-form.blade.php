@@ -1,7 +1,7 @@
 
 <div class="form-group">
 
-    <label for=" {{ $input_name  }} "> {{ $label  }}  </label>
+    <label for="{{$input_name}}"> {{ $label  }}  </label>
 
     @if($errors->has($input_name))
         <input type="{{$type}}" class="form-control is-invalid" name="{{$input_name}}" id="{{$input_name}}" value="{{old($input_name)}}">

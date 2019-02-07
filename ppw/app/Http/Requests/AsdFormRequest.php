@@ -23,26 +23,36 @@ class AsdFormRequest extends FormRequest
      */
     public function rules()
     {
+        /**
+         * Lasciare la wildcard 'per tutti' (*) alla fine dell'array
+         *  in modo tale da sovrascrivere quelle presenti.
+         *  Se in cima all'array viene sovrascritta da quelli successivi
+         *  perciò è come se non esisteste.
+         */
         return [
-            '*'             => 'required',
             'nome'          => 'max:50|unique:asds|required',
             'logo'          => 'image|mimes:jpeg,png,jpg,gif,svg',
-            'telefono'      => 'regex:/(01)[0-9]{9}/|unique',
-//            'indirizzo'     => 'max:150',
-//            'citta'         => 'max:150',
-//            'fax'           => 'regex:/(01)[0-9]{9}/ | unique',
-//            'email'         => 'email|unique',
-//            'iva'           => 'digits:11|unique',
-//            'cap'           => 'digits:5',
-//            'provincia'     => 'max:150',
-//            'cod_fiscale'   => 'size:16'
+            'telefono'      => 'regex:/[0-9]{9}/|unique:asds',
+            'indirizzo'     => 'max:150',
+            'citta'         => 'max:150',
+            'fax'           => 'regex:/[0-9]{9}/|unique:asds',
+            'email'         => 'email|unique:asds',
+            'p_iva'         => 'digits:11|unique:asds',
+            'cap'           => 'digits:5',
+            'provincia'     => 'max:150',
+            'cod_fiscale'   => 'string|size:16',
+
+            '*'             => 'required',
         ];
+
     }
 
     public function messages()
     {
         return [
-            '*.required' => 'Completare il campo',
+            '*.required'        => 'Completare il campo',
+            'p_iva.digits'      =>  'La partita iva deve essere lunga :digits caratteri',
+            'cod_fiscale.size'  =>  'Il codice fiscale deve essere lunga :size caratteri',
 
 
         ];
