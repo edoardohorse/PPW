@@ -15,7 +15,7 @@ Route::view('/boot-asd-done',   'boot/boot-asd-done');
 Route::view('/boot-socio',      'boot/boot-socio');
 Route::view('/boot-finished',   'boot/boot-finished');
 
-
+Route:view('/step','forms/step1');
 
 /*
  * LOGIN
