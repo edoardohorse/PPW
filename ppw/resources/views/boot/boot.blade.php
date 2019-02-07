@@ -10,7 +10,8 @@
     <form method="POST" action="/signInASD">
         @csrf
 
-            @include('forms/step0')
+            @include('forms/step1')
+            @include('forms/step2')
 
         <input type="submit">
 

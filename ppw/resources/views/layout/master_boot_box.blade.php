@@ -1,4 +1,4 @@
-<div class="container text-center position-panel" id="box">
+<div class="container position-panel" id="box">
     <h2>@yield('h2')</h2>
 
     <div class="panel panel-default">
