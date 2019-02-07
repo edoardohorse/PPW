@@ -6,6 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Asd extends Model
 {
+
+    protected $fillable = [
+            'nome',
+            'numero_tel',
+            'logo',
+            'indirizzo',
+            'citta',
+            'fax',
+            'email',
+            'p_iva',
+            'cap',
+            'provincia',
+            'cod_fiscale'
+    ];
+
     public function transaction(){
 
         return$this->hasMany('App\Transaction');
