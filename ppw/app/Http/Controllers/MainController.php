@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FounderFormRequest;
+use DemeterChain\C;
 use Validator;
 
 use App\Http\Requests\AsdFormRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Asd;
+use App\User;
+use App\Member;
+use App\Card;
 
 class MainController extends Controller
 {
@@ -56,28 +61,90 @@ class MainController extends Controller
 
         }
         else{
-            $asd = new Asd();
-//            $req->nome
 
-            $asd->nome          = $req['nome'];
-            $asd->numero_tel    = $req['numero_tel'];
-            $asd->logo          = $this->fileUpload($req, 'logo');
-            $asd->indirizzo     = $req['indirizzo'];
-            $asd->citta         = $req['citta'];
-            $asd->fax           = $req['fax'];
-            $asd->email         = $req['email'];
-            $asd->p_iva         = $req['p_iva'];
-            $asd->cap           = $req['cap'];
-            $asd->provincia     = $req['provincia'];
-            $asd->cod_fiscale   = $req['cod_fiscale'];
-//            dd($asd);
-            $asd->save();
+            $fields = $req->validated();
+            $fields['logo'] = $this->fileUpload($req, 'logo');
+
+            $asd = new Asd($fields);
+
+
+
+            dd($fields);
+//            $asd->save();
             return redirect('/boot-asd-done');
 
         }
 
     }
 
+    public function signInFounder(FounderFormRequest $req){
+
+        /*
+        $validator = Validator::make($req->all(),$req->rules());
+
+        if($validator->fails()){
+            return redirect('/boot-socio')
+                ->withErrors($validator)
+                ->withInput();
+            //            dd('Fallito');
+
+        }
+        else{
+            */
+            $asd_id = Asd::find(1)->first()->id;
+            $fields = $req->all();
+//            var_dump($fields);
+
+
+
+
+            $fieldsMember = $this->filterFieldsRequestFromFillable( $fields,  Member::class);
+            var_dump($fieldsMember);
+            $member = new Member($fieldsMember);
+//            $member->save();
+//            $member->asd()->attach($asd_id);
+
+
+            $fieldsUser = $this->filterFieldsRequestFromFillable($fields, User::class);
+            var_dump($fieldsMember);
+            $user = new User($fieldsUser);
+//            $user->save();
+
+
+            $fieldsCard = $this->filterFieldsRequestFromFillable($fields, Card::class);
+            var_dump($fieldsCard);
+            $card = new Card($fieldsCard);
+//            $card->save();
+
+//            return redirect('/boot-finished');
+
+      //  }
+
+    }
+
+    /**
+     * Permette di estrarre dai campi di una richiesta tutti i
+     *  campi fillable (richiesti dalla tupla) di uno specifico model
+     *
+     * @param array $fields
+     * @param $modelClass
+     * @return array
+     */
+    private function filterFieldsRequestFromFillable(array $fields, $modelClass){
+        // Creo un model Member vuoto
+        $model = new $modelClass;
+
+        // Ottengo tutti i campi da inserire
+        $fieldsModel = $model->getFillable();
+
+
+        // Scambio le chiavi dell'array con i valori
+        $fieldsModel = array_flip($fieldsModel);
+
+        // Tramite lo scambio è possibile fare la differenza tra i due
+        //  array usando come filtro le chiavi
+        return array_intersect_key($fields, $fieldsModel);
+    }
 
     /**
      * Metodo per carica i file nella cartella /uploads

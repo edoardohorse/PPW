@@ -14,7 +14,7 @@
 @stop
 
 @section('panel-body')
-    <form method="POST" class="form-group" id="form" action="/boot-socio" enctype="multipart/form-data">
+    <form method="POST" class="form-group" id="form" action="/signInFounder">
         @csrf
 
         <h3>Step</h3>
@@ -32,6 +32,13 @@
         <section>
             @include('forms/step3-member')
         </section>
+
+
+        <h3>Step</h3>
+        <section>
+            @include('forms/form-card')
+        </section>
+
 
         {{--<input type="submit" class="btn bnt-lg btn-primary">--}}
 

@@ -9,6 +9,7 @@ Route::get('/',                'MainController@firstSignInASD');
 Route::view('/boot',            'boot/boot');
 
 Route::post('/signInASD', 'MainController@signInASD');
+Route::post('/signInFounder', 'MainController@signInFounder');
 
 
 Route::view('/boot-asd-done',   'boot/boot-asd-done');
