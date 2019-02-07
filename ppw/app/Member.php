@@ -8,10 +8,10 @@ class Member extends Model
 {
     public function asd()
     {
-        return $this->belongsToMany('App\Asd', 'asd_member', 'asd_id', 'member_id');
+        return $this->belongsToMany('App\Asd', 'asd_member', 'member_id', 'asd_id')->withTimestamps();
     }
 
-     public function provider()
+    public function provider()
     {
         return $this->hasOne('App\Provider');
     }
