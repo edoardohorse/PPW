@@ -25,19 +25,55 @@ class FounderFormRequest extends FormRequest
          *  perciò è come se non esisteste.
          */
         return [
-//            'nome'          => 'max:50|unique:asds|required',
-//            'logo'          => 'image|mimes:jpeg,png,jpg,gif,svg',
-//            'telefono'      => 'regex:/[0-9]{9}/|unique:asds',
-//            'indirizzo'     => 'max:150',
-//            'citta'         => 'max:150',
+
+
 //            'fax'           => 'regex:/[0-9]{9}/|unique:asds',
 //            'email'         => 'email|unique:asds',
 //            'p_iva'         => 'digits:11|unique:asds',
-//            'cap'           => 'digits:5',
-//            'provincia'     => 'max:150',
+
+
 //            'cod_fiscale'   => 'size:16',
 //
 //            '*'             => 'required',
+
+                // User fields
+                'nome'                  =>  'max:50',
+                'cognome'               =>  'max:50',
+                'cap'                   =>  'digits:5',
+                'indirizzo'             =>  'max:150',
+                'citta'                 =>  'max:150',
+                'provincia'             =>  'max:150',
+                'data_nascita'          =>  'date',
+                'genere'                =>  'in:maschio,femmina,altro',
+
+
+                // Member fields
+                'cod_fiscale'           =>  'size:16',
+                'numero_cell'           =>  'regex:/[0-9]{9}/|unique:members',
+                'numero_tel'            =>  'regex:/[0-9]{9}/|unique:members',
+                'data_stipula_ass'      =>  'date',
+                'scadenza_ass'          =>  'date|different:data_stipula_ass',
+//                'numero_ass'            =>  '', ?
+                'data_cert_medico'      =>  'date',
+                'scadenza_cert_med'     =>  'date|different:scadenza_cert_med',
+//                'ruolo'                 =>  '', ?
+                'note'                  =>  'string|max:250',
+                'p_iva'                 =>  'digits:11|unique:members',
+
+                // Card fields
+                'data_tesseramento'     =>  'date',
+                'scadenza_tesseramento' =>  'date|different:data_tesseramento',
+
+
+
+
+
+
+
+
+
+
+
         ];
 
     }
