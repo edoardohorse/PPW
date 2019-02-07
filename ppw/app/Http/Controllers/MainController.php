@@ -56,7 +56,6 @@ class MainController extends Controller
 
         }
         else{
-            $fields = $req->all();
             $asd = new Asd();
 //            $req->nome
 
@@ -74,15 +73,19 @@ class MainController extends Controller
 //            dd($asd);
             $asd->save();
             return redirect('/boot-asd-done');
-//            $asd = new App\Asd();
-//
-//            $asd->nome = $request->name;
 
         }
 
     }
 
 
+    /**
+     * Metodo per carica i file nella cartella /uploads
+     *
+     * @param Request $request
+     * @param $nameField    Nome del campo usato nel form
+     * @return string|null
+     */
     private function fileUpload(Request $request, $nameField){
         $file = $request->file($nameField);
         $destinationPath = '/uploads';
