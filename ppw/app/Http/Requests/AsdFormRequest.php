@@ -40,7 +40,7 @@ class AsdFormRequest extends FormRequest
             'p_iva'         => 'digits:11|unique:asds',
             'cap'           => 'digits:5',
             'provincia'     => 'max:150',
-            'cod_fiscale'   => 'string|size:16',
+            'cod_fiscale'   => 'size:16',
 
             '*'             => 'required',
         ];
@@ -51,6 +51,7 @@ class AsdFormRequest extends FormRequest
     {
         return [
             '*.required'        => 'Completare il campo',
+            'cap.digits'        =>  'Il cap deve essere lungo :digits caratteri',
             'p_iva.digits'      =>  'La partita iva deve essere lunga :digits caratteri',
             'cod_fiscale.size'  =>  'Il codice fiscale deve essere lunga :size caratteri',
 
