@@ -1,9 +1,9 @@
 @extends('layout.master_home')
 
-@section('title','Segreteria')
+@section('title','Homepage')
 
 @section('main')
+    <h1>Stagista</h1>
 
 
-    <h1>Segreteria</h1>
 @stop

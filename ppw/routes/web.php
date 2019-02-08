@@ -58,9 +58,31 @@ Route::view('/box','test-box/page');
 
 $n = ['name'=>'Christian', 'surname'=>'Meo'];
 Route::view('/homepage','home/homepage',$n);
-Route::view('/managment','home/managment',$n);
-Route::view('/secretariat','home/secretariat',$n);
-Route::view('/mng-activity','home/mng-activity',$n);
+
+
+
+Route::view('/internal','home/managment/staff/internal',$n);
+Route::view('/external','home/managment/staff/external',$n);
+Route::view('/stagista','home/managment/staff/stagista',$n);
+Route::view('/teacher','home/managment/staff/teacher',$n);
+
+Route::view('/made','home/managment/payments/made',$n);
+Route::view('/received','home/managment/payments/received',$n);
+
+Route::view('/founder','home/secretariat/members/founder',$n);
+Route::view('/member','home/secretariat/members/member',$n);
+Route::get('/card', 'CardController@datacard',$n);
+
+Route::view('/provider','home/secretariat/providers/provider',$n);
+
+Route::view('/discipline','home/mng-activity/discipline',$n);
+Route::view('/course','home/mng-activity/course',$n);
+Route::view('/package','home/mng-activity/package',$n);
+Route::view('/room','home/mng-activity/room',$n);
+Route::view('/calendar','home/mng-activity/calendar',$n);
+
+
 Route::view('/report-stats','home/report-stats',$n);
 
+Route::view('/contact','home/contact',$n);
 
