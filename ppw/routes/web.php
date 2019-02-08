@@ -59,6 +59,7 @@ $n = ['name'=>'Christian', 'surname'=>'Meo'];
 Route::view('/homepage','home/homepage',$n);
 
 
+
 Route::view('/internal','home/managment/staff/internal',$n);
 Route::view('/external','home/managment/staff/external',$n);
 Route::view('/stagista','home/managment/staff/stagista',$n);
@@ -83,5 +84,4 @@ Route::view('/calendar','home/mng-activity/calendar',$n);
 Route::view('/report-stats','home/report-stats',$n);
 
 Route::view('/contact','home/contact',$n);
-
 
