@@ -31,7 +31,7 @@ class AsdFormRequest extends FormRequest
          */
         return [
             'nome'          => 'max:50|unique:asds|required',
-            'logo'          => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'logo'          => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'telefono'      => 'regex:/[0-9]{9}/|unique:asds',
             'indirizzo'     => 'max:150',
             'citta'         => 'max:150',

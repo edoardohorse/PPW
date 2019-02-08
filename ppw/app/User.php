@@ -6,6 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
+
+    protected $fillable = [
+                'nome',
+                'cognome',
+                'cap',
+                'indirizzo',
+                'citta',
+                'provincia',
+                'data_nascita',
+                'genere'
+    ];
     public function transaction(){
         return $this->hasMany('App\Transaction');
     }

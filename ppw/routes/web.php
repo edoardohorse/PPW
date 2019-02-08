@@ -1,28 +1,42 @@
 <?php
-/*
- * BOOT
- * */
+
+Route::redirect('/', '/welcome');
+Route::prefix('/welcome')->group(function(){
+
+        // A000
+        Route::get('/',             'BootController@firstSignInASD')                ->name('A000');
+
+        // A001
+        Route::view('/redirect',    'boot/welcome' , [ 'route' => 'A010',
+                                                        'redirected' => 'true'])    ->name('A001');
+
+});
 
 
-Route::get('/',                'MainController@firstSignInASD');
+Route::view('/boot',            'boot/boot')->name('A010');
 
-Route::view('/boot',            'boot/boot');
+Route::group(['middleware' => ['boot'] ], function(){
 
-Route::post('/signInASD', 'MainController@signInASD');
+    /*
+     * BOOT
+     * */
+
+    Route::view('/boot-asd-done',   'boot/boot-asd-done');
+    Route::view('/boot-socio',      'boot/boot-socio');
+    Route::view('/boot-finished',   'boot/boot-finished');
+
+    /*
+     * LOGIN
+     * */
+    Route::view('/login',           'login/login');
+    Route::view('/login-done',      'login/login-done');
+    Route::view('/login-failure',   'login/login-failure');
 
 
-Route::view('/boot-asd-done',   'boot/boot-asd-done');
-Route::view('/boot-socio',      'boot/boot-socio');
-Route::view('/boot-finished',   'boot/boot-finished');
+});
+Route::post('/signInASD', 'BootController@signInASD');
+Route::post('/signInFounder', 'BootController@signInFounder');
 
-//Route:view('/step','forms/step1');
-
-/*
- * LOGIN
- * */
-Route::view('/login',           'login/login');
-Route::view('/login-done',      'login/login-done');
-Route::view('/login-failure',   'login/login-failure');
 
 
 
@@ -43,6 +57,7 @@ Route::view('/box','test-box/page');
 
 $n = ['name'=>'Christian', 'surname'=>'Meo'];
 Route::view('/homepage','home/homepage',$n);
+
 
 Route::view('/internal','home/managment/staff/internal',$n);
 Route::view('/external','home/managment/staff/external',$n);

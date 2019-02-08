@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\BootMiddleware;
+use GuzzleHttp\Middleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -35,6 +37,11 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
+        ],
+
+        'boot' => [
+            \App\Http\Middleware\BootMiddleware::class
         ],
 
         'api' => [

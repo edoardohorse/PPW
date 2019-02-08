@@ -12,10 +12,18 @@
     @section('redirect', '/login')
     @section('redirect-text', 'Login Gestione')
 
-
 @else
     @section('redirect', '/boot')
     @section('redirect-text', 'Registrazione ASD')
+
+
+    @if(!empty($redirected))
+        @section('panel-body')
+            <div class="alert alert-warning" role="alert">
+                Effettura la registrazione dell'asd prima di ogni altra operazione
+            </div>
+        @stop
+    @endif
 @endif
 
 
