@@ -20,7 +20,8 @@ Route::group(['middleware' => ['boot'] ], function(){
     /*
      * BOOT
      * */
-
+    Route::view('/contact','boot/contact');
+    Route::view('/whoare','boot/whoare');
     Route::view('/boot-asd-done',   'boot/boot-asd-done');
     Route::view('/boot-socio',      'boot/boot-socio');
     Route::view('/boot-finished',   'boot/boot-finished');
@@ -83,5 +84,5 @@ Route::view('/calendar','home/mng-activity/calendar',$n);
 
 Route::view('/report-stats','home/report-stats',$n);
 
-Route::view('/contact','home/contact',$n);
+
 

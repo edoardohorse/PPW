@@ -1,8 +1,3 @@
-
-
-
-            <button class="position-button">Vai al gestionale</button>
-
 @extends('layout.master_boot')
 
 @section('title', 'Registrazione socio fondatore')
