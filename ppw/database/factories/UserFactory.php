@@ -17,6 +17,5 @@ $factory->define(App\User::class, function (Faker $faker) {
         'genere'=>$faker->randomElement($array = array ('male','female')),
         'tipo'=>$faker->word,
         'member_id' => Member::inRandomOrder()->first()->id,
-        'asd_id' => Asd::inRandomOrder()->first()->id
     ];
 });

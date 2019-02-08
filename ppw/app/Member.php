@@ -16,7 +16,6 @@ class Member extends Model
             'numero_ass',
             'data_cert_medico',
             'scadenza_cert_med',
-            'ruolo',
             'note',
             'p_iva',
     ];

@@ -34,40 +34,43 @@ class FounderFormRequest extends FormRequest
 
 //            'cod_fiscale'   => 'size:16',
 //
-//            '*'             => 'required',
 
-                // User fields
+                // User fields (step 1)
                 'nome'                  =>  'max:50',
                 'cognome'               =>  'max:50',
-                'cap'                   =>  'digits:5',
-                'indirizzo'             =>  'max:150',
                 'citta'                 =>  'max:150',
                 'provincia'             =>  'max:150',
+                'indirizzo'             =>  'max:150',
+                'cap'                   =>  'digits:5',
                 'data_nascita'          =>  'date',
-                'genere'                =>  'in:maschio,femmina,altro',
+                'genere'                =>  'in:Maschio,Femmina,Altro',
 
 
-                // Member fields
+                // Member fields (step 2)
                 'cod_fiscale'           =>  'size:16',
                 'numero_cell'           =>  'regex:/[0-9]{9}/|unique:members',
                 'numero_tel'            =>  'regex:/[0-9]{9}/|unique:members',
-                'data_stipula_ass'      =>  'date',
-                'scadenza_ass'          =>  'date|different:data_stipula_ass',
-//                'numero_ass'            =>  '', ?
-                'data_cert_medico'      =>  'date',
-                'scadenza_cert_med'     =>  'date|different:scadenza_cert_med',
-//                'ruolo'                 =>  '', ?
+                'email'                 =>  'email|unique:users_site',
+                'password_conf'         =>  'same:password',
                 'note'                  =>  'string|max:250',
+
+                // Member fields (step 3)
+                'data_stipula_ass'      =>  'date',
+                'scadenza_ass'          =>  'date|after:data_stipula_ass',
+                'numero_ass'            =>  'numeric',
+                'data_cert_medico'      =>  'date',
+                'scadenza_cert_med'     =>  'date|after:data_cert_medico',
                 'p_iva'                 =>  'digits:11|unique:members',
 
-                // Card fields
+                // Card fields (step 4)
                 'data_tesseramento'     =>  'date',
-                'scadenza_tesseramento' =>  'date|different:data_tesseramento',
+                'scadenza_tesseramento' =>  'date|after:data_tesseramento',
 
 
 
 
 
+                '*'             => 'required',
 
 
 
@@ -81,11 +84,15 @@ class FounderFormRequest extends FormRequest
     public function messages()
     {
         return [
-//            '*.required'        => 'Completare il campo',
-//            'cap.digits'        =>  'Il cap deve essere lungo :digits caratteri',
-//            'p_iva.digits'      =>  'La partita iva deve essere lunga :digits caratteri',
-//            'cod_fiscale.size'  =>  'Il codice fiscale deve essere lunga :size caratteri',
+            'cap.digits'        =>  'Il cap deve essere lungo :digits caratteri',
+            'p_iva.digits'      =>  'La partita iva deve essere lunga :digits caratteri',
+            'cod_fiscale.size'  =>  'Il codice fiscale deve essere lunga :size caratteri',
+            'genere.in'         =>  'Inserire un valore fra quelli permessi [Maschio, Femmina, Altro]',
+            '*.required'        => 'Completare il campo',
+            '*.date'            => 'Inserire una data valida',
 
+            'numero_cell'       => 'Inserire un numero valido',
+            'numero_tel'       =>   'Inserire un numero valido',
 
         ];
     }

@@ -10,6 +10,7 @@ class Card extends Model
     protected $fillable = [
         'data_tesseramento',
         'scadenza_tesseramento',
+        'user_id',
     ];
     public function user(){
 

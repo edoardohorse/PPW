@@ -15,14 +15,15 @@ class User extends Model
                 'citta',
                 'provincia',
                 'data_nascita',
-                'genere'
+                'genere',
+                'member_id'
     ];
     public function transaction(){
         return $this->hasMany('App\Transaction');
     }
 
     public function member(){
-        return $this->hasOne('App\Member','member_id');
+        return $this->hasOne('App\Member');
     }
     public function taxdata(){
         return $this->belongsTo('App\TaxData');

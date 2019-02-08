@@ -12,7 +12,7 @@ Route::prefix('/welcome')->group(function(){
 
 });
 
-
+// A010
 Route::view('/boot',            'boot/boot')->name('A010');
 
 Route::group(['middleware' => ['boot'] ], function(){
@@ -34,6 +34,7 @@ Route::group(['middleware' => ['boot'] ], function(){
 
 
 });
+
 Route::post('/signInASD', 'BootController@signInASD');
 Route::post('/signInFounder', 'BootController@signInFounder');
 
