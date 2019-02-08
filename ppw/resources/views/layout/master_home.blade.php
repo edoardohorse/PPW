@@ -4,8 +4,12 @@
     <link rel="stylesheet" href="{{ asset('css/prv.css')  }}">
     <link rel="stylesheet" href="{{ asset('css/header.css')  }}">
     <link rel="stylesheet" href="{{ asset('css/sidenav.css')  }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 @stop
 
+@section('lib_script')
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+@stop
 
 @section('body')
 

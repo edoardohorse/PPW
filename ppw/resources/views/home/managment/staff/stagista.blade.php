@@ -3,7 +3,7 @@
 @section('title','Homepage')
 
 @section('main')
-    <h1>Homepage</h1>
+    <h1>Stagista</h1>
 
 
 @stop

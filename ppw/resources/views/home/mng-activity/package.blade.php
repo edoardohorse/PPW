@@ -1,9 +1,9 @@
 @extends('layout.master_home')
 
-@section('title','Homepage')
+@section('title','Pacchetti')
 
 @section('main')
-    <h1>Homepage</h1>
+    <h1>Pacchetti</h1>
 
 
 @stop

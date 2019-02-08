@@ -11,8 +11,8 @@
     <div class="col-9 float-right" id="account">
 
         <div class="row float-right">
-            <span class="account_name">     {{ $name    }}  </span>
-            <span class="account_surname">  {{ $surname }}  </span>
+            {{--<span class="account_name">     {{ $name    }}   </span>--}}
+            {{--<span class="account_surname">  {{ $surname }}  </span>--}}
 
             <a href="/logout" id="btn-logout" class="btn btn-info btn-sm">Esci</a>
         </div>
