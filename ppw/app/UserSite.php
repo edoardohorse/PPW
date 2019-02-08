@@ -18,7 +18,7 @@ class UserSite extends Authenticatable{
      * @var array
      */
     protected $fillable = [
-        'email', 'password',
+        'email', 'password','member_id'
     ];
 
     /**

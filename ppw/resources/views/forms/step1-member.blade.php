@@ -32,7 +32,7 @@
                                     'type'      =>      'text',
                                     'label'     =>      'Indirizzo',
                                     'input_name' =>     'indirizzo',
-                                    'value'        =>   'Grottaglie',
+                                    'value'        =>   'Via Socrate, 15',
                                     ])
 
         @include('forms.input-form', [
@@ -49,10 +49,11 @@
                                     'value'        =>   '1997-05-11',
                                    ])
 
-        @include('forms.input-form', [
-                                   'type'      =>      'text',
+        @include('forms.option-form', [
+                                   'type'      =>      'option',
                                    'label'     =>      'Genere',
                                    'input_name' =>     'genere',
-                                    'value'        =>   'Maschio',
+                                    'options'        =>   ['Maschio','Femmina','Altro'],
+                                    'option_default'        =>   'Maschio',
                                    ])
 

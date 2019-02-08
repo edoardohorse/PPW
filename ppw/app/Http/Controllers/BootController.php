@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FounderFormRequest;
+use App\UserSite;
 use DemeterChain\C;
+use League\Flysystem\Config;
+use Illuminate\Support\Facades\Hash;
 use Validator;
 
 use App\Http\Requests\AsdFormRequest;
@@ -153,7 +156,8 @@ class BootController extends Controller
 
     public function signInFounder(FounderFormRequest $req){
 
-        /*
+
+//        dd("qui");
         $validator = Validator::make($req->all(),$req->rules());
 
         if($validator->fails()){
@@ -164,7 +168,8 @@ class BootController extends Controller
 
         }
         else{
-            */
+//            dd($req->validated());
+
             $asd_id = Asd::find(1)->first()->id;
             $fields = $req->all();
 //            var_dump($fields);
@@ -173,26 +178,38 @@ class BootController extends Controller
 
 
             $fieldsMember = $this->filterFieldsRequestFromFillable( $fields,  Member::class);
-            var_dump($fieldsMember);
+//            var_dump($fieldsMember);
             $member = new Member($fieldsMember);
-//            $member->save();
-//            $member->asd()->attach($asd_id);
+            $member->ruolo = 'fond';
+            $member->save();
+            $member->asd()->attach($asd_id);
+
+
 
 
             $fieldsUser = $this->filterFieldsRequestFromFillable($fields, User::class);
-            var_dump($fieldsMember);
+            $fieldsUser['member_id'] = $member->id;
+//            dd($fieldsUser );
             $user = new User($fieldsUser);
-//            $user->save();
+            $user->save();
+
 
 
             $fieldsCard = $this->filterFieldsRequestFromFillable($fields, Card::class);
-            var_dump($fieldsCard);
+            $fieldsCard['user_id'] = $user->id;
+            //            var_dump($fieldsCard);
             $card = new Card($fieldsCard);
-//            $card->save();
+            $card->save();
 
-//            return redirect('/boot-finished');
+            $fieldsUserSite = $this->filterFieldsRequestFromFillable($fields, UserSite::class);
+            $fieldsUserSite['member_id'] = $member->id;
+            $userSite  = new UserSite($fieldsUserSite);
+            $userSite->password  = Hash::make($fieldsUserSite['password']);
+            $userSite->save();
 
-      //  }
+            return redirect('/boot-finished');
+
+        }
 
     }
 

@@ -25,7 +25,6 @@ class CreateUsersTable extends Migration
             $table->string('genere');
             $table->string('tipo')->nullable();
             $table->integer('member_id')->unsigned();
-            $table->integer('asd_id')->unsigned();
 
             $table->timestamps();
         });
@@ -34,10 +33,7 @@ class CreateUsersTable extends Migration
 
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
         });
-        Schema::table('users', function(Blueprint $table){
 
-            $table->foreign('asd_id')->references('id')->on('asds')->onDelete('cascade');
-        });
 
     }
 

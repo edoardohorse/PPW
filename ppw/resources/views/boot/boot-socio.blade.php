@@ -14,7 +14,7 @@
 @stop
 
 @section('panel-body')
-    <form method="POST" class="form-group" id="form" action="/signInFounder">
+    <form method="POST" class="form-group" id="form" action="/signInFounder" enctype="multipart/form-data">
         @csrf
 
         <h3>Step</h3>
