@@ -1,4 +1,4 @@
-<aside id="menu" class="col-3 float-left container">
+<aside id="menu" class="col-2 float-left container p-0">
 
     {{-- Homepage--}}
     @include('layout.navbar.list-group',
@@ -6,18 +6,22 @@
         [
             'name'  => 'Amministrazione',
             'menu'  => 'Managment',
+            'level' =>  '1',
         ],
         [
             'name'   => 'Segreteria',
             'menu'  =>  'Secretariat',
+            'level' =>  '1',
         ],
         [
             'name'   => 'Gestione attività',
-            'menu'  =>  'MngActivity',
+            'menu'  =>  'Mngactivity',
+            'level' =>  '1',
         ],
         [
-            'name'   => 'Report e statistiche',
-            'link'  =>  'ReportStast',
+            'name'  => 'Report e statistiche',
+            'link'  =>  'M400',
+            'level' =>  '1'
         ],
             ]
     ])
@@ -29,10 +33,12 @@
                 [
                     'name'  => 'Personale',
                     'menu'  => 'Staff',
+                    'level' =>  '2',
                     ],
                 [
                     'name'   =>'Pagamenti',
                     'menu'  =>  'Payments',
+                    'level' =>  '2',
                     ],
             ]
     ])
@@ -44,19 +50,23 @@
             'items'=>[
                     [
                         'name'  => 'Collaboratori interni',
-                        'link'  => '#'
+                        'link'  => 'M111',
+                        'level' =>  '3',
                         ],
                     [
                         'name'   =>'Collaboratori esterni',
-                        'link'  =>  '#',
+                        'link'  =>  'M112',
+                        'level' =>  '3'
                         ],
                     [
                         'name'   =>'Stagisti',
-                        'link'  =>  '#',
+                        'link'  =>  'M113',
+                        'level' =>  '3',
                         ],
                     [
                         'name'   =>'Insegnanti',
-                        'link'  =>  '#',
+                        'link'  =>  'M114',
+                        'level' =>  '3',
                         ],
                 ]
             ])
@@ -68,11 +78,13 @@
             'items'=>[
                     [
                         'name'  => 'Effettuati',
-                        'link'  => '#'
+                        'link'  => 'M121',
+                        'level' =>  '3',
                         ],
                     [
                         'name'   =>'Ricevuti',
-                        'link'  =>  '#',
+                        'link'  =>  'M122',
+                        'level' =>  '3'
                         ]
                 ]
             ])
@@ -85,60 +97,70 @@
         'items'=>[
                 [
                     'name'  => 'Iscritti',
-                    'menu'  => 'Subscribers',
+                    'menu'  => 'Members',
+                    'level' =>  '2',
                     ],
                 [
                     'name'   =>'Fornitori',
-                    'link'  =>  '/Vendors',
+                    'link'  =>  'M220',
+                    'level' =>  '2',
                     ],
             ]
     ])
 
 
-    {{-- Secretariat / Subscribers --}}
+    {{-- Secretariat / Members --}}
     @include('layout.navbar.list-group', [
-            'id'    => 'SecretariatSubscribers',
+            'id'    => 'SecretariatMembers',
             'items'=>[
                     [
                         'name'  => 'Fondatori',
-                        'link'  => '#'
+                        'link'  => 'M211',
+                        'level' =>  '3',
                         ],
                     [
                         'name'   =>'Allievi',
-                        'link'  =>  '#',
+                        'link'  =>  'M213',
+                        'level' =>  '3',
                         ],
                     [
                         'name'   =>'Tessere',
-                        'link'  =>  '#',
+                        'link'  =>  'M216',
+                        'level' =>  '3',
                         ],
                 ]
             ])
 
 
 
-    {{-- MngActivity --}}
+    {{-- Mngactivity --}}
     @include('layout.navbar.list-group', [
-            'id'    => 'MngActivity',
+            'id'    => 'Mngactivity',
             'items'=>[
             [
                 'name'  => 'Discipline interni',
-                'link'  => '#'
+                'link'  => 'M310',
+                'level' =>  '2',
                 ],
             [
                 'name'   =>'Corsi',
-                'link'  =>  '#',
+                'link'  =>  'M320',
+                'level' =>  '2'
                 ],
             [
                 'name'   =>'Pacchetti',
-                'link'  =>  '#',
+                'link'  =>  'M330',
+                'level' =>  '2'
                 ],
             [
                 'name'   =>'Sale',
-                'link'  =>  '#',
+                'link'  =>  'M340',
+                'level' =>  '2'
                 ],
             [
                 'name'   =>'Programmazione',
-                'link'  =>  '#',
+                'link'  =>  'M350',
+                'level' =>  '2'
             ],
         ]
     ])
@@ -156,13 +178,45 @@
 
 
     $("#collapseSecretariat").detach().appendTo($("a[href='#collapseSecretariat']").parent())
-    $("#collapseSecretariatSubscribers").detach().appendTo($("a[href='#collapseSecretariatSubscribers']").parent())
+    $("#collapseSecretariatMembers").detach().appendTo($("a[href='#collapseSecretariatMembers']").parent())
     $("#collapseSecretariatVendors").detach().appendTo($("a[href='#collapseSecretariatVendors']").parent())
 
-    $("#collapseMngActivity").detach().appendTo($("a[href='#collapseMngActivity']").parent())
+    $("#collapseMngactivity").detach().appendTo($("a[href='#collapseMngactivity']").parent())
 
 
     $("#collapseReportStats").detach().appendTo($("a[href='#collapseReportStats']").parent())
+
+    // (function(){
+        const active = $(`a[href*='${location.pathname}']`)
+        active.addClass('active')
+
+        var path = location.pathname.split('/')
+        path.shift();
+        path.shift();
+        path.pop();
+
+        let pathstr = ""
+        for(i=0;i<path.length;i++){
+            // debugger
+            pathstr += capitalizeFirstLetter(path[i])
+            $('#collapse'+pathstr).addClass('show')
+            $('#collapse'+pathstr).on('hide.bs.collapse', function (e) {
+                    // debugger
+                    // this.collapse('show')
+                    e.preventDefault()
+                })
+
+        }
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        /*active.parent().collapse('show')
+        active.parent().collapse('show')*/
+
+    // }())
+
 
 </script>
 
