@@ -1,7 +1,7 @@
-.menu{
+#menu{
 
     border: 1px solid black;
-
+    height: 100%;
 }
 
 .menu_link{
