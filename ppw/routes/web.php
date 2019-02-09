@@ -67,19 +67,19 @@ Route::get('/external','StaffController@external',$n);
 Route::get('/stagista','StaffController@stagista',$n);
 Route::get('/teacher','StaffController@teacher',$n);
 
-Route::view('/made','home/managment/payments/made',$n);
-Route::view('/received','home/managment/payments/received',$n);
+Route::get('/made','PaymentController@made',$n);
+Route::get('/received','PaymentController@received',$n);
 
-Route::view('/founder','home/secretariat/members/founder',$n);
-Route::view('/member','home/secretariat/members/member',$n);
-Route::get('/card', 'CardController@datacard',$n);
+Route::get('/founder','MemberController@founder',$n);
+Route::get('/member','MemberController@member',$n);
+Route::get('/card', 'MemberController@datacard',$n);
 
-Route::view('/provider','home/secretariat/providers/provider',$n);
+Route::get('/provider','MemberController@provider',$n);
 
-Route::view('/discipline','home/mng-activity/discipline',$n);
-Route::view('/course','home/mng-activity/course',$n);
-Route::view('/package','home/mng-activity/package',$n);
-Route::view('/room','home/mng-activity/room',$n);
+Route::get('/discipline','ActivityController@discipline',$n);
+Route::get('/course','ActivityController@course',$n);
+Route::get('/package','ActivityController@package',$n);
+Route::get('/room','ActivityController@room',$n);
 Route::view('/calendar','home/mng-activity/calendar',$n);
 
 

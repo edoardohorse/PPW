@@ -5,5 +5,5 @@
 @section('main')
     <h1>Pacchetti</h1>
 
-
+    @include('home-tables.package-table')
 @stop

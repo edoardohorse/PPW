@@ -5,5 +5,5 @@
 @section('main')
     <h1>Corsi</h1>
 
-
+  @include('home-tables.course-table')
 @stop

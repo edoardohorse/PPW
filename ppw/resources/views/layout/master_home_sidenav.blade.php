@@ -24,7 +24,7 @@
         <pr>
         <li><a class="menu_link" href="/founder">Fondatori</a></li>
         <li><a class="menu_link" href="/member">Allievi</a></li>
-        <li><a class="menu_link" href="/card">Card</a></li>
+        <li><a class="menu_link" href="/card">Tessere</a></li>
         </pr>
     </ul>
 
