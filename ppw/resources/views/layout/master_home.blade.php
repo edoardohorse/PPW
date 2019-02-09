@@ -9,6 +9,7 @@
 
 @section('lib_script')
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
 @stop
 
 @section('body')
@@ -23,7 +24,9 @@
         @yield('main')
 
     </main>
+@stop
 
-
+@section('lib_end_script')
+    <script src="{{ asset('js/tables.js') }}"></script>
 
 @stop

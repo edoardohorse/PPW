@@ -5,5 +5,6 @@
 @section('main')
      <h1>Collabaoratore interno</h1>
 
+     @include('home-tables.staff-table')
 
 @stop

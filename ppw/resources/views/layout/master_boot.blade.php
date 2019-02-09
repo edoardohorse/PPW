@@ -11,6 +11,3 @@
     @include('layout.master_boot_box')
 @stop
 
-@section('lib_end')
-    <script src="{{ asset('end_script_before_login.js') }}"></script>
- @stop

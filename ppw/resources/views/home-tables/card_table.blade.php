@@ -1,7 +1,7 @@
 <table id="table" class="display" style="width:100%">
     <thead>
     <tr>
-        <th>Id tessera</th>
+        <th>Numero tessera</th>
         <th>Data Tesseramento</th>
         <th>Scadenza Tesseramento</th>
         <th>Data Creazione</th>
@@ -27,15 +27,3 @@
 
 </table>
 
-<script>
-
-    $(document).ready(function() {
-        var table = $('#table').DataTable();
-
-        $('#table tbody').on('click', 'tr', function () {
-            var data = table.row( this ).data();
-            alert( 'You clicked on '+data[0]+'\'s row' );
-        } );
-    } );
-
-</script>

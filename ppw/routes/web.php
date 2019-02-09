@@ -62,10 +62,10 @@ Route::view('/homepage','home/homepage',$n);
 
 
 
-Route::view('/internal','home/managment/staff/internal',$n);
-Route::view('/external','home/managment/staff/external',$n);
-Route::view('/stagista','home/managment/staff/stagista',$n);
-Route::view('/teacher','home/managment/staff/teacher',$n);
+Route::get('/internal','StaffController@internal',$n);
+Route::get('/external','StaffController@external',$n);
+Route::get('/stagista','StaffController@stagista',$n);
+Route::get('/teacher','StaffController@teacher',$n);
 
 Route::view('/made','home/managment/payments/made',$n);
 Route::view('/received','home/managment/payments/received',$n);

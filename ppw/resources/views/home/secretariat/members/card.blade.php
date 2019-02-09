@@ -6,4 +6,5 @@
     <h1>Tessera</h1>
     @include('home-tables.card_table')
 
+
 @stop

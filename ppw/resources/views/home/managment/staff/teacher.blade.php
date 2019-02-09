@@ -5,5 +5,5 @@
 @section('main')
     <h1>Insegnanti</h1>
 
-
+   @include('home-tables.staff-table')
 @stop
