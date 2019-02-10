@@ -58,32 +58,95 @@ Route::view('/box','test-box/page');
  * */
 
 $n = ['name'=>'Christian', 'surname'=>'Meo'];
+
 Route::view('/homepage','home/homepage',$n);
 
 
+Route::prefix('home')->group(function($n){
 
-Route::get('/internal','StaffController@internal',$n);
-Route::get('/external','StaffController@external',$n);
-Route::get('/stagista','StaffController@stagista',$n);
-Route::get('/teacher','StaffController@teacher',$n);
+    Route::prefix('managment')->group(function($n){
 
-Route::get('/made','PaymentController@made',$n);
-Route::get('/received','PaymentController@received',$n);
+        Route::prefix('staff')->group(function($n){
 
-Route::get('/founder','MemberController@founder',$n);
-Route::get('/member','MemberController@member',$n);
-Route::get('/card', 'MemberController@datacard',$n);
 
-Route::get('/provider','MemberController@provider',$n);
+            Route::get('/internal','StaffController@internal',$n)->name('M111');
+            Route::get('/external','StaffController@external',$n)->name('M112');
+            Route::get('/stagista','StaffController@stagista',$n)->name('M113');
+            Route::get('/teacher','StaffController@teacher',$n)->name('M114');
 
-Route::get('/discipline','ActivityController@discipline',$n);
-Route::get('/course','ActivityController@course',$n);
-Route::get('/package','ActivityController@package',$n);
-Route::get('/room','ActivityController@room',$n);
-Route::view('/calendar','home/mng-activity/calendar',$n);
+
+
+        });
+
+        Route::prefix('payments')->group(function($n){
+
+
+            Route::get('/made','PaymentController@made',$n)->name('M121');
+            Route::get('/received','PaymentController@received',$n)->name('M122');
+
+
+        });
+
+    });
+
+
+    Route::prefix('secretariat')->group(function($n){
+
+        Route::prefix('members')->group(function($n){
+
+            Route::get('/founder','MemberController@founder',$n)->name('M211');
+            Route::get('/member','MemberController@member',$n)->name('M213');
+            Route::get('/card', 'MemberController@datacard',$n)->name('M216');
+        });
+
+
+            Route::get('/provider','MemberController@provider',$n)->name('M220');
+    });
+
+    Route::prefix('mngactivity')->group(function($n){
+
+        Route::get('/discipline','ActivityController@discipline',$n)->name('M310');
+        Route::get('/course','ActivityController@course',$n)->name('M320');
+        Route::get('/package','ActivityController@package',$n)->name('M330');
+        Route::get('/room','ActivityController@room',$n)->name('M340');
+        Route::view('/calendar','home/mng-activity/calendar',$n)->name('M350');
+
+    });
+
+Route::view('/report-stats','/home/report-stats')->name('M400');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Route::view('/report-stats','home/report-stats',$n);
+
+
 
 
 
