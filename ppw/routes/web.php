@@ -58,32 +58,80 @@ Route::view('/box','test-box/page');
  * */
 
 $n = ['name'=>'Christian', 'surname'=>'Meo'];
+
 Route::view('/homepage','home/homepage',$n);
 
 
+Route::prefix('home')->group(function($n){
 
-Route::get('/internal','StaffController@internal',$n);
-Route::get('/external','StaffController@external',$n);
-Route::get('/stagista','StaffController@stagista',$n);
-Route::get('/teacher','StaffController@teacher',$n);
+    Route::prefix('managment')->group(function($n){
 
-Route::get('/made','PaymentController@made',$n);
-Route::get('/received','PaymentController@received',$n);
+        Route::prefix('staff')->group(function($n){
 
-Route::get('/founder','MemberController@founder',$n);
-Route::get('/member','MemberController@member',$n);
-Route::get('/card', 'MemberController@datacard',$n);
+            $PATH = '/home/managment/staff/';
 
-Route::get('/provider','MemberController@provider',$n);
+            Route::view('internal', $PATH.'internal')->name('M111');
+            Route::view('external',$PATH.'external')->name('M112');
+            Route::view('stagista',$PATH.'stagista')->name('M113');
+            Route::view('teacher',$PATH.'teacher')->name('M114');
 
-Route::get('/discipline','ActivityController@discipline',$n);
-Route::get('/course','ActivityController@course',$n);
-Route::get('/package','ActivityController@package',$n);
-Route::get('/room','ActivityController@room',$n);
-Route::view('/calendar','home/mng-activity/calendar',$n);
+        });
+
+        Route::prefix('payments')->group(function($n){
+
+            $PATH = '/home/managment/payments/';
+
+            Route::view('made',     $PATH.'made')->name('M121');
+            Route::view('received', $PATH.'received')->name('M122');
 
 
-Route::view('/report-stats','home/report-stats',$n);
+        });
+
+    });
+
+
+    Route::prefix('secretariat')->group(function($n){
+
+        Route::prefix('members')->group(function($n){
+            $PATH = '/home/secretariat/members/';
+
+            Route::view('founder',  $PATH.'founder')->name('M211');
+            Route::view('member',   $PATH.'member')->name('M213');
+            Route::get('card', 'CardController@datacard')->name('M216');
+        });
+
+            $PATH = '/home/secretariat/providers/';
+            Route::view('provider',$PATH.'provider')->name('M220');
+    });
+
+    Route::prefix('mngactivity')->group(function($n){
+        $PATH = '/home/mng-activity/';
+
+        Route::view('discipline', $PATH.'discipline')->name('M310');
+        Route::view('course',     $PATH.'course')->name('M320');
+        Route::view('package',    $PATH.'package')->name('M330');
+        Route::view('room',       $PATH.'room')->name('M340');
+        Route::view('calendar',   $PATH.'calendar')->name('M350');
+
+    });
+
+Route::view('/report-stats','/home/report-stats')->name('M400');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

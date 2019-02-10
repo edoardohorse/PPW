@@ -1,0 +1,30 @@
+body{
+
+    background-color: rgb(160, 246, 170);
+}
+
+body:before{
+    content:'';
+    display: block;
+    width:100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.3);
+    z-index: 30;
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 250ms;
+}
+
+body.overlay:before{
+    pointer-events: auto;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+
+    main{
+        margin: 4em;
+    }
+
+}
