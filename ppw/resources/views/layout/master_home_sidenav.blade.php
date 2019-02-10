@@ -2,7 +2,7 @@
     <div class="hamburger">
         <i class="fas fa-bars"></i>
     </div>
-    <div>
+    <div class="wrapper">
 
     {{-- Homepage--}}
     @include('layout.navbar.list-group',
@@ -23,7 +23,7 @@
             'level' =>  '1',
         ],
         [
-            'name'  => 'Report e statistiche',
+            'name'  => 'Verbali e statistiche',
             'link'  =>  'M400',
             'level' =>  '1'
         ],

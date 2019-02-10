@@ -47,4 +47,5 @@ function capitalizeFirstLetter(string) {
 
 $('#menu > .hamburger').on('click', function(){
     $('#menu').toggleClass('show')
+    $('body').toggleClass('overlay')
 })

@@ -115,7 +115,7 @@ Route::prefix('home')->group(function($n){
 
     });
 
-    Route::view('/report-stats','/home/report-stats')->name('M400');
+Route::view('/report-stats','/home/report-stats')->name('M400');
 });
 
 
