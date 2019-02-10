@@ -10,7 +10,7 @@
 
 @if( $route   == 'B005')
     @section('redirect', '/login')
-    @section('redirect-text', 'Login Gestione')
+    @section('redirect-text', 'Login Gestionale')
 
 @else
     @section('redirect', '/boot')

@@ -1,7 +1,12 @@
-@extends('layouts.app')
+@extends('layout.master_boot')
 
-@section('content')
-<div class="container">
+@section('title','Login')
+
+@section('body')
+
+    @include('layout.master_boot_header')
+
+    <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -70,4 +75,4 @@
         </div>
     </div>
 </div>
-@endsection
+@stop

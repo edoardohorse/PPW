@@ -19,7 +19,7 @@
             </span>
 
 
-            <a href="/logout" id="btn-logout" class="btn btn-info btn-sm">Esci</a>
+            <a href="{{route('logout')}}" id="btn-logout" class="btn btn-info btn-sm">Esci</a>
         </div>
 
         {{--<div class="row float-right">--}}

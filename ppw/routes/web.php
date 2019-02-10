@@ -1,4 +1,5 @@
 <?php
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::redirect('/', '/welcome');
 Route::prefix('/welcome')->group(function(){
@@ -31,7 +32,7 @@ Route::group(['middleware' => ['boot'] ], function(){
     /*
      * LOGIN
      * */
-    Route::view('/login',           'login/login')->name('B005');
+    Route::view('/login',           'login/login')->name('login');
     Route::view('/login-done',      'login/login-done')->name('B006');
     Route::view('/login-failure',   'login/login-failure')->name('B007');
 
@@ -62,10 +63,11 @@ Route::view('/box','test-box/page');
 
 $n = ['name'=>'Christian', 'surname'=>'Meo'];
 
-Route::view('/homepage','home/homepage',$n)->name('M000');
 
 
-Route::prefix('home')->group(function($n){
+Route::group(['prefix' => 'home',  'middleware' => 'auth'],function($n){
+
+    Route::view('/homepage','home/homepage',$n)->name('M000');
 
     Route::prefix('managment')->group(function($n){
 
