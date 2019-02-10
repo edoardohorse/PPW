@@ -13,6 +13,7 @@
 @stop
 
 @section('lib_end_script')
+    <script src="{{ asset('js/tables.js') }}"></script>
     <script src="{{ asset('js/sidenav.js') }}"></script>
 @stop
 
@@ -28,9 +29,4 @@
         @yield('main')
 
     </main>
-@stop
-
-@section('lib_end_script')
-    <script src="{{ asset('js/tables.js') }}"></script>
-
 @stop
