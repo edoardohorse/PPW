@@ -79,6 +79,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function($n){
             Route::get('/stagista','StaffController@stagista',$n)->name('M113');
             Route::get('/teacher','StaffController@teacher',$n)->name('M114');
 
+            
         });
 
         Route::prefix('payments')->group(function($n){

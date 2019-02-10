@@ -1,9 +1,20 @@
+<style>
+   #id{
+
+       width: 200px;
+       height: 400px;
+   }
+
+</style>
+
+
 <header class="container-fluid">
 
     {{--<h1>HEADER</h1>--}}
 
-    <div class="col-3 float-left">
-        <i id="logo" style="background-image: url(' {{ asset('img/logo.png')  }} ');"></i>
+    <div class="col-2 float-left">
+        <i id="logo" style="background-image: url(' {{ asset('img/logo.png')  }} ');" >ASD Bello culo</i>
+
     </div>
 
 
