@@ -11,6 +11,10 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 @stop
 
+@section('lib_end_script')
+    <script src="{{ asset('js/sidenav.js') }}"></script>
+@stop
+
 @section('body')
 
     @include('layout.master_home_header')

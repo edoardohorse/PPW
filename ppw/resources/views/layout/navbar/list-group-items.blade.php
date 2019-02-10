@@ -15,17 +15,18 @@
         @if(empty($id))
             <a class="list-group-item   rounded-0 level-{{$item['level']}}"  data-toggle="collapse" href="#collapse{{$item['menu']}}"
                                             role="button" aria-expanded="true" aria-controls="#collapse{{$item['menu']}}">
-                {{$item['name']}}
-            </a>
 
-                {{-- Menu di 2° livello --}}
+
+        {{-- Menu di 2° livello --}}
         @else
             <a class="list-group-item   rounded-0 level-{{$item['level']}}"  data-toggle="collapse" href="#collapse{{$id}}{{$item['menu']}}"
                role="button" aria-expanded="true" aria-controls="#collapse{{$id}}{{$item['menu']}}">
-                {{$item['name']}}
-            </a>
+
 
         @endif
+                {{$item['name']}}
+                <i class="fas fa-caret-down float-right"></i>
+            </a>
     @endif
     </li>
 @endforeach
