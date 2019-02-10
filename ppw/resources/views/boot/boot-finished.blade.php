@@ -9,7 +9,7 @@
 @stop
 
 @section('redirect')
-/homepage
+    /login
 @stop
 @section('redirect-text')
 Accedi al gestionale

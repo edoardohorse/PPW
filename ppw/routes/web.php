@@ -15,23 +15,26 @@ Route::prefix('/welcome')->group(function(){
 // A010
 Route::view('/boot',            'boot/boot')->name('A010');
 
+Route::view('/whoare','boot/whoare')->name('C000');
+Route::view('/contact','boot/contact')->name('C010');
+
 Route::group(['middleware' => ['boot'] ], function(){
 
     /*
      * BOOT
      * */
-    Route::view('/contact','boot/contact');
-    Route::view('/whoare','boot/whoare');
-    Route::view('/boot-asd-done',   'boot/boot-asd-done');
-    Route::view('/boot-socio',      'boot/boot-socio');
-    Route::view('/boot-finished',   'boot/boot-finished');
+
+    Route::view('/boot-asd-done',   'boot/boot-asd-done')->name('A011');
+    Route::view('/boot-socio',      'boot/boot-socio')->name('A025');
+    Route::view('/boot-finished',   'boot/boot-finished')->name('A030');
 
     /*
      * LOGIN
      * */
-    Route::view('/login',           'login/login');
-    Route::view('/login-done',      'login/login-done');
-    Route::view('/login-failure',   'login/login-failure');
+    Route::view('/login',           'login/login')->name('B005');
+    Route::view('/login-done',      'login/login-done')->name('B006');
+    Route::view('/login-failure',   'login/login-failure')->name('B007');
+
 
 
 });
@@ -59,7 +62,7 @@ Route::view('/box','test-box/page');
 
 $n = ['name'=>'Christian', 'surname'=>'Meo'];
 
-Route::view('/homepage','home/homepage',$n);
+Route::view('/homepage','home/homepage',$n)->name('M000');
 
 
 Route::prefix('home')->group(function($n){
@@ -148,3 +151,11 @@ Route::view('/report-stats','home/report-stats',$n);
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

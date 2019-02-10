@@ -19,15 +19,11 @@ class CreateUsersSiteTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->integer('member_id')->unsigned();
             $table->timestamps();
 
         });
 
-        Schema::table('users_site', function (Blueprint $table) {
 
-            $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
-        });
     }
 
     /**

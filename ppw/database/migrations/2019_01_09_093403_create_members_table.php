@@ -33,6 +33,10 @@ class CreateMembersTable extends Migration
 
         });
 
+        Schema::table('members', function (Blueprint $table) {
+            $table->unsignedInteger('user_site_id')->nullable();
+            $table->foreign('user_site_id')->references('id')->on('users_site');
+        });
 
     }
 

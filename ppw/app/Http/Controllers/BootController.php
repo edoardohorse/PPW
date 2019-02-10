@@ -175,10 +175,15 @@ class BootController extends Controller
 //            var_dump($fields);
 
 
+            $fieldsUserSite = $this->filterFieldsRequestFromFillable($fields, UserSite::class);
+            $userSite  = new UserSite($fieldsUserSite);
+            $userSite->password  = Hash::make($fieldsUserSite['password']);
+            $userSite->save();
 
 
             $fieldsMember = $this->filterFieldsRequestFromFillable( $fields,  Member::class);
 //            var_dump($fieldsMember);
+            $fieldsMember['user_site_id'] = $userSite->id;
             $member = new Member($fieldsMember);
             $member->ruolo = 'fond';
             $member->save();
@@ -201,11 +206,7 @@ class BootController extends Controller
             $card = new Card($fieldsCard);
             $card->save();
 
-            $fieldsUserSite = $this->filterFieldsRequestFromFillable($fields, UserSite::class);
-            $fieldsUserSite['member_id'] = $member->id;
-            $userSite  = new UserSite($fieldsUserSite);
-            $userSite->password  = Hash::make($fieldsUserSite['password']);
-            $userSite->save();
+
 
             return redirect('/boot-finished');
 

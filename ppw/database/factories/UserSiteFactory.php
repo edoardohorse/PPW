@@ -18,10 +18,10 @@ use App\Member as Member;
 $factory->define(App\UserSite::class, function (Faker $faker) {
     return [
 
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'password' => 'provaprova', // secret
         'email'=>$faker->email,
         'email_verified_at' => now(),
         'remember_token' => str_random(10),
-        'member_id' => Member::inRandomOrder()->first()->id
+//        'member_id' => Member::inRandomOrder()->first()->id
     ];
 });

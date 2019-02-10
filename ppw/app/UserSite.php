@@ -11,6 +11,8 @@ class UserSite extends Authenticatable{
 
     use Notifiable;
 
+    public $with = ['member'];
+
     protected $table = 'users_site';
     /**
      * The attributes that are mass assignable.
@@ -18,7 +20,7 @@ class UserSite extends Authenticatable{
      * @var array
      */
     protected $fillable = [
-        'email', 'password','member_id'
+        'email', 'password'
     ];
 
     /**
