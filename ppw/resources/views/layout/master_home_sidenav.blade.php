@@ -1,4 +1,8 @@
 <aside id="menu" class="col-2 float-left container p-0">
+    <div class="hamburger">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div>
 
     {{-- Homepage--}}
     @include('layout.navbar.list-group',
@@ -167,7 +171,7 @@
 
 
 
-
+    </div>
 </aside>
 
 

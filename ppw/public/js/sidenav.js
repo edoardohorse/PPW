@@ -43,3 +43,8 @@ for(i=0;i<path.length;i++){
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+
+$('#menu > .hamburger').on('click', function(){
+    $('#menu').toggleClass('show')
+})
