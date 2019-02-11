@@ -1,3 +1,5 @@
+
+
 <table id="table" class="display" style="width:100%">
     <thead>
     <tr>
@@ -7,6 +9,7 @@
         <th>Modalità di pagamento</th>
         <th>Data</th>
         <th>File fattura</th>
+
     </tr>
     </thead>
 
@@ -19,7 +22,9 @@
             <td>{{$transaction->modalita_pagamento}}</td>
             <td>{{$transaction->created_at}}</td>
             <td>{{$transaction->file_fattura}}</td>
-
+               <td>
+                <a href="{{ URL::to('/pdf') }}">Export PDF</a>
+            </td>
         </tr>
 
     @empty

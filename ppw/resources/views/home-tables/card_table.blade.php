@@ -1,3 +1,4 @@
+
 <table id="table" class="display" style="width:100%">
     <thead>
     <tr>
