@@ -32,9 +32,9 @@
 
 
         @yield('main')
-        @include('layout.master_home_modal_create')
-        @include('layout.master_home_modal_modify')
-        @include('layout.master_home_modal_delete')
-    @include('layout.master_home_buttons')
+        {{--@include('layout.master_home_modal_create')--}}
+        {{--@include('layout.master_home_modal_modify')--}}
+        {{--@include('layout.master_home_modal_delete')--}}
+        {{--@include('layout.master_home_buttons')--}}
     </main>
 @stop

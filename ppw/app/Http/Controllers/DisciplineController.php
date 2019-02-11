@@ -98,7 +98,7 @@ class DisciplineController extends Controller
         ]);
 
         if($validate->fails()){
-            return redirect()->route('discipline.store')
+            return redirect()->route('discipline.edit',$discipline->id)
                 ->withErrors($validate)
                 ->withInput();
         }

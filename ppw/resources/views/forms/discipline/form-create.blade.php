@@ -1,26 +1,21 @@
-@extends('layout.master_home_modal_create')
-
-@include('layout.master_lib')
-
-@section('modal-body_create')
-    <form action="{{route('discipline.store')}}" method="POST">
-        @csrf
+@extends('forms.discipline.form-discipline');
 
 
-        @include('forms.input-form',[
-                    'type'  => 'text',
-                    'label' => 'Nome disciplina',
-                    'input_name' => 'nome',
+@section('modal-title_modify')
+    Modifica nome di '{{$discipline->nome}}'
+@stop
 
-        ])
+@section('route', route('discipline.update', $discipline->id))
+@section('method', 'POST')
 
-        <input type="submit" class="btn btn-lg btn-outline-primary">
-    </form>
 
-    <script>
-        $(document).ready(function(){
-            $("#Modal_create").modal('show');
-        })
-    </script>
+@section('form')
+
+    @include('forms.input-form',[
+                'type'  => 'text',
+                'label' => 'Nome disciplina',
+                'input_name' => 'nome',
+
+    ])
 
 @stop

@@ -10,12 +10,9 @@
             </button>
             <div class="modal-body">
                 @yield('modal-body_delete')
-                Elimina
 
             </div>
-            {{--<div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="saveModalDelete">Finito</button>
-            </div>--}}
+
         </div>
     </div>
 </div>

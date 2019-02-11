@@ -2,9 +2,9 @@ const table = $('#table').DataTable();
 let rowSelected = null
 const modalCreate = $('#Modal_create')
 const modalEdit = $('#Modal_modify')
-const modalCreateBtn    = $('button[data-target="#Modal_create"]')
-const modalEditBtn      = $('button[data-target="#Modal_modify"]')
-const modalDeleteBtn    = $('button[data-target="#Modal_delete"]')
+const modalCreateBtn    = $('a[id="redirect_create"]')
+const modalEditBtn      = $('a[id="redirect_edit"]')
+const modalDeleteBtn    = $('a[id="redirect_delete"]')
 
 
 

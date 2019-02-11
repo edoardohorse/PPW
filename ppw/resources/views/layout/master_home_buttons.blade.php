@@ -1,12 +1,12 @@
 
-<button class="position-button btn btn-primary btn-lg" data-toggle="modal" data-target="#Modal_create">
-    Crea </button>
+<a class="position-button btn btn-primary btn-lg" id="redirect_create">
+    Crea </a>
 
-<button class="position-button btn btn-primary btn-lg" data-toggle="modal" data-target="#Modal_modify">
-    Modifica </button>
+<a class="position-button btn btn-primary btn-lg" id="redirect_edit">
+    Modifica </a>
 
-<button class="position-button btn btn-primary btn-lg" data-toggle="modal" data-target="#Modal_delete" >
-Elimina</button>
+<a class="position-button btn btn-primary btn-lg" id="redirect_delete">
+Elimina</a>
 
 
 

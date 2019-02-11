@@ -4,9 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">@yield('modal-title_modify')</h5>
-                <div class="spinner-border text-info" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
+
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -15,12 +13,9 @@
             <div class="modal-body">
 
                 @yield('modal-body_modify')
-                Modifica
 
             </div>
-            {{--<div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="saveModalModify">Finito</button>
-            </div>--}}
+
         </div>
     </div>
 </div>
