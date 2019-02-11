@@ -19,9 +19,9 @@ WHERE I.asd_id=M.id AND I.id= 1");
 
 
 
-//        return view('Pdf/payments-pdf', compact('payments'));
-       $pdf = PDF::loadView('Pdf/payments-pdf', compact('payments'))->save( public_path('/uploads').'/pdfname.pdf' );
-        return $pdf->download('invoice.pdf');
+       return view('Pdf/payments-pdf', compact('payments'));
+       //$pdf = PDF::loadView('Pdf/payments-pdf', compact('payments'))->save( public_path('/uploads').'/pdfname.pdf' );
+        //return $pdf->download('invoice.pdf');
     }
 
 }

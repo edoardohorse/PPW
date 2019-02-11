@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     {{--<link rel="stylesheet" href="{{asset('css/receipt.css')}}">--}}
-    <title>A simple, clean, and responsive HTML invoice template</title>
+    <title>Ricevuta numerata</title>
 
 
 </head>
