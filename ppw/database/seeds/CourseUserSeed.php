@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Faker\Generator as Faker;
 
 class CourseUserSeed extends Seeder
 {
@@ -18,7 +18,9 @@ class CourseUserSeed extends Seeder
               $user->each(function($user_id) use($course){
                 App\CourseUser::create([
                     'course_id' => $course->id,
-                    'user_id' => $user_id
+                    'user_id' => $user_id,
+                    'data_inizio' => $faker->date(),
+                    'data_fine' => $faker->date($max = now())
                 ]);
               });
             });
