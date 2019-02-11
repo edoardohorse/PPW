@@ -130,7 +130,9 @@ Route::view('/report-stats','/home/report-stats')->name('M400');
 
 
 
+Route::resource('discipline', 'DisciplineController');
 
+//Route::get('discipline/create', 'DisciplineController@create');
 
 
 
@@ -155,7 +157,7 @@ Route::view('/report-stats','home/report-stats',$n);
 
 
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 

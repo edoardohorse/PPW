@@ -1,0 +1,128 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Validator;
+use App\Discipline;
+use Illuminate\Http\Request;
+
+class DisciplineController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('forms/discipline/actions');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('forms/discipline/form-create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $validate = Validator::make($request->all(),[
+            'nome' => 'required|unique:disciplines|max:255',
+        ]);
+
+//        dd($request->validated);
+        if($validate->fails()){
+            return redirect()->route('discipline.create')
+                ->withErrors($validate)
+                ->withInput();
+        }
+        else{
+
+            $fields = BootController::filterFieldsRequestFromFillable($request->all(),
+                Discipline::class
+                );
+
+            $discipline = new Discipline($fields);
+            $discipline->save();
+
+            return redirect()->route('discipline.show',$discipline->id);
+        }
+
+//        new Disicpline();
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Discipline  $discipline
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Discipline $discipline)
+    {
+        dd($discipline->attributesToArray());
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Discipline  $discipline
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Discipline $discipline)
+    {
+        return view('forms/discipline/form-edit')
+            ->with('discipline', $discipline);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Discipline  $discipline
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Discipline $discipline)
+    {
+        $validate = Validator::make($request->all(),[
+            'nome' => 'required|unique:disciplines|max:255',
+        ]);
+
+        if($validate->fails()){
+            return redirect()->route('discipline.store')
+                ->withErrors($validate)
+                ->withInput();
+        }
+        else{
+
+            $fields = BootController::filterFieldsRequestFromFillable($request->all(),
+                Discipline::class
+            );
+//            dd($discipline);
+            $discipline->fill($fields)->save();
+
+            return redirect()->route('discipline.show',$discipline->id);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Discipline  $discipline
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Discipline $discipline)
+    {
+        $discipline->delete();
+        return 'Fatto';
+    }
+}

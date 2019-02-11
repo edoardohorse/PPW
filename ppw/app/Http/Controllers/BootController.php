@@ -54,7 +54,7 @@ class BootController extends Controller
      * @param $modelClass
      * @return array
      */
-    private function filterFieldsRequestFromFillable(array $fields, $modelClass){
+    static function filterFieldsRequestFromFillable(array $fields, $modelClass){
         // Creo un model Member vuoto
         $model = new $modelClass;
 
