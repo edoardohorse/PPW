@@ -18,6 +18,7 @@ class Member extends Model
             'scadenza_cert_med',
             'note',
             'p_iva',
+            'user_site_id'
     ];
 
 

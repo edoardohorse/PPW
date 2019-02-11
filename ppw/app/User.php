@@ -15,7 +15,8 @@ class User extends Model
                 'citta',
                 'provincia',
                 'data_nascita',
-                'genere'
+                'genere',
+                'member_id'
     ];
     public function transaction(){
         return $this->hasMany('App\Transaction');

@@ -67,7 +67,7 @@ $n = ['name'=>'Christian', 'surname'=>'Meo'];
 
 Route::group(['prefix' => 'home',  'middleware' => 'auth'],function($n){
 
-    Route::view('/homepage','home/homepage',$n)->name('M000');
+    Route::view('/homepage','home/homepage')->name('M000');
 
     Route::prefix('managment')->group(function($n){
 
