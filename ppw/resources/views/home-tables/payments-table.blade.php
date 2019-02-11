@@ -7,6 +7,7 @@
         <th>Modalità di pagamento</th>
         <th>Data</th>
         <th>File fattura</th>
+
     </tr>
     </thead>
 
@@ -19,7 +20,7 @@
             <td>{{$transaction->modalita_pagamento}}</td>
             <td>{{$transaction->created_at}}</td>
             <td>{{$transaction->file_fattura}}</td>
-
+            <td><a href="/pdf"> Esporta pdf</a></td>
         </tr>
 
     @empty

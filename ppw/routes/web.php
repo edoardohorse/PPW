@@ -135,6 +135,7 @@ Route::view('/report-stats','/home/report-stats')->name('M400');
 });
 
 
+Route::get('/pdf','PdfController@pdf');
 
 
 
