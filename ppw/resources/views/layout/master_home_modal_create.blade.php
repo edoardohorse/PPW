@@ -17,6 +17,10 @@
                 @yield('modal-body_create')
             </div>
 
+           {{-- <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="saveModalCreate">Finito</button>
+            </div>--}}
+
         </div>
     </div>
 </div>

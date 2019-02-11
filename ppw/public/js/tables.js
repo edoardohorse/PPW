@@ -8,6 +8,8 @@ const modalDeleteBtn    = $('button[data-target="#Modal_delete"]')
 
 
 
+
+
 $('#table tbody').on( 'click', 'tr', function () {
     selectRow.call(this)
 } );

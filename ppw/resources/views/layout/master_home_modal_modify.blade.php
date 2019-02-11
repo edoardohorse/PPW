@@ -7,6 +7,10 @@
                 <div class="spinner-border text-info" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
 
@@ -14,10 +18,9 @@
                 Modifica
 
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            {{--<div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="saveModalModify">Finito</button>
+            </div>--}}
         </div>
     </div>
 </div>

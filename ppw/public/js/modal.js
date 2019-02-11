@@ -62,3 +62,4 @@ function fetchLayoutEdit(callback, id){
 function resetModal(){
     $(this).find('.spinner-border').removeClass('d-none')
 }
+
