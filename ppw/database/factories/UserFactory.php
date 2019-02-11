@@ -7,15 +7,18 @@ use App\Asd as Asd;
 
 $factory->define(App\User::class, function (Faker $faker) {
     return [
-        'nome'=>$faker->name,
-        'cognome'=>$faker->lastName,
-        'cap'=>$faker->postcode,
-        'indirizzo'=>$faker->address,
-        'citta'=>$faker->city,
-        'provincia'=>$faker->word,
-        'data_nascita'=>$faker->date($format = 'Y-m-d', $max = 'now'),
-        'genere'=>$faker->randomElement($array = array ('male','female')),
-        'tipo'=>$faker->word,
-        'member_id' => Member::inRandomOrder()->first()->id,
+        "id"=> 1,
+        "nome"=> "Edoardo",
+        "cognome"=> "Cavallo",
+        "cap"=> "74023",
+        "indirizzo"=> "Socrate",
+        "citta"=> "Grottaglie",
+        "provincia"=> "TA",
+        "data_nascita"=> "1997-05-11",
+        "genere"=> "Maschio",
+        "tipo"=> null,
+        "member_id"=> 1,
+        "created_at"=> "2019-02-11 09:03:16",
+        "updated_at"=> "2019-02-11 09:03:16",
     ];
 });

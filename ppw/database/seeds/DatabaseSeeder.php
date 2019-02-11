@@ -14,13 +14,13 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DisciplineSeed::class,
             AsdSeed::class,
+            UserSiteSeed::class,
             MemberSeed::class,
             UserSeed::class,
             PackageUserSeed::class,
-            UserSiteSeed::class,
             ProviderSeed::class,
             AsdMemberSeed::class,
-            CollaboratorSeed::class,
+            /*CollaboratorSeed::class,
             TaxDataSeed::class,
             CardSeed::class,
             CourseUserSeed::class,
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             SchedulingCourseSeed::class,
             RoomSchedulingSeed::class,
             ReportSeed::class,
-
+*/
 
 
 

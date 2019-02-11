@@ -12,15 +12,14 @@ class AsdMemberSeed extends Seeder
      */
     public function run()
     {
-       factory(App\Member::class, 5)->create()
-           ->each(function($member){
-               $asd = App\Asd::inRandomOrder()->take(1)->pluck('id');
-               $asd->each(function($asd_id) use($member){
-                   App\AsdMember::create([
-                       'asd_id' => $asd_id,
-                       'member_id' => $member->id
-                   ]);
-               });
-           });
+
+
+        $asd = App\Asd::find(1)->first();
+        $member = App\Member::find(1)->first();
+        App\AsdMember::create([
+            'asd_id' => $asd->id,
+            'member_id' => $member->id
+        ]);
+
     }
 }

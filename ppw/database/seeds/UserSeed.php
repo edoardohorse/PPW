@@ -11,7 +11,7 @@ class UserSeed extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 10)->create()->each(function(App\User $user)
+        factory(App\User::class, 1)->create()->each(function(App\User $user)
         {
             foreach(range(1, 2) as $i)
             {

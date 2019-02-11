@@ -22,7 +22,9 @@
     <div class="col-9 float-right" id="account">
 
         <div class="row float-right">
-            <span class="account_name">{{DB::table('users')
+            <span class="account_name">
+
+                {{DB::table('users')
                                             ->where('member_id','=', Auth::user()->member->id)->first()->nome  }}
             </span>
             <span class="account_surname">{{DB::table('users')
