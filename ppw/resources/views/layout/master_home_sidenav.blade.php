@@ -142,7 +142,7 @@
             'id'    => 'Mngactivity',
             'items'=>[
             [
-                'name'  => 'Discipline interni',
+                'name'  => 'Discipline',
                 'link'  => 'M310',
                 'level' =>  '2',
                 ],

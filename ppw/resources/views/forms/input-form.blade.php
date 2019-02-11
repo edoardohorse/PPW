@@ -4,11 +4,9 @@
     <label for="{{$input_name}}"> {{ $label  }}  </label>
 
     {{-- TODO: Usato per debug, da eliminare --}}
-{{--
     @if( !empty($value))
         <input type="{{$type}}" class="form-control" name="{{$input_name}}" id="{{$input_name}}" value="{{$value}}">
     @else
---}}
 
 
         @if($errors->has($input_name))
@@ -25,6 +23,6 @@
 
         @endif
 
-    {{--@endif--}}
+    @endif
 
 </div>
