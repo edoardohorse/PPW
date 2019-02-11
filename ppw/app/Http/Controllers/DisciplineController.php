@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Validator;
 use App\Discipline;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DisciplineController extends Controller
 {
@@ -13,9 +14,14 @@ class DisciplineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
-        return view('forms/discipline/actions');
+//        Test
+//        return view('forms/discipline/actions');
+
+        $disciplines = DB::table('disciplines')->get();
+
+        return view('home/mng-activity/discipline/discipline', compact('disciplines'));
     }
 
     /**
@@ -25,7 +31,8 @@ class DisciplineController extends Controller
      */
     public function create()
     {
-        return view('forms/discipline/form-create');
+        $disciplines = DB::table('disciplines')->get();
+        return view('home/mng-activity/discipline/discipline-create', compact('disciplines'));
     }
 
     /**
@@ -42,7 +49,7 @@ class DisciplineController extends Controller
 
 //        dd($request->validated);
         if($validate->fails()){
-            return redirect()->route('discipline.create')
+            return redirect()->route('M311')
                 ->withErrors($validate)
                 ->withInput();
         }
@@ -55,7 +62,8 @@ class DisciplineController extends Controller
             $discipline = new Discipline($fields);
             $discipline->save();
 
-            return redirect()->route('discipline.show',$discipline->id);
+//            return redirect()->route('discipline.show',$discipline->id);
+            return redirect()->route('M310');
         }
 
 //        new Disicpline();
@@ -80,7 +88,9 @@ class DisciplineController extends Controller
      */
     public function edit(Discipline $discipline)
     {
-        return view('forms/discipline/form-edit')
+        $disciplines = DB::table('disciplines')->get();
+        return view('home/mng-activity/discipline/discipline-edit',
+            compact('disciplines'))
             ->with('discipline', $discipline);
     }
 
@@ -98,7 +108,7 @@ class DisciplineController extends Controller
         ]);
 
         if($validate->fails()){
-            return redirect()->route('discipline.edit',$discipline->id)
+            return redirect()->route('M313',$discipline->id)
                 ->withErrors($validate)
                 ->withInput();
         }
@@ -110,7 +120,8 @@ class DisciplineController extends Controller
 //            dd($discipline);
             $discipline->fill($fields)->save();
 
-            return redirect()->route('discipline.show',$discipline->id);
+//            return redirect()->route('discipline.show',$discipline->id);
+            return redirect()->route('M310');
         }
     }
 
@@ -122,7 +133,9 @@ class DisciplineController extends Controller
      */
     public function destroy(Discipline $discipline)
     {
-        $discipline->delete();
-        return 'Fatto';
+//        $nome = $discipline->nome;
+//        $discipline->delete();
+        return view('home/mng-activity/discipline/discipline-delete')
+            ->with('discipline', $discipline->nome);
     }
 }

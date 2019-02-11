@@ -1,11 +1,11 @@
 @extends('forms.discipline.form-discipline');
 
 
-@section('modal-title_modify')
-    Modifica nome di '{{$discipline->nome}}'
+@section('modal-title')
+    Crea disciplina
 @stop
 
-@section('route', route('discipline.update', $discipline->id))
+@section('route', route('M312'))
 @section('method', 'POST')
 
 

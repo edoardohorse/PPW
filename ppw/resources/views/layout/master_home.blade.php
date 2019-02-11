@@ -12,11 +12,10 @@
 
 @stop
 
-@section('lib_end_script')
+@prepend('lib_end_script')
     <script src="{{ asset('js/tables.js') }}"></script>
     <script src="{{ asset('js/sidenav.js') }}"></script>
-    <script src="{{asset('js/modal.js')}}"></script>
-@stop
+@endprepend
 
 @section('body')
 

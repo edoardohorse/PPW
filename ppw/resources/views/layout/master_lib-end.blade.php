@@ -10,7 +10,7 @@
     SCRIPT
 --}}
 
-@yield('lib_end_script')
+@stack('lib_end_script')
 
 
 

@@ -109,7 +109,21 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function($n){
 
     Route::prefix('mngactivity')->group(function($n){
 
-        Route::get('/discipline','ActivityController@discipline',$n)->name('M310');
+
+//        Route::get('/discipline','ActivityController@discipline',$n)->name('M310');
+//        Route::get('discipline/create', 'DisciplineController@create')->name('M311');
+
+        Route::resource('discipline', 'DisciplineController',[
+            'names' =>[
+                'index'     => 'M310',
+                'create'    => 'M311',
+                'store'     => 'M312',
+                'edit'      => 'M313',
+                'update'    => 'M314',
+                'delete'    => 'M315',
+            ]
+        ]);
+
         Route::get('/course','ActivityController@course',$n)->name('M320');
         Route::get('/package','ActivityController@package',$n)->name('M330');
         Route::get('/room','ActivityController@room',$n)->name('M340');
@@ -130,9 +144,9 @@ Route::view('/report-stats','/home/report-stats')->name('M400');
 
 
 
-Route::resource('discipline', 'DisciplineController');
 
-//Route::get('discipline/create', 'DisciplineController@create');
+
+
 
 
 

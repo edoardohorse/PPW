@@ -9,9 +9,7 @@ class ActivityController extends Controller
 {
     public function discipline(){
 
-        $disciplines = DB::table('disciplines')->get();
 
-        return view('home/mng-activity/discipline', compact('disciplines'));
     }
 
     public function course(){
