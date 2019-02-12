@@ -27,16 +27,42 @@
             </span>
 
             @else
-                <select class="custom-select" name="{{$input_name}}" id="{{$input_name}}">
-                    <option selected> {{ $option_default  }} </option>
 
-                    @foreach($options as $option)
-                        <option value="{{$option}}">{{$option}}</option>
-                    @endforeach
+                @if(!empty($key))
 
-                </select>
+                    <select class="custom-select" name="{{$input_name}}" id="{{$input_name}}">
+                        <option selected> {{ $option_default  }} </option>
+
+                        @foreach($options as $option)
+                            <option value="{{$option->{$key} }}">{{$option->{$value} }}</option>
+                        @endforeach
+
+                    </select>
+
+                @else
+
+                    <select class="custom-select" name="{{$input_name}}" id="{{$input_name}}">
+                        <option selected> {{ $option_default  }} </option>
+
+                        @foreach($options as $option)
+                            <option value="{{$option}}">{{$option}}</option>
+                        @endforeach
+
+                    </select>
+
+                @endif
 
         @endif
 
 
 </div>
+{{--
+
+    $option_default
+    $options
+    $input_name
+    $label
+    $key    opt
+    $value  opt
+
+--}}

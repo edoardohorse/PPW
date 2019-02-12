@@ -12,6 +12,10 @@ const eventDeselectedRow = document.createEvent('Event');
 eventSelectedRow.initEvent('selectedRow', true, true);
 eventDeselectedRow.initEvent('deselectedRow', true, true);
 
+function getId(){
+    return  table.cell('.selected', 0).data();
+}
+
 $('#table tbody').on( 'click', 'tr', function () {
 
     // Deseleziona riga

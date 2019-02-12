@@ -124,7 +124,19 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function($n){
             ]
         ]);
 
-        Route::get('/course','ActivityController@course',$n)->name('M320');
+
+        Route::resource('course', 'CourseController',[
+            'names' =>[
+                'index'     => 'M320',
+                'create'    => 'M321',
+                'store'     => 'M322',
+                'edit'      => 'M323',
+                'update'    => 'M324',
+                'delete'    => 'M325',
+            ]
+        ]);
+
+
         Route::get('/package','ActivityController@package',$n)->name('M330');
         Route::get('/room','ActivityController@room',$n)->name('M340');
         Route::view('/calendar','home/mng-activity/calendar',$n)->name('M350');
