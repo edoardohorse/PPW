@@ -20,7 +20,7 @@
             <td>{{$transaction->modalita_pagamento}}</td>
             <td>{{$transaction->created_at}}</td>
             <td>{{$transaction->file_fattura}}</td>
-            <td><a href="{{action('PdfController@pdf', $transaction->id)}}"> Esporta pdf</a></td>
+            <td><a href="{{action('PdfController@pdf')}}"> Esporta pdf</a></td>
         </tr>
 
     @endforeach
