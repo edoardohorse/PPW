@@ -84,7 +84,13 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        dd($course->attributesToArray());
+        $courses = $this->fetchAll();
+        $disciplines    = DB::table('disciplines')->select('id','nome')->get()->toArray();
+        $discipline = Discipline::find( $course->discipline_id )->id;
+        return view('home/mng-activity/course/course-show',
+            compact('courses', 'disciplines'))
+            ->with('discipline', $discipline)
+            ->with('course', $course);
     }
 
     /**

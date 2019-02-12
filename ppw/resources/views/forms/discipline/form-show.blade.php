@@ -2,7 +2,7 @@
 
 
 @section('modal-title')
-    Modifica nome di '{{$discipline->nome}}'
+    {{$discipline->nome}}
 @stop
 
 @section('route', route('M310'))
@@ -11,7 +11,7 @@
 
 @section('form')
 
-    @method('PUT')
+
     @include('forms.input-form',[
             'type'  => 'text',
             'label' => 'Nome disciplina',
@@ -22,3 +22,6 @@
     ])
 
 @stop
+
+
+@section('modal-done-text', 'Chiudi')
