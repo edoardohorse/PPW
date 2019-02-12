@@ -41,31 +41,40 @@
                     <tr>
                         <td>
                             <strong>Indirizzo:  </strong><br>
-                            @yield('indirizzo')
+                            @yield('indirizzo_asd')
                         </td>
                         <td>
                             <strong>Numero di telefono:</strong><br>
-                            @yield('numero_tel')
+                            @yield('num_tel_asd')
                         </td>
                     </tr>
                 </table>
                 <table>
                     <tr>
                         <td><strong>Città:</strong><br>
-                            @yield('citta')
+                            @yield('citta_asd')
                         </td>
                         <td><strong>Provincia:</strong><br>
-                            @yield('provincia')
+                            @yield('provincia_asd')
                         </td>
                         <td> <strong>CAP:</strong><br>
-                            @yield('cap')
+                            @yield('cap_asd')
                         </td>
 
                     </tr>
                 </table>
-
-                <strong>Cod. Fiscale:</strong><br>
-                @yield('cod_fiscale')<br>
+                <table>
+                    <tr>
+                        <td>
+                            <strong>Cod. Fiscale:</strong><br>
+                            @yield('cod_fisc_asd')<br>
+                        </td>
+                        <td>
+                            <strong>P.IVA:</strong><br>
+                            @yield('p.iva_asd')
+                        </td>
+                    </tr>
+                </table>
             </address>
         </div>
     </div>
@@ -83,9 +92,47 @@
     <div class="row">
         <div class="col-md-12">
             <hr>
+            <table>
+                <tr>
+                    <td>
+                        <strong>Nome Socio:</strong><br>
+                        @yield('nome_socio')
+                    </td>
+                    <td>
+                        <strong>Cognome Socio:</strong><br>
+                        @yield('cognome_socio')
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <strong>Cod. Fisc.:</strong><br>
+                        @yield('cod_fisc_socio')
+                    </td>
+                    <td>
+                        <strong>P.IVA:</strong><br>
+                        @yield('p.iva_socio')
+                    </td>
+                </tr>
+            </table>
+
+
+            <table>
+                <tr>
+                    <td>
+                        <strong>Città:</strong><br>
+                        @yield('citta_socio')
+                    </td>
+                    <td>
+                        <strong>Indirizzo:</strong><br>
+                        @yield('indirizzo_socio')
+                    </td>
+                </tr>
+            </table>
             <address>
                 <strong>Metodo di pagamento:</strong><br>
-                @yield('metodo_pagamento')
+                @yield('metodo_paga')
             </address>
         </div>
 
@@ -109,6 +156,3 @@
     <strong>Firma</strong>
 </div>
 </body>
-
-
-
