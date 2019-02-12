@@ -2,7 +2,7 @@
 
 
 @section('modal-title')
-    Modifica '{{$package->nome}}'
+    Modifica '{{$package->nome_pacchetto}}'
 @stop
 
 @section('route', route('M334', $package->id))
@@ -12,7 +12,7 @@
 @section('form')
 
     @method('PUT')
-
+    {{--{{dd($courses)}}--}}
     @include('forms.input-form',[
             'type'  => 'text',
             'label' => 'Nome pacchetto',
