@@ -2,7 +2,7 @@
 
     CSS
 --}}
-@yield('lib_end_css')
+@stack('lib_end_css')
 
 
 

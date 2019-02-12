@@ -5,5 +5,7 @@
 @section('main')
     <h1>Programmazione</h1>
 
+   @include('layout.calendar_scheduling')
+
 
 @stop

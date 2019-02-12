@@ -16,7 +16,8 @@ class CreateSchedulingsTable extends Migration
         Schema::create('schedulings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('giorno');
-            $table->string('orario');
+            $table->time('ora_inizio');
+            $table->time('ora_fine');
             $table->timestamps();
         });
     }

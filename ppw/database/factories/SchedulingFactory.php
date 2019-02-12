@@ -6,6 +6,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Scheduling::class, function (Faker $faker) {
     return [
         'giorno'=>$faker->word,
-        'orario'=>$faker->time($format = 'H:i')
+        'ora_inizio'=>$faker->time($format = 'H:i'),
+        'ora_fine'=>$faker->time($format = 'H:i')
     ];
 });
