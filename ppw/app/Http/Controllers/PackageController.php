@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class PackageController extends Controller
 {
 
-    static $queryAll = "SELECT p.id,p.nome_pacchetto,p.prezzo,c.nome_corso,p.created_at,p.updated_at FROM packages p,package_course pc,courses c WHERE c.id = pc.course_id ORDER BY p.id";
+//    static $queryAll = "SELECT p.id,p.nome_pacchetto,p.prezzo,c.nome_corso,p.created_at,p.updated_at FROM packages p,package_course pc,courses c WHERE c.id = pc.course_id ORDER BY p.id";
     static $path = 'home/mng-activity/package/package';
 
     /**
