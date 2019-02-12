@@ -6,9 +6,11 @@ window.addEventListener('selectedRow', function (e) {
 
 
 function setEditBtn(){
-    $(modalEditBtn).attr("href",`${location.href}/${getId()}/edit`)
+    let url = location.href.substring(0, location.href.indexOf('?'))
+    $(modalEditBtn).attr("href",`${url}/${getId()}/edit`)
 }
 
 function setDeleteBtn(){
-    $(modalDeleteBtn).parent().attr("action",`${location.href}/${getId()}`)
+    let url = location.href.substring(0, location.href.indexOf('?'))
+    $(modalDeleteBtn).parent().attr("action",`${url}/${getId()}`)
 }
