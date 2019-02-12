@@ -7,9 +7,9 @@
 @section('main')
     <h1>Corsi</h1>
 
-    @if(!empty($courses))
+
         @include('home-tables.course-table')
-    @endif
+
 
     @yield('modal')
 

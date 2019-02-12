@@ -13,7 +13,7 @@
     </thead>
 
     <tbody>
-    @forelse($courses as $course)
+    @foreach($courses as $course)
 
         <tr>
             <td>{{$course->id}}</td>
@@ -24,9 +24,7 @@
             <td>{{$course->updated_at}}</td>
         </tr>
 
-    @empty
-        <tr><td>Tabella vuota</td></tr>
-    @endforelse
+    @endforeach
     </tbody>
 
 </table>

@@ -1,18 +1,24 @@
 @extends('layout.master_home')
 
-@section('title','Discipline')
+@section('title','package')
 
 
 
 @section('main')
-    <h1>Discipline</h1>
+    <h1>Pacchetti</h1>
 
-    @include('home-tables.discipline-table')
+
+
+    @include('home-tables.package-table')
 
     @yield('modal')
 
     <a class="btn btn-lg btn-primary" id="redirect_create"
-            href="{{route('M311')}}">Nuova disciplina</a>
+            href="{{route('M331')}}">Nuova pacchetto</a>
+
+
+    <a class="btn btn-lg btn-primary" id="redirect_show"
+       href="#">Visualizza pacchetto</a>
 
     <a class="btn btn-lg btn-secondary disabled" id="redirect_edit"
             href="#">Modifica</a>
@@ -31,5 +37,5 @@
 
 
 @push('lib_end_script')
-<script src="{{asset('js/disc.js')}}"></script>
+    <script src="{{asset('js/pack.js')}}"></script>
 @endpush

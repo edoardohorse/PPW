@@ -13,7 +13,7 @@
     </thead>
 
     <tbody>
-    @forelse($members as $member)
+    @foreach($members as $member)
         <tr>
             <td>{{$member->id}}</td>
             <td>{{$member->nome}}</td>
@@ -25,9 +25,7 @@
             <td>{{$member->scadenza_cert_med}}</td>
         </tr>
 
-    @empty
-        <tr><td>Tabella vuota</td></tr>
-    @endforelse
+    @endforeach
     </tbody>
 
 </table>

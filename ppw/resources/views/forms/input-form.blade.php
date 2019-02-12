@@ -17,15 +17,21 @@
         @else
 
             @if( !empty($value))
-                <input type="{{$type}}" class="form-control" placeholder="@if(!empty($placeholder)){{$placeholder}}@endif"
+                <input type="{{$type}}" class="form-control"
+                       @if(!empty($readonly))readonly @endif
+                       placeholder="@if(!empty($placeholder)){{$placeholder}}@endif"
                        name="{{$input_name}}" id="{{$input_name}}" value="{{$value}}">
             @else
 
                 @if(old($input_name) == '')
-                    <input type="{{$type}}" class="form-control" placeholder="@if(!empty($placeholder)){{$placeholder}}@endif"
+                    <input type="{{$type}}" class="form-control"
+                           @if(!empty($readonly))readonly @endif
+                           placeholder="@if(!empty($placeholder)){{$placeholder}}@endif"
                            name="{{$input_name}}" id="{{$input_name}}" value="{{old($input_name)}}">
                 @else
-                    <input type="{{$type}}" class="form-control  is-valid" placeholder="@if(!empty($placeholder)){{$placeholder}}@endif"
+                    <input type="{{$type}}" class="form-control  is-valid"
+                           @if(!empty($readonly))readonly @endif
+                           placeholder="@if(!empty($placeholder)){{$placeholder}}@endif"
                            name="{{$input_name}}" id="{{$input_name}}" value="{{old($input_name)}}">
                 @endif
 
@@ -42,6 +48,6 @@
     $type
     $value          opt
     $placeholder    opt
-
+    $readonly       opt
 
 --}}

@@ -12,7 +12,7 @@
     </thead>
 
     <tbody>
-    @forelse($rooms as $room)
+    @foreach($rooms as $room)
         <tr>
             <td>{{$room->id}}</td>
             <td>{{$room->nome}}</td>
@@ -21,9 +21,7 @@
             <td>{{$room->updated_at}}</td>
         </tr>
 
-    @empty
-        <tr><td>Tabella vuota</td></tr>
-    @endforelse
+    @endforeach
     </tbody>
 
 </table>

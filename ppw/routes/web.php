@@ -135,9 +135,19 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function($n){
                 'delete'    => 'M325',
             ]
         ]);
+        Route::resource('package', 'PackageController',[
+            'names' =>[
+                'index'     => 'M330',
+                'create'    => 'M331',
+                'store'     => 'M332',
+                'edit'      => 'M333',
+                'update'    => 'M334',
+                'delete'    => 'M335',
+                'show'      => 'M336',
+                ]
+        ]);
 
 
-        Route::get('/package','ActivityController@package',$n)->name('M330');
         Route::get('/room','ActivityController@room',$n)->name('M340');
         Route::view('/calendar','home/mng-activity/calendar',$n)->name('M350');
 

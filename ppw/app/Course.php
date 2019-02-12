@@ -13,6 +13,8 @@ class Course extends Model
         'discipline_id'
     ];
 
+    protected $hidden = ['pivot'];
+
     public function user(){
 
         return $this->belongsToMany('App\User','course_user','user_id','course_id');
