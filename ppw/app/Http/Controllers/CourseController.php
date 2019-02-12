@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\Rule;
 use Validator;
 use App\Course;
 use App\Discipline;
@@ -35,7 +36,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $courses        = DB::select(CourseController::$queryAll);
+        $courses        = $this->fetchAll();
         $disciplines    = DB::table('disciplines')->select('id','nome')->get()->toArray();
         return view('home/mng-activity/course/course-create', compact('courses','disciplines'));
     }
@@ -50,6 +51,8 @@ class CourseController extends Controller
     {
         $validate = Validator::make($request->all(),[
             'nome_corso' => 'required|unique:courses|max:255',
+            'costo_orario' => 'required|numeric|between:0,99.99',
+
         ]);
 
         //        dd($request->validated);
@@ -92,9 +95,12 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        $courses = DB::table(CourseController::$queryAll)->get();
+        $courses = $this->fetchAll();
+        $disciplines    = DB::table('disciplines')->select('id','nome')->get()->toArray();
+        $discipline = Discipline::find( $course->discipline_id )->id;
         return view('home/mng-activity/course/course-edit',
-            compact('courses'))
+            compact('courses', 'disciplines'))
+            ->with('discipline', $discipline)
             ->with('course', $course);
     }
 
@@ -108,8 +114,9 @@ class CourseController extends Controller
     public function update(Request $request, Course $course)
     {
         $validate = Validator::make($request->all(),[
-            'nome' => 'required|unique:disciplines|max:255',
-        ]);
+            'nome_corso' => ['required','max:255', Rule::unique('courses')->ignore($course->nome_corso, 'nome_corso')],
+            'costo_orario' => 'required|numeric|between:0,99.99',
+            ]);
 
         if($validate->fails()){
             return redirect()->route('M323',$course->id)
@@ -137,11 +144,15 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        $courses = DB::table('course')->get();
-        //        $nome = $course->nome;
-        //        $course->delete();
-        return view('home/mng-activity/course-delete')
-            ->with('course', $course->nome)
-            ->with('courses',$courses);
+        $courses = $this->fetchAll();
+        $disciplines    = DB::table('disciplines')->select('id','nome')->get()->toArray();
+        $course->delete();
+        $nome = $course->nome_corso;
+        return view('home/mng-activity/course/course-delete',compact('courses', 'disciplines'))
+            ->with('course', $nome);
+    }
+
+    protected function fetchAll(){
+        return DB::select(CourseController::$queryAll);
     }
 }

@@ -2,7 +2,7 @@
 
 @section('modal')
 
-    @include('forms.discipline.form-edit')
+    @include('forms.course.form-edit')
 
 
 

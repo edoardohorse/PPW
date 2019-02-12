@@ -16,7 +16,7 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome_corso');
-            $table->integer('costo_orario');
+            $table->float('costo_orario');
             $table->integer('discipline_id')->unsigned();
             $table->timestamps();
         });

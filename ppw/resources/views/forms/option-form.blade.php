@@ -31,10 +31,13 @@
                 @if(!empty($key))
 
                     <select class="custom-select" name="{{$input_name}}" id="{{$input_name}}">
-                        <option selected> {{ $option_default  }} </option>
 
                         @foreach($options as $option)
-                            <option value="{{$option->{$key} }}">{{$option->{$value} }}</option>
+                            @if($option_default == $option->{$key})
+                                <option selected value="{{$option->{$key} }}">{{$option->{$value} }}</option>
+                            @else
+                                <option  value="{{$option->{$key} }}">{{$option->{$value} }}</option>
+                            @endif
                         @endforeach
 
                     </select>

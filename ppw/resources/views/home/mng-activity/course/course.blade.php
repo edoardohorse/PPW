@@ -5,7 +5,7 @@
 
 
 @section('main')
-    <h1>Discipline</h1>
+    <h1>Corsi</h1>
 
     @if(!empty($courses))
         @include('home-tables.course-table')
@@ -14,7 +14,7 @@
     @yield('modal')
 
     <a class="btn btn-lg btn-primary" id="redirect_create"
-            href="{{route('M321')}}">Nuova corso</a>
+            href="{{route('M321')}}">Nuovo corso</a>
 
     <a class="btn btn-lg btn-secondary disabled" id="redirect_edit"
             href="#">Modifica</a>

@@ -1,4 +1,4 @@
-@extends('forms.discipline.form-discipline');
+@extends('forms.discipline.form-discipline')
 
 
 @section('modal-title')

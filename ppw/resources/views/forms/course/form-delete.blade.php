@@ -1,4 +1,4 @@
-@extends('forms.discipline.form-discipline');
+@extends('forms.course.form-course')
 
 
 @section('modal-title')
@@ -13,6 +13,6 @@
 
 @section('form')
 
-    <p>{{$discipline}} eliminata</p>
+    <p>{{$course}} eliminata</p>
 
 @stop
