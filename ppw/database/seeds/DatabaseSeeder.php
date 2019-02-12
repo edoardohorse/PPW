@@ -13,14 +13,20 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             DisciplineSeed::class,
+            CourseSeed::class,
+            PackageSeed::class,
+            RoomSeed::class,
+            SchedulingSeed::class,
+
+
+
             AsdSeed::class,
             UserSiteSeed::class,
             MemberSeed::class,
             UserSeed::class,
-            PackageUserSeed::class,
+//            PackageUserSeed::class,
             ProviderSeed::class,
             AsdMemberSeed::class,
-            SchedulingCourseSeed::class,
 //            CourseUserSeed::class,
             /*CollaboratorSeed::class,
             TaxDataSeed::class,
@@ -32,7 +38,6 @@ class DatabaseSeeder extends Seeder
             TeacherCourseSeed::class,
             PackageCourseSeed::class,
 
-            RoomSchedulingSeed::class,
             ReportSeed::class,
 */
 
