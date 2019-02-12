@@ -14,6 +14,9 @@
     <a class="btn btn-lg btn-primary" id="redirect_create"
             href="{{route('M311')}}">Nuova disciplina</a>
 
+    <a class="btn btn-lg btn-primary" id="redirect_show"
+       href="#">Visualizza disciplina</a>
+
     <a class="btn btn-lg btn-secondary disabled" id="redirect_edit"
             href="#">Modifica</a>
 

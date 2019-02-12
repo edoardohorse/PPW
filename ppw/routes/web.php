@@ -118,6 +118,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 'edit'      => 'M313',
                 'update'    => 'M314',
                 'delete'    => 'M315',
+                'show'      => 'M316',
             ]
         ]);
 
@@ -130,6 +131,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 'edit'      => 'M323',
                 'update'    => 'M324',
                 'delete'    => 'M325',
+                'show'      => 'M326',
             ]
         ]);
 

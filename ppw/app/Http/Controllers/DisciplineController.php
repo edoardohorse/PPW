@@ -77,7 +77,10 @@ class DisciplineController extends Controller
      */
     public function show(Discipline $discipline)
     {
-        dd($discipline->attributesToArray());
+        $disciplines = DB::table('disciplines')->get();
+        return view('home/mng-activity/discipline/discipline-show',
+            compact('disciplines'))
+            ->with('discipline', $discipline);
     }
 
     /**
