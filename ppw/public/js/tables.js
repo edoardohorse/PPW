@@ -12,6 +12,16 @@ const eventDeselectedRow = document.createEvent('Event');
 eventSelectedRow.initEvent('selectedRow', true, true);
 eventDeselectedRow.initEvent('deselectedRow', true, true);
 
+let url
+
+if(location.search == ""){
+    url = location.href
+}
+else{
+    url = location.href.substring(0, location.href.indexOf('?'))
+}
+
+
 function getId(){
     return  table.cell('.selected', 0).data();
 }
