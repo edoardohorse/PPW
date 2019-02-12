@@ -1,16 +1,16 @@
 @extends('layout.master')
 
-@section('lib_css')
+@prepend('lib_css')
     <link rel="stylesheet" href="{{ asset('css/home.css')  }}">
     <link rel="stylesheet" href="{{ asset('css/header.css')  }}">
     <link rel="stylesheet" href="{{ asset('css/sidenav.css')  }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-@stop
+@endprepend
 
-@section('lib_script')
+@prepend('lib_script')
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
-@stop
+@endprepend
 
 @prepend('lib_end_script')
     <script src="{{ asset('js/tables.js') }}"></script>

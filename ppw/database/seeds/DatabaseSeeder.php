@@ -20,16 +20,18 @@ class DatabaseSeeder extends Seeder
             PackageUserSeed::class,
             ProviderSeed::class,
             AsdMemberSeed::class,
+            SchedulingCourseSeed::class,
+//            CourseUserSeed::class,
             /*CollaboratorSeed::class,
             TaxDataSeed::class,
             CardSeed::class,
-            CourseUserSeed::class,
+
             InternalSeed::class,
             TeacherSeed::class,
             InternalCourseSeed::class,
             TeacherCourseSeed::class,
             PackageCourseSeed::class,
-            SchedulingCourseSeed::class,
+
             RoomSchedulingSeed::class,
             ReportSeed::class,
 */
