@@ -13,9 +13,10 @@ class PdfController extends Controller
     public function pdf()
     {
 
-        $payments = DB::select("SELECT I.id, I.data, I.tipo_transazione, I.descrizione, I.importo, M.nome, M.indirizzo, I.created_at
+        $payments = DB::select("SELECT I.id, I.data, I.modalita_pagamento, I.descrizione, I.importo, M.nome, M.indirizzo, I.created_at
 FROM transactions as I, asds as M
-WHERE I.asd_id=M.id AND I.id= 1");
+WHERE I.asd_id=M.id AND M.id= 1 AND tipo_transazione='entrata'");
+
 
 
 
