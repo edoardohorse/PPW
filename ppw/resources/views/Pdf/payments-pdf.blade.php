@@ -1,4 +1,4 @@
-@extends('layout.pdf_receipt')
+@extends('layout.pdf-receipt')
 
 
 @forelse($payments as $payment)
@@ -23,7 +23,7 @@
 
 @section('metodo_pagamento')
 
-    {{$payment->tipo_transazione}}
+    {{$payment->modalita_pagamento}}
 @stop
 
 @section('importo')

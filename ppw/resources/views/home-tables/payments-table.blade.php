@@ -12,7 +12,7 @@
     </thead>
 
     <tbody>
-    @forelse($transactions as $transaction)
+    @foreach($transactions as $transaction)
         <tr>
             <td>{{$transaction->id}}</td>
             <td>{{$transaction->descrizione}}</td>
@@ -20,12 +20,10 @@
             <td>{{$transaction->modalita_pagamento}}</td>
             <td>{{$transaction->created_at}}</td>
             <td>{{$transaction->file_fattura}}</td>
-            <td><a href="/pdf"> Esporta pdf</a></td>
+            <td><a href="{{action('PdfController@pdf', $transaction->id)}}"> Esporta pdf</a></td>
         </tr>
 
-    @empty
-        <tr><td>Tabella vuota</td></tr>
-    @endforelse
+    @endforeach
     </tbody>
 
 </table>
