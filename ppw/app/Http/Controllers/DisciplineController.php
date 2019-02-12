@@ -133,9 +133,11 @@ class DisciplineController extends Controller
      */
     public function destroy(Discipline $discipline)
     {
+        $disciplines = DB::table('disciplines')->get();
 //        $nome = $discipline->nome;
 //        $discipline->delete();
         return view('home/mng-activity/discipline/discipline-delete')
-            ->with('discipline', $discipline->nome);
+            ->with('discipline', $discipline->nome)
+            ->with('disciplines',$disciplines);
     }
 }
