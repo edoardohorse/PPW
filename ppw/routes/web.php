@@ -145,8 +145,8 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
         ]);
 
 
-        Route::get('/room','ActivityController@room',$n)->name('M340');
-        Route::view('/calendar','home/mng-activity/calendar',$n)->name('M350');
+        Route::get('/room','ActivityController@room')->name('M340');
+        Route::view('/calendar','home/mng-activity/calendar')->name('M350');
 
     });
 
