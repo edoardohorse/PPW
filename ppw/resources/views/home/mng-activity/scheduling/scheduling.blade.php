@@ -4,9 +4,10 @@
 
 
 
-
 @section('main')
-    <h1>Sale</h1>
+    <h1>Programmzione</h1>
+
+
 
     @include('layout.calendar_scheduling')
 
@@ -17,11 +18,6 @@
             href="{{route('M351')}}">Nuova lezione</a>
 
 
-    <a class="btn btn-lg btn-primary" id="redirect_show"
-       href="#">Visualizza sala</a>
-
-    <a class="btn btn-lg btn-secondary disabled" id="redirect_edit"
-            href="#">Modifica</a>
 
     <form class="d-inline" action="" method="POST">
         @csrf
@@ -37,5 +33,5 @@
 
 
 @push('lib_end_script')
-    <script src="{{asset('js/it.js')}}"></script>
+    <script src="{{asset('js/scheduling.js')}}"></script>
 @endpush

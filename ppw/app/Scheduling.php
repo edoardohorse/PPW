@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Scheduling extends Model
 {
+
+    protected $fillable = [
+        'giorno',
+        'ora_inizio',
+        'ora_fine',
+    ];
+
     public function course(){
 
         return $this->belongsToMany('App\Course','scheduling_course','scheduling_id','course_id')->withTimestamps();
