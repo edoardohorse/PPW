@@ -173,8 +173,9 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
 
     });
 
-Route::view('/report-stats','/home/report-stats')->name('M400');
+Route::get('/report-stats','ChartsController@charts')->name('M400');
 });
+
 
 
 Route::get('/pdf','PdfController@pdf');

@@ -16,7 +16,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         "provincia"=> "TA",
         "data_nascita"=> "1997-05-11",
         "genere"=> "Maschio",
-        "tipo"=> null,
+        "tipo"=> 'fondatore',
         "member_id"=> 1,
         "created_at"=> "2019-02-11 09:03:16",
         "updated_at"=> "2019-02-11 09:03:16",
