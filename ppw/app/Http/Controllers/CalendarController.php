@@ -39,8 +39,10 @@ WHERE c.id = shc.course_id
         $calendar = Calendar::addEvents($events) //add an array with addEvents
         ->setOptions([ //set fullcalendar options
             'defaultView' => 'agendaWeek',
-
+            'minTime' => '08:00:00',
+            'maxTime' => '24:00:00',
             'header' => [
+
                 'firstDay' => 1,
                 'left' => 'prev,next today',
                 'center' => 'title',
