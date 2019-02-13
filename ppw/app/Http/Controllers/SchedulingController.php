@@ -6,13 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 
-
-class CalendarController extends Controller
+class SchedulingController extends Controller
 {
+
     private static $DAYS = ['Lunedi','Martedi','Mercoledi','Giovedi','Venerdi','Sabato','Domenica'];
-
-
-
 
     private function  getStartAndEndDate($week, $year) {
         $dto = new \DateTime();
@@ -34,27 +31,32 @@ class CalendarController extends Controller
             $tmp = $first;
             $tmp .='-'.(string) date('m');
             $tmp.='-'.(string) date('Y');
-            $days[CalendarController::$DAYS[$i]] = $tmp;
+            $days[SchedulingController::$DAYS[$i]] = $tmp;
         }
         return $days;
     }
 
 
-    public function calendar(){
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
         $events = [];
         $data = DB::select("SELECT sh.ora_inizio, sh.ora_fine, c.nome_corso, sh.giorno
 FROM schedulings as sh, courses as c, scheduling_course as shc
 WHERE c.id = shc.course_id
   AND   shc.scheduling_id = sh.id");
 
-    $days = $this->getArrayByWeek();
+        $days = $this->getArrayByWeek();
 
-//    dd($days);
+        //    dd($days);
 
-    foreach ($data as $key => $value) {
-                $events[] = Calendar::event(
-                  $value->nome_corso,
+        foreach ($data as $key => $value) {
+            $events[] = Calendar::event(
+                $value->nome_corso,
                 false,
                 new \DateTime($days[$value->giorno].' '.$value->ora_inizio),
                 new \DateTime($days[$value->giorno].' '.$value->ora_fine),
@@ -67,7 +69,7 @@ WHERE c.id = shc.course_id
                     // 'url' => 'pass here url and any route',
                 ]);
 
-            }
+        }
 
         $calendar = Calendar::addEvents($events) //add an array with addEvents
         ->setOptions([ //set fullcalendar options
@@ -88,6 +90,73 @@ WHERE c.id = shc.course_id
         ]);
 
         return view('home/mng-activity/calendar', compact('calendar'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
 
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }
+
+
