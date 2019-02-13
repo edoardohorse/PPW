@@ -14,7 +14,6 @@ $factory->define(App\Member::class, function (Faker $faker) {
         "numero_ass" => 123,
         "data_cert_medico" => "2019-02-22",
         "scadenza_cert_med" => "2019-02-23",
-        "ruolo" => "fond",
         "note" => "note",
         "p_iva" => "12345678910",
         "created_at" => "2019-02-11 09:03:16",
