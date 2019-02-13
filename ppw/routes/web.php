@@ -159,9 +159,18 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 ]
         ]);
 
+        Route::resource('scheduling', 'SchedulingController',[
+            'names' =>[
+                'index'     => 'M350',
+                'create'    => 'M351',
+                'store'     => 'M352',
+                'edit'      => 'M353',
+                'update'    => 'M354',
+                'delete'    => 'M355',
+                'show'      => 'M356',
+            ]
+        ]);
 
-
-        Route::get('/calendar','CalendarController@calendar')->name('M350');
 
     });
 
