@@ -76,6 +76,8 @@ WHERE c.id = shc.course_id
             'defaultView' => 'agendaWeek',
             'minTime' => '08:00:00',
             'maxTime' => '24:00:00',
+            'locale' => 'it',
+            'axisFormat' => 'HH:mm',
             'header' => [
 
                 'firstDay' => 1,
