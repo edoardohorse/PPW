@@ -4,9 +4,10 @@
 
 
 
-
 @section('main')
-    <h1>Sale</h1>
+    <h1>Programmzione</h1>
+
+
 
     @include('layout.calendar_scheduling')
 
@@ -18,7 +19,7 @@
 
 
     <a class="btn btn-lg btn-primary" id="redirect_show"
-       href="#">Visualizza sala</a>
+       href="#">Visualizza lezione</a>
 
     <a class="btn btn-lg btn-secondary disabled" id="redirect_edit"
             href="#">Modifica</a>
@@ -37,5 +38,5 @@
 
 
 @push('lib_end_script')
-    <script src="{{asset('js/it.js')}}"></script>
+    <script src="{{asset('js/scheduling.js')}}"></script>
 @endpush
