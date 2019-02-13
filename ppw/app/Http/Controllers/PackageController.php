@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class PackageController extends Controller
 {
 
-    static $queryAll = "SELECT p.id,p.nome_pacchetto,p.prezzo,c.nome_corso,p.created_at,p.updated_at FROM packages p,package_course pc,courses c WHERE c.id = pc.course_id ORDER BY p.id";
+//    static $queryAll = "SELECT p.id,p.nome_pacchetto,p.prezzo,c.nome_corso,p.created_at,p.updated_at FROM packages p,package_course pc,courses c WHERE c.id = pc.course_id ORDER BY p.id";
     static $path = 'home/mng-activity/package/package';
 
     /**
@@ -38,7 +38,7 @@ class PackageController extends Controller
     public function create()
     {
         $packages = $this->fetchAll();
-        $courses = DB::table('courses')->select('id', 'nome_corso')->get()->toArray();
+        $courses =  Course::all(['id', 'nome_corso'])->toArray();
         return view(PackageController::$path . '-create', compact('packages', 'courses'));
     }
 
@@ -122,19 +122,19 @@ class PackageController extends Controller
     {
         $packages = $this->fetchAll();
 
-        $courses_assigned       = Package::find($package->id)->course()->get(['id','nome_corso'])->toArray();
-        $tmp                    = Package::find($package->id)->course()->get(['id'])->toArray();
+        $courses    = Course::all(['id','nome_corso'])->toArray();
+        $tmp        = Package::find($package->id)->course()->get(['id'])->toArray();
 
 
-        $courses_assigned_id = [];
+        $coursesAssignedId = [];
         foreach ($tmp as $course) {
-            array_push($courses_assigned_id, $course['id']);
+            array_push($coursesAssignedId, $course['id']);
         }
 
 
         return view(PackageController::$path.'-edit', compact('package', 'packages'))
-            ->with('courses',$courses_assigned)
-            ->with('courses_id',$courses_assigned_id);
+            ->with('courses',$courses)
+            ->with('courses_id',$coursesAssignedId);
     }
 
     /**
@@ -162,15 +162,18 @@ class PackageController extends Controller
             );
             $tmp = $package->course()->get(['id'])->toArray();
 
-            $courses = [];
+            $coursesAssigned = [];
             foreach ($tmp as $course) {
-                array_push($courses, $course['id']);
+                array_push($coursesAssigned, $course['id']);
             }
 
-//            dd($courses);
-//            dd($request->courses);
+            $flippedC = array_flip($coursesAssigned);
+            $flipperR = array_flip($request->courses);
 
-//            $package->fill($fields)->save();
+            $courseIdToRemove=  array_flip(array_diff_key($flippedC, $flipperR));
+
+            $package->course()->detach($courseIdToRemove);
+            $package->fill($fields)->save();
 
 
             return redirect()->route('M330');
@@ -186,11 +189,11 @@ class PackageController extends Controller
     public function destroy(Package $package)
     {
         $packages = $this->fetchAll();
-        $disciplines = DB::table('disciplines')->select('id', 'nome')->get()->toArray();
+        $courses = DB::table('courses')->select('id', 'nome_corso')->get()->toArray();
         $package->delete();
-        $nome = $package->nome_corso;
-        return view(PackageController::$path . '-delete', compact('courses', 'disciplines'))
-            ->with('course', $nome);
+        $nome = $package->nome_pacchetto;
+        return view(PackageController::$path . '-delete', compact('packages', 'courses'))
+            ->with('package', $nome);
     }
 
     protected function fetchAll()

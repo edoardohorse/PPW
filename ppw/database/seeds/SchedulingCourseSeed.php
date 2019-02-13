@@ -11,15 +11,36 @@ class SchedulingCourseSeed extends Seeder
      */
     public function run()
     {
-        factory(App\Scheduling::class, 5)->create()
-            ->each(function($scheduling){
-                $course = App\Course::inRandomOrder()->take(3)->pluck('id');
-                $course->each(function($course) use($scheduling){
-                    App\SchedulingCourse::create([
-                        'scheduling_id' => $scheduling->id,
-                        'course_id' => $course
-                    ]);
-                });
-            });
+        DB::table('scheduling_course')->insert([
+            [
+                'course_id'=>'1',
+                'scheduling_id'=>'1',
+            ],
+ [
+                'course_id'=>'2',
+                'scheduling_id'=>'2',
+            ],
+ [
+                'course_id'=>'5',
+                'scheduling_id'=>'3',
+            ],
+ [
+                'course_id'=>'4',
+                'scheduling_id'=>'4',
+            ],
+ [
+                'course_id'=>'5',
+                'scheduling_id'=>'5',
+            ],
+ [
+                'course_id'=>'6',
+                'scheduling_id'=>'6',
+            ],
+ [
+                'course_id'=>'1',
+                'scheduling_id'=>'7',
+            ],
+
+        ]);
     }
 }

@@ -28,4 +28,4 @@
 @stop
 
 
-@section('modal-cancel', route('M330'))
+@section('modal-cancel', route('M340'))

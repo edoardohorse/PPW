@@ -13,6 +13,6 @@ class Discipline extends Model
 
     public function course(){
 
-        return $this->hasMany('App\Course');
+        return $this->hasMany('App\Course')->withTimestamps();
     }
 }

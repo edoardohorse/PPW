@@ -1,21 +1,24 @@
 @extends('layout.master_home')
 
-@section('title','Discipline')
+@section('title','Sale')
 
 
 
 @section('main')
-    <h1>Discipline</h1>
+    <h1>Sale</h1>
 
-    @include('home-tables.discipline-table')
+
+
+    @include('home-tables.room-table')
 
     @yield('modal')
 
     <a class="btn btn-lg btn-primary" id="redirect_create"
-            href="{{route('M311')}}">Nuova disciplina</a>
+            href="{{route('M341')}}">Nuova sala</a>
+
 
     <a class="btn btn-lg btn-primary" id="redirect_show"
-       href="#">Visualizza disciplina</a>
+       href="#">Visualizza sala</a>
 
     <a class="btn btn-lg btn-secondary disabled" id="redirect_edit"
             href="#">Modifica</a>
@@ -34,5 +37,5 @@
 
 
 @push('lib_end_script')
-<script src="{{asset('js/disc.js')}}"></script>
+    <script src="{{asset('js/room.js')}}"></script>
 @endpush

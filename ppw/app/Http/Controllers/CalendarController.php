@@ -23,13 +23,14 @@ AND   shc.scheduling_id = sh.id");
                 $events[] = Calendar::event(
                   $value->nome_corso,
                 false,
-
                 new \DateTime($value->ora_inizio),
                 new \DateTime($value->ora_fine),
                 null,
                 // Add color and link on event
                 [
                     'color' => '#f05050',
+
+
                     // 'url' => 'pass here url and any route',
                 ]);
 
@@ -37,11 +38,15 @@ AND   shc.scheduling_id = sh.id");
 
         $calendar = Calendar::addEvents($events) //add an array with addEvents
         ->setOptions([ //set fullcalendar options
+            'defaultView' => 'agendaWeek',
+
             'header' => [
-                'firstDay' => now(),
+                'firstDay' => 1,
                 'left' => 'prev,next today',
                 'center' => 'title',
-                'right' => 'agendaWeek,agendaDay',
+                'right' => 'agendaWeek,agendaDay'
+
+
             ],
             'eventLimit' => true,
 

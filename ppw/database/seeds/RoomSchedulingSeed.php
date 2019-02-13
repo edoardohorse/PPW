@@ -11,15 +11,44 @@ class RoomSchedulingSeed extends Seeder
      */
     public function run()
     {
-        factory(App\Room::class, 5)->create()
-            ->each(function($room){
-                $scheduling = App\Scheduling::inRandomOrder()->take(3)->pluck('id');
-                $scheduling->each(function($scheduling) use($room){
-                    App\RoomScheduling::create([
-                        'room_id' => $room->id,
-                        'scheduling_id' => $scheduling
-                    ]);
-                });
-            });
+        DB::table('room_scheduling')->insert([
+           [
+               'room_id'=>'1',
+               'scheduling_id'=>'1',
+           ],
+            [
+                'room_id'=>'1',
+                'scheduling_id'=>'2',
+            ],
+            [
+                'room_id'=>'1',
+                'scheduling_id'=>'3',
+            ],
+            [
+                'room_id'=>'2',
+                'scheduling_id'=>'4',
+            ],
+            [
+                'room_id'=>'4',
+                'scheduling_id'=>'5',
+            ],
+            [
+                'room_id'=>'2',
+                'scheduling_id'=>'6',
+            ],
+            [
+                'room_id'=>'1',
+                'scheduling_id'=>'7',
+            ],
+            [
+                'room_id'=>'2',
+                'scheduling_id'=>'8',
+            ],
+            [
+                'room_id'=>'2',
+                'scheduling_id'=>'9',
+            ],
+
+        ]);
     }
 }

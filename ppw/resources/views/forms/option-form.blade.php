@@ -30,7 +30,9 @@
 
                 @if(!empty($key))
 
-                    <select class="custom-select" name="{{$input_name}}" id="{{$input_name}}">
+                    <select class="custom-select"
+                            @if(!empty($readonly))disabled @endif
+                            name="{{$input_name}}" id="{{$input_name}}">
 
                         @foreach($options as $option)
                             @if($option_default == $option->{$key})
@@ -44,7 +46,9 @@
 
                 @else
 
-                    <select class="custom-select" name="{{$input_name}}" id="{{$input_name}}">
+                    <select class="custom-select"
+                            @if(!empty($readonly))disabled @endif
+                            name="{{$input_name}}" id="{{$input_name}}">
                         <option selected> {{ $option_default  }} </option>
 
                         @foreach($options as $option)

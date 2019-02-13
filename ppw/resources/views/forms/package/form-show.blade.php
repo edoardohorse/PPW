@@ -23,7 +23,7 @@
 
     @include('forms.input-form',[
                 'type'  => 'text',
-                'label' => 'Nome pacchetto',
+                'label' => 'Prezzo pacchetto',
                 'input_name' => 'prezzo',
                 'placeholder'   => '21.0',
                 'readonly'  => 'true',

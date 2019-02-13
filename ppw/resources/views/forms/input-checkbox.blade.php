@@ -11,20 +11,24 @@
 
 {{--    {{dd($key)}}--}}
         @foreach($checkboxes as $checkbox)
-{{--            {{dd($checkbox[$key] )}}--}}
+            {{--{{dd($checkbox[$key] )}}--}}
             <br>
 
+            {{-- Se modifico o visualizzo--}}
             @if(!empty($checked))
-                @if(in_array($checkbox[$key], $checked))
                     <input type="checkbox" class="ml-1 mr-3" name="{{$input_name}}"
                            @if(!empty($readonly))disabled @endif
-                           checked value="{{$checkbox[$key] }}"><span>{{$checkbox[$value] }}</span>
+                @if(in_array($checkbox[$key], $checked))
+                           checked
                 @endif
+                           value="{{$checkbox[$key] }}"><span>{{$checkbox[$value] }}</span>
+
+            {{-- Se creo--}}
             @else
 
             <input type="checkbox" class="ml-1 mr-3" name="{{$input_name}}"
                    @if(!empty($readonly))disabled @endif
-                   value="{{$checkbox->{$key} }}"><span>{{$checkbox->{$value} }}</span>
+                   value="{{$checkbox[$key] }}"><span>{{$checkbox[$value] }}</span>
             @endif
 
         @endforeach
