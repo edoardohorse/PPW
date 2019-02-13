@@ -12,10 +12,10 @@ class CalendarController extends Controller
     public function calendar(){
 
         $events = [];
-        $data = DB::select("SELECT sh.ora_inizio, sh.ora_fine, c.nome_corso
+        $data = DB::select("SELECT sh.ora_inizio, sh.ora_fine, c.nome_corso, sh.giorno
 FROM schedulings as sh, courses as c, scheduling_course as shc
 WHERE c.id = shc.course_id
-AND   shc.scheduling_id = sh.id");
+  AND   shc.scheduling_id = sh.id");
 
 
 

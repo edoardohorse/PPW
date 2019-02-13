@@ -161,7 +161,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
 
 
 
-        Route::view('/calendar','home/mng-activity/calendar')->name('M350');
+        Route::get('/calendar','CalendarController@calendar')->name('M350');
 
     });
 
