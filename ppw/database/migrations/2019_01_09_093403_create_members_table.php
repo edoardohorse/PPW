@@ -23,7 +23,7 @@ class CreateMembersTable extends Migration
             $table->integer('numero_ass')->nullable();
             $table->date('data_cert_medico')->nullable();
             $table->date('scadenza_cert_med')->nullable();
-            $table->enum('ruolo', [ 'fond', 'seg' ]);
+//            $table->enum('ruolo', [ 'fond', 'seg' ]);
             $table->string('note')->nullable();
             $table->string('p_iva')->nullable();
 
