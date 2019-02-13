@@ -18,11 +18,6 @@
             href="{{route('M351')}}">Nuova lezione</a>
 
 
-    <a class="btn btn-lg btn-primary" id="redirect_show"
-       href="#">Visualizza lezione</a>
-
-    <a class="btn btn-lg btn-secondary disabled" id="redirect_edit"
-            href="#">Modifica</a>
 
     <form class="d-inline" action="" method="POST">
         @csrf

@@ -89,7 +89,7 @@ class SchedulingController extends Controller
     public function store(Request $request)
     {
 
-//        dd($request->all());
+        //        dd($request->all());
 
         $validate = Validator::make($request->all(), [
             'giorno'      => 'required',
@@ -97,18 +97,18 @@ class SchedulingController extends Controller
             'ora_fine'  => 'required|date_format:H:i|after:ora_inizio',
         ]);
 
-        $hStart = $this->extractHour($request->ora_inizio);
-        $hEnd   = $this->extractHour($request->ora_fine);
+        $hStart = $this->extractHourToInt($request->ora_inizio);
+        $hEnd   = $this->extractHourToInt($request->ora_fine);
         $duration = $hEnd - $hStart;
 
-//        dd($hStart,$hEnd);
-//        dd($duration);
+        //        dd($hStart,$hEnd);
+        //        dd($duration);
 
         if($duration >2 ){
-            dd($duration);
+            //            dd($duration);
             $this->create('I corsi non possono durare di più di 2 ore');
         }
-//
+        //
         if ($validate->fails()) {
             return redirect()->route('M351')
                 ->withErrors($validate)
@@ -119,13 +119,13 @@ class SchedulingController extends Controller
             $schedulings = Room::find($idRoom)->scheduling()->get();
 
             $failed = false;
-//            var_dump('Ora inizio:'.$hStart,'Ora fine:'.$hEnd);
+            //            var_dump('Ora inizio:'.$hStart,'Ora fine:'.$hEnd);
 
 
             foreach($schedulings as $lesson){
                 if($lesson->giorno == $request->giorno) {
-                    $tmpHStart = $this->extractHour($lesson->ora_inizio);
-                    $tmpHEnd = $this->extractHour($lesson->ora_fine);
+                    $tmpHStart = $this->extractHourToInt($lesson->ora_inizio);
+                    $tmpHEnd = $this->extractHourToInt($lesson->ora_fine);
 
                     //                var_dump($tmpHStart,$tmpHEnd);
                     if ($hStart >= $tmpHEnd) {
@@ -168,7 +168,26 @@ class SchedulingController extends Controller
      */
     public function show($id)
     {
+        $schedule = Scheduling::find($id);
+        $roomDefault = $schedule->room()->first()->id;
+        $courseDefault = $schedule->course()->first()->id;
 
+        $orainizio = substr($schedule->ora_inizio,'0',5);
+        $orafine = substr($schedule->ora_fine,'0',5);
+
+
+        $calendar = $this->fetch();
+        $time = SchedulingController::$TIME;
+        $rooms = Room::all(['id','nome'])->toArray();
+        $courses =  Course::all(['id','nome_corso'])->toArray();
+        //        dd($roomDefault);
+
+
+
+
+        return view(SchedulingController::$path . '-show',
+            compact('calendar', 'schedule','time','orainizio','orafine',
+                'roomDefault','rooms', 'courseDefault','courses'));
     }
 
     /**
@@ -179,7 +198,29 @@ class SchedulingController extends Controller
      */
     public function edit($id)
     {
-        //
+//        dd($redirected);
+        $schedule = Scheduling::find($id);
+        $roomDefault = $schedule->room()->first()->id;
+        $courseDefault = $schedule->course()->first()->id;
+
+        $orainizio = substr($schedule->ora_inizio,'0',5);
+        $orafine = substr($schedule->ora_fine,'0',5);
+
+
+        $calendar = $this->fetch();
+        $time = SchedulingController::$TIME;
+        $rooms = Room::all(['id','nome'])->toArray();
+        $courses =  Course::all(['id','nome_corso'])->toArray();
+        //        dd($roomDefault);
+
+        if(session()->has('redirected'))
+            $redirected = session('redirected');
+        else
+            $redirected = null;
+
+        return view(SchedulingController::$path . '-edit',
+            compact('calendar', 'schedule','time','orainizio','orafine',
+                'roomDefault','rooms', 'courseDefault','courses','redirected'));
     }
 
     /**
@@ -191,7 +232,92 @@ class SchedulingController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $scheduling = Scheduling::find($id);
+
+        //        dd($request->all());
+
+        $fields = BootController::filterFieldsRequestFromFillable($request->all(),
+            Scheduling::class
+        );
+
+        $fieldsOriginal = BootController::filterFieldsRequestFromFillable($scheduling->toArray(),
+            Scheduling::class
+        );
+
+
+
+        //        $request->course
+
+
+        $validate = Validator::make($request->all(), [
+            'giorno'      => 'required',
+            'ora_inizio'=> 'required|date_format:H:i',
+            'ora_fine'  => 'required|date_format:H:i|after:ora_inizio',
+        ]);
+
+        $hStart = $this->extractHourToInt($request->ora_inizio);
+        $hEnd   = $this->extractHourToInt($request->ora_fine);
+        $duration = $hEnd - $hStart;
+
+        //        dd($hStart,$hEnd);
+        //        dd($duration);
+
+        if($duration >2 ){
+            //            dd($duration);
+
+
+            return redirect()->route('M353',$scheduling->id)->with('redirected','I corsi non possono durare di più di 2 ore')
+                ->withErrors($validate)
+                ->withInput();
+        }
         //
+        if ($validate->fails()) {
+            return redirect()->route('M353',$scheduling->id)
+                ->withErrors($validate)
+                ->withInput();
+        } else {
+
+            $idRoom = $request->room;
+            $schedulings = Room::find($idRoom)->scheduling()->get();
+
+            $failed = false;
+            //            var_dump('Ora inizio:'.$hStart,'Ora fine:'.$hEnd);
+
+
+            foreach ($schedulings as $lesson) {
+                if ($lesson->giorno == $request->giorno && $lesson->id != $scheduling->id) {
+                    $tmpHStart = $this->extractHourToInt($lesson->ora_inizio);
+                    $tmpHEnd = $this->extractHourToInt($lesson->ora_fine);
+
+                    //                var_dump($tmpHStart,$tmpHEnd);
+                    if ($hStart >= $tmpHEnd) {
+                        continue;
+                    } else {
+                        if ($hEnd <= $tmpHStart) {
+                            continue;
+                        } else {
+                            $failed = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if ($failed == true) {
+                return $this->create("La sala è già occupata per quell'ora");
+            }
+
+
+
+
+            $scheduling->fill($fields)->save();
+            $scheduling->course()->sync($request->course);
+            $scheduling->room()->sync($request->room);
+
+
+
+
+            return redirect()->route('M350');
+        }
     }
 
     /**
@@ -207,10 +333,17 @@ class SchedulingController extends Controller
 
     private function fetch(){
         $events = [];
-        $data = DB::select("SELECT sh.id, sh.ora_inizio, sh.ora_fine, c.nome_corso, sh.giorno
-FROM schedulings as sh, courses as c, scheduling_course as shc
-WHERE c.id = shc.course_id
-  AND   shc.scheduling_id = sh.id");
+        $data = DB::select("SELECT r.id,r.nome,c.nome_corso, s.giorno, s.ora_inizio, s.ora_fine
+                                    FROM courses  c, scheduling_course sc, schedulings s,
+                                            (SELECT s.id, r.nome,r.created_at,r.updated_at
+                                                FROM rooms as r, room_scheduling as rs, schedulings as s
+                                                    WHERE 	r.id 				= rs.room_id
+                                                    AND 	rs.scheduling_id	= s.id ) as r
+                                    
+                                            WHERE 	c.id 				= sc.course_id
+                                                AND 	sc.scheduling_id 	= s.id 
+                                                AND 	s.id = r.id
+                                                ORDER BY r.id");
 
         $days = $this->getArrayByWeek();
 
@@ -219,7 +352,7 @@ WHERE c.id = shc.course_id
         foreach ($data as $key => $value) {
 
             $events[] = Calendar::event(
-                $value->nome_corso,
+                $value->nome_corso.' - '.$value->nome,
                 false,
                 new \DateTime($days[$value->giorno].' '.$value->ora_inizio),
                 new \DateTime($days[$value->giorno].' '.$value->ora_fine),
@@ -227,7 +360,7 @@ WHERE c.id = shc.course_id
                 // Add color and link on event
                 [
                     'color' => '#f05050',
-                    'url'=>'/homepage'
+                    'url'=> route('M356',$value->id)
 
                     // 'url' => 'pass here url and any route',
                 ]);
@@ -240,7 +373,6 @@ WHERE c.id = shc.course_id
             'defaultView' => 'agendaWeek',
             'minTime' => '08:00:00',
             'maxTime' => '24:00:00',
-            'selectable' => true,
             'locale' => 'it',
             'header' => [
 
@@ -258,7 +390,9 @@ WHERE c.id = shc.course_id
         return $calendar;
     }
 
-    private function extractHour($time){return (int)substr($time,0,2);}
+    private function extractHourToInt($time){return (int)substr($time,0,2);}
+
+    private function extractHour($time){return substr($time,0,5);}
 }
 
 

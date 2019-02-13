@@ -56,7 +56,7 @@
 
     @include('forms.option-form',[
                 'label' => 'Corsi',
-                'input_name' => 'courses',
+                'input_name' => 'course',
                 'option_default' => $courseDefault,
                 'options'   => $courses,
                 'key'       =>'id',
@@ -64,13 +64,7 @@
 
     ])
     
-    {{--@include('forms.option-form',[--}}
-                {{--'label' => 'Fine lezione',--}}
-                {{--'input_name' => 'ora_fine',--}}
-                {{--'option_default' => '09:00',--}}
-                {{--'options'   => $time--}}
 
-    {{--])--}}
     
     
 
