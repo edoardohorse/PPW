@@ -12,7 +12,6 @@ Route::prefix('/welcome')->group(function(){
                                                         'redirected' => 'true'])    ->name('A001');
 
 });
-
 // A010
 Route::view('/boot',            'boot/boot')->name('A010');
 
@@ -117,7 +116,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 'store'     => 'M312',
                 'edit'      => 'M313',
                 'update'    => 'M314',
-                'delete'    => 'M315',
+                'destroy'    => 'M315',
                 'show'      => 'M316',
             ]
         ]);
@@ -130,7 +129,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 'store'     => 'M322',
                 'edit'      => 'M323',
                 'update'    => 'M324',
-                'delete'    => 'M325',
+                'destroy'    => 'M325',
                 'show'      => 'M326',
             ]
         ]);
@@ -142,7 +141,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 'store'     => 'M332',
                 'edit'      => 'M333',
                 'update'    => 'M334',
-                'delete'    => 'M335',
+                'destroy'    => 'M335',
                 'show'      => 'M336',
                 ]
         ]);
@@ -154,7 +153,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 'store'     => 'M342',
                 'edit'      => 'M343',
                 'update'    => 'M344',
-                'delete'    => 'M345',
+                'destroy'    => 'M345',
                 'show'      => 'M346',
                 ]
         ]);
@@ -166,7 +165,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 'store'     => 'M352',
                 'edit'      => 'M353',
                 'update'    => 'M354',
-                'delete'    => 'M355',
+                'destroy'    => 'M355',
                 'show'      => 'M356',
             ]
         ]);

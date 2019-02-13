@@ -19,12 +19,7 @@
 
 
 
-    <form class="d-inline" action="" method="POST">
-        @csrf
-        @method('DELETE')
-        <input type="submit" class="btn btn-lg disabled btn-danger" id="redirect_delete" href="#" value="Elimina"></input>
 
-    </form>
 
     @yield('other-btn')
 
