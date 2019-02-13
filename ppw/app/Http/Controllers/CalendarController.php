@@ -46,7 +46,7 @@ class CalendarController extends Controller
         $data = DB::select("SELECT sh.ora_inizio, sh.ora_fine, c.nome_corso, sh.giorno
 FROM schedulings as sh, courses as c, scheduling_course as shc
 WHERE c.id = shc.course_id
-AND   shc.scheduling_id = sh.id");
+  AND   shc.scheduling_id = sh.id");
 
     $days = $this->getArrayByWeek();
 
@@ -72,8 +72,10 @@ AND   shc.scheduling_id = sh.id");
         $calendar = Calendar::addEvents($events) //add an array with addEvents
         ->setOptions([ //set fullcalendar options
             'defaultView' => 'agendaWeek',
-
+            'minTime' => '08:00:00',
+            'maxTime' => '24:00:00',
             'header' => [
+
                 'firstDay' => 1,
                 'left' => 'prev,next today',
                 'center' => 'title',
