@@ -4,17 +4,11 @@
         display: inline-block;
     }
 
-    .right{
-
-        float: right;
-
-    }
-
     .position-sign{
 
         position:absolute;
         right:20%;
-        top:33%;
+        top:70%;
     }
 
 
@@ -24,53 +18,95 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-6">
             <div class="invoice-title">
-                <h2>Fattura n.@yield('numero_fattura')</h2>
+                <h2>Ricevuta n.@yield('numero_ricevuta')</h2>
             </div>
+        </div>
+        <div class="col-md-6">
+            <address>
+                <strong>Data emissione:</strong><br>
+                @yield('data_creazione')<br><br>
+            </address>
+        </div>
+    </div>
 
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <address>
+                <strong>Nome asd:</strong><br>
+                @yield('nome_asd')<br>
+                <table>
+                    <tr>
+                        <td>
+                            <strong>Indirizzo:  </strong><br>
+                            @yield('indirizzo')
+                        </td>
+                        <td>
+                            <strong>Numero di telefono:</strong><br>
+                            @yield('numero_tel')
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td><strong>Città:</strong><br>
+                            @yield('citta')
+                        </td>
+                        <td><strong>Provincia:</strong><br>
+                            @yield('provincia')
+                        </td>
+                        <td> <strong>CAP:</strong><br>
+                            @yield('cap')
+                        </td>
+
+                    </tr>
+                </table>
+
+                <strong>Cod. Fiscale:</strong><br>
+                @yield('cod_fiscale')<br>
+            </address>
+        </div>
+    </div>
+
+
+
+</div>
+</div>
+
+
+
+<body>
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">
             <hr>
+            <address>
+                <strong>Metodo di pagamento:</strong><br>
+                @yield('metodo_pagamento')
+            </address>
+        </div>
 
-            <div class="right">
-                <address>
-                    <strong>Nome asd:</strong><br>
-                    @yield('nome_asd')<br><br>
-                    <strong>Indirizzo:  </strong><br>
-                    @yield('indirizzo')
-                </address>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6">
-                <address>
-                    <strong>Metodo di pagamento:</strong><br>
-                    @yield('metodo_pagamento')<br><br>
-                </address>
-            </div>
-            <div class="col-xs-6 text-right">
-                <address>
-                    <strong>Data emissione:</strong><br>
-                    @yield('data_creazione')<br><br>
-                </address>
-            </div>
-        </div>
     </div>
 </div>
-<hr>
-<body>
-<div class="row">
-    <div class="col-md-12">
 
-                <h3 class="panel-title"><strong>Importo:</strong></h3>
-            </div>
-
-    <div class="panel-body">
-               <strong>@yield('importo')€</strong>
-        <div class="position-sign">
-            <strong>Firma</strong>
-        </div>
+    <div class="row">
+        <address>
+        <table>
+            <tr>
+        <td><strong>Importo:</strong><br>
+            <strong>@yield('importo')€</strong></td>
+        <td><strong>Descrizione:</strong><br>
+        @yield('descrizione')<br></td>
+            </tr>
+        </table>
+        </address>
     </div>
 
+<div class="position-sign">
+    <strong>Firma</strong>
 </div>
 </body>
 

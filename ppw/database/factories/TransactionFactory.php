@@ -13,8 +13,8 @@ $factory->define(App\Transaction::class, function (Faker $faker) {
         'file_fattura'=>$faker->imageUrl($width = 640, $height = 480),
         'data'=>$faker->dateTime,
         'tipo_fattura'=>$faker->word,
-        'tipo_transazione'=>$faker->word,
-        'tipo_ricevuta'=>$faker->word,
+        'tipo_transazione'=>$faker->randomElement(['entrata','uscita']),
+        'tipo_ricevuta'=>$faker->randomElement(['ricevuta','fattura']),
         'importo'=>$faker->randomFloat($nbMaxDecimals = NULL, $min = 1, $max = NULL),
 
     ];

@@ -20,8 +20,8 @@ class CreateTransactionsTable extends Migration
             $table->string('file_fattura');
             $table->dateTime('data');
             $table->string('tipo_fattura');
-            $table->string('tipo_transazione');
-            $table->string('tipo_ricevuta')->nullable();
+            $table->enum('tipo_transazione', array('entrata', 'uscita'));
+            $table->enum('tipo_ricevuta', array('ricevuta', 'fattura'));
             $table->double('importo');
             $table->integer('asd_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned()->nullable();

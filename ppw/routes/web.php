@@ -118,6 +118,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 'edit'      => 'M313',
                 'update'    => 'M314',
                 'delete'    => 'M315',
+                'show'      => 'M316',
             ]
         ]);
 
@@ -130,13 +131,37 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 'edit'      => 'M323',
                 'update'    => 'M324',
                 'delete'    => 'M325',
+                'show'      => 'M326',
             ]
         ]);
 
+        Route::resource('package', 'PackageController',[
+            'names' =>[
+                'index'     => 'M330',
+                'create'    => 'M331',
+                'store'     => 'M332',
+                'edit'      => 'M333',
+                'update'    => 'M334',
+                'delete'    => 'M335',
+                'show'      => 'M336',
+                ]
+        ]);
 
-        Route::get('/package','ActivityController@package')->name('M330');
-        Route::get('/room','ActivityController@room')->name('M340');
-        Route::get('/calendar','CalendarController@calendar')->name('M350');
+        Route::resource('room', 'RoomController',[
+            'names' =>[
+                'index'     => 'M340',
+                'create'    => 'M341',
+                'store'     => 'M342',
+                'edit'      => 'M343',
+                'update'    => 'M344',
+                'delete'    => 'M345',
+                'show'      => 'M346',
+                ]
+        ]);
+
+
+
+        Route::view('/calendar','home/mng-activity/calendar')->name('M350');
 
     });
 
@@ -145,6 +170,8 @@ Route::view('/report-stats','/home/report-stats')->name('M400');
 
 
 Route::get('/pdf','PdfController@pdf');
+
+Route::get('/pdf-invoice', 'PdfController@pdfinvoices');
 
 
 

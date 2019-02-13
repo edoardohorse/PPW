@@ -11,14 +11,22 @@ class DisciplineSeed extends Seeder
      */
     public function run()
     {
-        factory(App\Discipline::class, 5)->create()->each(function(App\Discipline $discipline)
-        {
-
-            foreach(range(1, 2) as $i)
-            {
-                $discipline->course()->save(factory(App\Course::class)->make());
-
-            }
-        });
+//        factory(App\Discipline::class, 1)->create();
+        DB::table('disciplines')->insert(
+            [
+            [
+            'id'    => '1',
+            'nome'=>'Danza',
+            ],
+            [
+                'id'    =>'2',
+                'nome'=>'Combattimento',
+            ],
+            [
+                'id'    =>'3',
+                'nome'=>'Relax',
+            ]
+                ]
+        );
     }
 }

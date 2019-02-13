@@ -1,4 +1,4 @@
-@extends('forms.course.form-course');
+@extends('forms.course.form-course')
 
 
 @section('modal-title')
@@ -22,6 +22,7 @@
                 'type'  => 'text',
                 'label' => 'Costo orario',
                 'input_name' => 'costo_orario',
+                'placeholder'   => '7.50'
 
     ])
 

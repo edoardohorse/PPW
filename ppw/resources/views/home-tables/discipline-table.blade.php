@@ -11,7 +11,7 @@
     </thead>
 
     <tbody>
-    @forelse($disciplines as $discipline)
+    @foreach($disciplines as $discipline)
         <tr>
             <td>{{$discipline->id}}</td>
             <td>{{$discipline->nome}}</td>
@@ -19,9 +19,7 @@
             <td>{{$discipline->updated_at}}</td>
         </tr>
 
-    @empty
-        <tr><td>Tabella vuota</td></tr>
-    @endforelse
+    @endforeach
     </tbody>
 
 </table>

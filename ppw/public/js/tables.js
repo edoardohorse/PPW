@@ -6,22 +6,39 @@ const modalCreateBtn    = $('#redirect_create')
 const modalEditBtn      = $('#redirect_edit')
 const modalDeleteBtn    = $('#redirect_delete')
 
+const eventDoubleClickRow = document.createEvent('Event');
 const eventSelectedRow = document.createEvent('Event');
 const eventDeselectedRow = document.createEvent('Event');
 
+eventDoubleClickRow.initEvent('dblclickRow', true, true);
 eventSelectedRow.initEvent('selectedRow', true, true);
 eventDeselectedRow.initEvent('deselectedRow', true, true);
 
-function getId(){
-    return  table.cell('.selected', 0).data();
+let url
+
+if(location.search == ""){
+    url = location.href
 }
+else{
+    url = location.href.substring(0, location.href.indexOf('?'))
+}
+
+
+function getId(){
+
+    return  table.row(rowSelected).data()[0];
+}
+
+$('#table tbody').on( 'dblclick', 'tr', function(){
+    window.dispatchEvent(eventDoubleClickRow)
+})
+
 
 $('#table tbody').on( 'click', 'tr', function () {
 
     // Deseleziona riga
     if ( $(this).hasClass('selected') ) {
         $(this).removeClass('selected');
-        rowSelected = null
         window.dispatchEvent(eventDeselectedRow)
     }
     // Seleziona riga
@@ -33,10 +50,19 @@ $('#table tbody').on( 'click', 'tr', function () {
     }
 
     } );
+
+
+
 window.addEventListener('selectedRow',enableButtons)
 window.addEventListener('deselectedRow',disableButtons)
 
+function disableBtn(btn){
+    $(btn).addClass('disabled')
+}
 
+function enableBtn(btn){
+    $(btn).removeClass('disabled')
+}
 
 function disableButtons(data){
     modalEditBtn.addClass("disabled")
