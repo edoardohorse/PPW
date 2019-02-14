@@ -12,6 +12,6 @@ class Internal extends Model
 
     public function course(){
 
-        return $this->belongsToMany('App\Course','internal_course','course_id','internal_id');
+        return $this->belongsToMany('App\Course','internal_course','internal_id','course_id');
     }
 }

@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->date('data_nascita');
             $table->string('genere');
 //            $table->string('tipo')->nullable();
-            $table->enum('tipo', ['fondatore', 'allievo']);
+            $table->enum('tipo', ['fondatore', 'allievo'])->nullable();
             $table->integer('member_id')->unsigned();
 
             $table->timestamps();

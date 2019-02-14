@@ -14,12 +14,12 @@ class AsdMemberSeed extends Seeder
     {
 
 
-        $asd = App\Asd::find(1)->first();
-        $member = App\Member::find(1)->first();
-        App\AsdMember::create([
-            'asd_id' => $asd->id,
-            'member_id' => $member->id
-        ]);
+//        $asd = App\Asd::find(1)->first();
+//        $member = App\Member::find(1)->first();
+//        App\AsdMember::create([
+//            'asd_id' => $asd->id,
+//            'member_id' => $member->id
+//        ]);
 
     }
 }
