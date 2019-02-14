@@ -40,7 +40,7 @@ class AsdFormRequest extends FormRequest
             'p_iva'         => 'digits:11|unique:asds',
             'cap'           => 'digits:5',
             'provincia'     => 'max:150',
-            'cod_fiscale'   => 'size:16',
+            'cod_fiscale'   => 'required|size:16|unique:members',
 
             '*'             => 'required',
         ];

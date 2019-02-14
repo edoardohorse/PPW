@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Hash;
 
 
 
-class StaffInternalController extends Controller
+class StaffExternalController extends Controller
 {
-    static $path = 'home/managment/staff/internal/internal';
+    static $path = 'home/managment/staff/external/external';
 
     /**
      * Display a listing of the resource.
@@ -32,7 +32,7 @@ class StaffInternalController extends Controller
     public function index()
     {
         $members = $this->fetchAll();
-        return view(StaffInternalController::$path, compact('members'));
+        return view(StaffExternalController::$path, compact('members'));
     }
 
     /**
@@ -43,7 +43,7 @@ class StaffInternalController extends Controller
     public function create()
     {
         $members = $this->fetchAll();
-        return view(StaffInternalController::$path.'-create', compact('members'));
+        return view(StaffExternalController::$path.'-create', compact('members'));
     }
 
     /**
@@ -88,7 +88,7 @@ class StaffInternalController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('M111')
+            return redirect()->route('M121')
                 ->withErrors($validator)
                 ->withInput();
             //            dd('Fallito');
@@ -101,15 +101,11 @@ class StaffInternalController extends Controller
             //            var_dump($fields);
 
 
-            $fieldsUserSite = BootController::filterFieldsRequestFromFillable($fields, UserSite::class);
-            $userSite = new UserSite($fieldsUserSite);
-            $userSite->password = Hash::make($fieldsUserSite['password']);
-            $userSite->save();
 
 
             $fieldsMember = BootController::filterFieldsRequestFromFillable($fields, Member::class);
             //            var_dump($fieldsMember);
-            $fieldsMember['user_site_id'] = $userSite->id;
+
             $member = new Member($fieldsMember);
             $member->save();
             $member->asd()->attach($asd_id);
@@ -118,8 +114,8 @@ class StaffInternalController extends Controller
             $fieldsUser = BootController::filterFieldsRequestFromFillable($fields, User::class);
             $fieldsUser['member_id'] = $member->id;
             $fieldsUser['tipo'] = 'allievo';
-            //            dd($fieldsUser );
             $user = new User($fieldsUser);
+//                        dd($user );
             $user->save();
 
 
@@ -131,16 +127,14 @@ class StaffInternalController extends Controller
 //            $card->save();
 
             $col = new Collaborator();
-            $col->esterno = 0;
+            $col->esterno = 1;
             $col->user_id = $user->id;
             $col->save();
 
-            $int = new Internal();
-            $int->collaborator_id = $col->id;
-            $int->save();
 
 
-            return redirect()->route('M110');
+
+            return redirect()->route('M120');
 
         }
     }
@@ -155,14 +149,13 @@ class StaffInternalController extends Controller
     {
         $members        = $this->fetchAll();
         $member         = Member        ::find($id);
-        $usersite       = Member        ::find($id)->user_site()->first();
         $user           = User          ::find($member->user_site_id);
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
         $internal       = Internal      ::find($collaborator->id);
 
         return view(StaffInternalController::$path.'-show',
             compact('members','member','user',
-                'collaborator','internal','usersite'));
+                'collaborator','internal'));
     }
 
     /**
@@ -175,14 +168,13 @@ class StaffInternalController extends Controller
     {
         $members        = $this->fetchAll();
         $member         = Member        ::find($id);
-        $usersite       = Member        ::find($id)->user_site()->first();
         $user           = User          ::find($member->user_site_id);
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
         $internal       = Internal      ::find($collaborator->id);
 
         return view(StaffInternalController::$path.'-edit',
             compact('members','member','user',
-                'collaborator','internal','usersite'));
+                'collaborator','internal'));
     }
 
     /**
@@ -196,7 +188,6 @@ class StaffInternalController extends Controller
     {
 
         $member         = Member        ::find($id);
-        $usersite       = Member        ::find($id)->user_site()->first();
         $user           = User          ::find($member->user_site_id);
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
         $internal       = Internal      ::find($collaborator->id);
@@ -218,11 +209,6 @@ class StaffInternalController extends Controller
             'numero_cell'           =>   ['regex:/[0-9]{9}/',Rule::unique('members')->ignore($member->numero_cell, 'numero_cell')],
             'numero_tel'            =>  ['regex:/[0-9]{9}/',Rule::unique('members')->ignore($member->numero_tel, 'numero_tel')],
 
-            // Password field (step 2)
-            'email'                 =>  ['email', Rule::unique('users_site')->ignore($usersite->email, 'email')],
-            'password_conf'         =>  'same:password',
-
-            'note'                  =>  'nullable|string|max:250',
 
             // Member fields (step 3)
             'data_stipula_ass'      =>  'date',
@@ -236,7 +222,7 @@ class StaffInternalController extends Controller
 
 
         if ($validator->fails()) {
-            return redirect()->route('M113',$id)
+            return redirect()->route('M123',$id)
                 ->withErrors($validator)
                 ->withInput();
             //            dd('Fallito');
@@ -249,20 +235,10 @@ class StaffInternalController extends Controller
             $fields = $request->all();
             //            var_dump($fields);
 
-            $fieldsUserSite = BootController::filterFieldsRequestFromFillable($fields, UserSite::class);
-
-//            dd($fieldsUserSite);
-            if($fieldsUserSite['password'] != null){
-                $usersite->password = Hash::make($fieldsUserSite['password']);
-            }
-
-            $usersite->email = $fieldsUserSite['email'];
-            $usersite->save();
-
 
             $fieldsMember = BootController::filterFieldsRequestFromFillable($fields, Member::class);
             //            var_dump($fieldsMember);
-            $fieldsMember['user_site_id'] = $usersite->id;
+
 
             $member->fill($fieldsMember)->save();
 
@@ -284,7 +260,7 @@ class StaffInternalController extends Controller
 
 
 
-            return redirect()->route('M110');
+            return redirect()->route('M120');
 
         }
     }
@@ -298,24 +274,23 @@ class StaffInternalController extends Controller
     public function destroy($id)
     {
         $member         = Member        ::find($id);
-        $usersite       = Member        ::find($id)->user_site()->first();
         $user           = User          ::find($member->user_site_id);
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
         $internal       = Internal      ::find($collaborator->id);
 
-        UserSite::find($member->user_site_id)->delete();
+
         $member->delete();
 
         return view(StaffInternalController::$path.'-delete',
             compact('members','member','user',
-                'collaborator','internal','usersite'));
+                'collaborator','internal'));
     }
 
     private function fetchAll(){
-        return DB::select('SELECT DISTINCT m.id,u.nome,u.cognome,m.cod_fiscale,u.data_nascita,m.scadenza_ass,m.scadenza_cert_med 
-FROM users u,members m,collaborators co,internals i 
-WHERE m.id = u.member_id AND u.id = co.user_id AND 
-co.id = i.collaborator_id AND co.esterno = 0 
- ORDER BY m.id ASC ');
+        return DB::select('SELECT DISTINCT m.id,u.nome,u.cognome,m.cod_fiscale,u.data_nascita,m.scadenza_ass,m.scadenza_cert_med
+FROM users u,members m,collaborators co,internals i
+WHERE m.id = u.member_id AND u.id = co.user_id AND
+        co.id = i.collaborator_id AND co.esterno = 1
+ORDER BY m.id ASC');
     }
 }

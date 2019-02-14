@@ -1,16 +1,16 @@
 @extends('layout.master_home')
 
-@section('title','Collaboratore interno')
+@section('title','Collaboratore esterno')
 
 @section('main')
-     <h1>Collabaoratore interno</h1>
+     <h1>Collabaoratore esterno</h1>
 
      @include('home-tables.staff-table')
 
      @yield('modal')
 
      <a class="btn btn-lg btn-primary" id="redirect_create"
-        href="{{route('M111')}}">Nuovo collaboratore</a>
+        href="{{route('M121')}}">Nuovo collaboratore</a>
 
      <a class="btn btn-lg btn-primary" id="redirect_show"
         href="#">Visualizza</a>

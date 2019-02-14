@@ -48,7 +48,7 @@ class FounderFormRequest extends FormRequest
 
 
                 // Member fields (step 2)
-                'cod_fiscale'           =>  'size:16',
+                'cod_fiscale'           =>  'required|size:16|unique:members',
                 'numero_cell'           =>  'regex:/[0-9]{9}/|unique:members',
                 'numero_tel'            =>  'regex:/[0-9]{9}/|unique:members',
 

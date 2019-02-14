@@ -1,11 +1,11 @@
-@extends('forms.staff-internal.form-staff-internal')
+@extends('forms.staff-external.form-staff-external')
 
 
 @section('modal-title')
     Eliminazione effettuata
 @stop
 
-@section('route', route('M116'))
+@section('route', route('M126'))
 
 @section('modal-done-text', 'Finito')
 
