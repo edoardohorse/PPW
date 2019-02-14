@@ -13,6 +13,6 @@
 
 @section('form')
 
-    <p>{{$scheduling}} eliminata</p>
+    <p>{{$schedule}} eliminata</p>
 
 @stop

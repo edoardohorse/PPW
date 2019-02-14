@@ -168,11 +168,13 @@ class PackageController extends Controller
             }
 
             $flippedC = array_flip($coursesAssigned);
-            $flipperR = array_flip($request->courses);
+            $flippedR = array_flip($request->courses);
 
-            $courseIdToRemove=  array_flip(array_diff_key($flippedC, $flipperR));
+            $courseIdToRemove   =  array_flip(array_diff_key($flippedC, $flippedR));
+            $courseIdToAdd      = array_flip(array_diff_key($flippedR, $flippedC));
 
             $package->course()->detach($courseIdToRemove);
+            $package->course()->attach($courseIdToAdd);
             $package->fill($fields)->save();
 
 

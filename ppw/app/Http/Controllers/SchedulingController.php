@@ -198,7 +198,7 @@ class SchedulingController extends Controller
      */
     public function edit($id)
     {
-//        dd($redirected);
+        //        dd($redirected);
         $schedule = Scheduling::find($id);
         $roomDefault = $schedule->room()->first()->id;
         $courseDefault = $schedule->course()->first()->id;
@@ -328,7 +328,17 @@ class SchedulingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $scheduling = Scheduling::find($id);
+        //        $schedule->course()->detach();
+        $nome = $scheduling->course()->first()->nome_corso;
+        $nome.= ' - '.$scheduling->room()->first()->nome;
+        $scheduling->delete();
+
+        $calendar = $this->fetch();
+
+        return view(SchedulingController::$path . '-delete',
+            compact('calendar'))
+            ->with('schedule',$nome);
     }
 
     private function fetch(){

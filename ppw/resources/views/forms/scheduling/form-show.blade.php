@@ -6,7 +6,7 @@
 @section('route', route('M350'))
 @section('method', 'GET')
 
-
+@section('deleteFormAction',route('M355',$schedule->id))
 @section('form')
 
     {{--{{dd($orafine)}}--}}
@@ -60,6 +60,10 @@
 ])
 
     <a class="btn btn-lg btn-primary " href="{{route('M353', $schedule->id)}}" id="redirect_edit">Modifica</a>
+
+
+    <input type="submit" class="btn btn-lg btn-danger" form="deleteForm" id="redirect_delete"  value="Elimina"></input>
+
 
 @stop
 

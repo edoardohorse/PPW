@@ -2,10 +2,10 @@
 
 
 
-@section('lib_end_script')
+@push('lib_end_script')
     <script src="{{ asset('js/jquery.steps.js')  }}"></script>
     <script src="{{ asset('js/formAsd.js')  }}"></script>
-@stop
+@endpush
 
 @section('title', 'Registrazione ASD')
 
