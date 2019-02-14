@@ -30,4 +30,4 @@
     </form>
 
   <script src="{{ asset('js/jquery.steps.js')  }}"></script>
-  <script src="{{ asset('js/formAsd.js')  }}"></script>
+  <script src="{{ asset('formStepped.jsd.js')  }}"></script>

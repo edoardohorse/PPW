@@ -7,4 +7,7 @@
 
      @include('home-tables.staff-table')
 
+     @yield('modal')
+
+
 @stop

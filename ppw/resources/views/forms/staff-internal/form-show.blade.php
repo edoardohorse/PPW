@@ -1,20 +1,15 @@
-@extends('layout.master_boot')
+@extends('forms.staff-internal.form-staff-internal')
 
 
 
-@push('lib_end_script')
-    <script src="{{ asset('js/jquery.steps.js')  }}"></script>
-    <script src="{{ asset('formStepped.jsd.js')  }}"></script>
-@endpush
 
-@section('title', 'Registrazione Socio Fondatore')
+@section('route', route('M350'))
+@section('method', 'GET')
 
-@section('h2')
-    Registrazione Socio Fondatore
-@stop
 
-@section('panel-body')
-    <form method="POST" class="form-group" id="form" action="/signInFounder" enctype="multipart/form-data">
+@section('form')
+
+    {{--{{dd($orafine)}}--}}
         @csrf
 
         <h3>Step</h3>
@@ -36,12 +31,25 @@
 
 
         <h3>Step</h3>
+        @include('forms/password-form')
         <section>
-            @include('forms/password-form')
         </section>
 
 
         {{--<input type="submit" class="btn bnt-lg btn-primary">--}}
 
-    </form>
+
+
+
+    <a class="btn btn-lg btn-primary " href="{{route('M353', $schedule->id)}}" id="redirect_edit">Modifica</a>
+
+
+    <input type="submit" class="btn btn-lg btn-danger" form="deleteForm" id="redirect_delete"  value="Elimina"></input>
+
+
 @stop
+
+@section('modal-done-text', 'Chiudi')
+
+
+

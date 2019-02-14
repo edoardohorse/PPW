@@ -1,4 +1,4 @@
-$("#form").steps({
+$("form").steps({
     headerTag: "h3",
     bodyTag: "section",
     transitionEffect: "fade",
@@ -17,6 +17,6 @@ $("#form").steps({
     },
 
     onFinished: function(){
-        $("#form").submit()
+        $("form").submit()
     }
 });
