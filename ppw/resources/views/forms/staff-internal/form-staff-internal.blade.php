@@ -10,7 +10,7 @@
 
 
 @section('modal-body')
-    <form action="@yield('route')" method="@yield('method')">
+    <form action="@yield('route')" method="@yield('method')" class="form-group">
 
         @csrf
 
@@ -24,6 +24,8 @@
     </form>
 
 
+
+
     <script>
         $(document).ready(function(){
             $("#Modal").modal('show');
@@ -33,4 +35,4 @@
 @stop
 
 
-@section('modal-cancel', route('M350'))
+@section('modal-cancel', route('M110'))

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\Rule;
+use App\Collaborator;
 use App\Http\Requests\FounderFormRequest;
+use App\Internal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
@@ -52,7 +55,37 @@ class StaffInternalController extends Controller
     public function store(FounderFormRequest $request)
     {
 
-        $validator = Validator::make($request->all(), $request->rules());
+        $validator = Validator::make($request->all(), [
+            '*'                     => 'require',
+            'nome'                  =>  'max:50',
+            'cognome'               =>  'max:50',
+            'citta'                 =>  'max:150',
+            'provincia'             =>  'max:150',
+            'indirizzo'             =>  'max:150',
+            'cap'                   =>  'digits:5',
+            'data_nascita'          =>  'date',
+            'genere'                =>  'in:Maschio,Femmina,Altro',
+
+
+            // Member fields (step 2)
+            'cod_fiscale'           =>  'size:16',
+            'numero_cell'           =>  'regex:/[0-9]{9}/|unique:members',
+            'numero_tel'            =>  'regex:/[0-9]{9}/|unique:members',
+
+            // Password field (step 2)
+            'email'                 =>  'email|unique:users_site',
+            'password_conf'         =>  'same:password',
+
+            'note'                  =>  'nullable|string|max:250',
+
+            // Member fields (step 3)
+            'data_stipula_ass'      =>  'date',
+            'scadenza_ass'          =>  'date|after:data_stipula_ass',
+            'numero_ass'            =>  'numeric',
+            'data_cert_medico'      =>  'date',
+            'scadenza_cert_med'     =>  'date|after:data_cert_medico',
+            'p_iva'                 =>  'nullable|digits:11|unique:members',
+        ]);
 
         if ($validator->fails()) {
             return redirect()->route('M111')
@@ -84,7 +117,7 @@ class StaffInternalController extends Controller
 
             $fieldsUser = BootController::filterFieldsRequestFromFillable($fields, User::class);
             $fieldsUser['member_id'] = $member->id;
-            $fieldsUser['tipo'] = 'fondatore';
+            $fieldsUser['tipo'] = 'allievo';
             //            dd($fieldsUser );
             $user = new User($fieldsUser);
             $user->save();
@@ -93,8 +126,18 @@ class StaffInternalController extends Controller
             $fieldsCard = BootController::filterFieldsRequestFromFillable($fields, Card::class);
             $fieldsCard['user_id'] = $user->id;
             //            var_dump($fieldsCard);
-            $card = new Card($fieldsCard);
-            $card->save();
+//            $card = new Card($fieldsCard);
+//            $card->user_id = $user->id;
+//            $card->save();
+
+            $col = new Collaborator();
+            $col->esterno = 0;
+            $col->user_id = $user->id;
+            $col->save();
+
+            $int = new Internal();
+            $int->collaborator_id = $col->id;
+            $int->save();
 
 
             return redirect()->route('M110');
@@ -110,7 +153,16 @@ class StaffInternalController extends Controller
      */
     public function show($id)
     {
-        //
+        $members        = $this->fetchAll();
+        $member         = Member        ::find($id);
+        $usersite       = Member        ::find($id)->user_site()->first();
+        $user           = User          ::find($member->user_site_id);
+        $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
+        $internal       = Internal      ::find($collaborator->id);
+
+        return view(StaffInternalController::$path.'-show',
+            compact('members','member','user',
+                'collaborator','internal','usersite'));
     }
 
     /**
@@ -121,7 +173,16 @@ class StaffInternalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $members        = $this->fetchAll();
+        $member         = Member        ::find($id);
+        $usersite       = Member        ::find($id)->user_site()->first();
+        $user           = User          ::find($member->user_site_id);
+        $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
+        $internal       = Internal      ::find($collaborator->id);
+
+        return view(StaffInternalController::$path.'-edit',
+            compact('members','member','user',
+                'collaborator','internal','usersite'));
     }
 
     /**
@@ -133,7 +194,99 @@ class StaffInternalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $member         = Member        ::find($id);
+        $usersite       = Member        ::find($id)->user_site()->first();
+        $user           = User          ::find($member->user_site_id);
+        $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
+        $internal       = Internal      ::find($collaborator->id);
+
+
+        $validator = Validator::make($request->all(), [
+            'nome'                  =>  'max:50',
+            'cognome'               =>  'max:50',
+            'citta'                 =>  'max:150',
+            'provincia'             =>  'max:150',
+            'indirizzo'             =>  'max:150',
+            'cap'                   =>  'digits:5',
+            'data_nascita'          =>  'date',
+            'genere'                =>  'in:Maschio,Femmina,Altro',
+
+
+            // Member fields (step 2)
+            'cod_fiscale'           =>  'size:16',
+            'numero_cell'           =>   ['regex:/[0-9]{9}/',Rule::unique('members')->ignore($member->numero_cell, 'numero_cell')],
+            'numero_tel'            =>  ['regex:/[0-9]{9}/',Rule::unique('members')->ignore($member->numero_tel, 'numero_tel')],
+
+            // Password field (step 2)
+            'email'                 =>  ['email', Rule::unique('users_site')->ignore($usersite->email, 'email')],
+            'password_conf'         =>  'same:password',
+
+            'note'                  =>  'nullable|string|max:250',
+
+            // Member fields (step 3)
+            'data_stipula_ass'      =>  'date',
+            'scadenza_ass'          =>  'date|after:data_stipula_ass',
+            'numero_ass'            =>  'numeric',
+            'data_cert_medico'      =>  'date',
+            'scadenza_cert_med'     =>  'date|after:data_cert_medico',
+            'p_iva'                 =>  ['nullable','digits:11',Rule::unique('members')->ignore($member->p_iva, 'members')],
+        ]);
+
+
+
+        if ($validator->fails()) {
+            return redirect()->route('M113',$id)
+                ->withErrors($validator)
+                ->withInput();
+            //            dd('Fallito');
+
+        } else {
+            //            dd($req->validated());
+
+
+            $asd_id = Asd::find(1)->first()->id;
+            $fields = $request->all();
+            //            var_dump($fields);
+
+            $fieldsUserSite = BootController::filterFieldsRequestFromFillable($fields, UserSite::class);
+
+//            dd($fieldsUserSite);
+            if($fieldsUserSite['password'] != null){
+                $usersite->password = Hash::make($fieldsUserSite['password']);
+            }
+
+            $usersite->email = $fieldsUserSite['email'];
+            $usersite->save();
+
+
+            $fieldsMember = BootController::filterFieldsRequestFromFillable($fields, Member::class);
+            //            var_dump($fieldsMember);
+            $fieldsMember['user_site_id'] = $usersite->id;
+
+            $member->fill($fieldsMember)->save();
+
+
+            $fieldsUser = BootController::filterFieldsRequestFromFillable($fields, User::class);
+            $fieldsUser['member_id'] = $member->id;
+            $fieldsUser['tipo'] = 'allievo';
+            //            dd($fieldsUser );
+
+            $user->fill($fieldsUser)->save();
+
+
+            $fieldsCard = BootController::filterFieldsRequestFromFillable($fields, Card::class);
+            $fieldsCard['user_id'] = $user->id;
+            //            var_dump($fieldsCard);
+            //            $card = new Card($fieldsCard);
+            //            $card->user_id = $user->id;
+            //            $card->save();
+
+
+
+            return redirect()->route('M110');
+
+        }
     }
 
     /**
@@ -144,7 +297,11 @@ class StaffInternalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $member = Member::find($id);
+        UserSite::find($member->user_site_id)->delete();
+        $member->delete();
+
+        return redirect()->route('M110');
     }
 
     private function fetchAll(){

@@ -2,7 +2,7 @@
 
 @section('modal')
 
-    @include('forms.staff-internal.form-create')
+    @include('forms.staff-internal.form-edit')
 
 
 

@@ -76,10 +76,10 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                     'index'     => 'M110',
                     'create'    => 'M111',
                     'store'     => 'M112',
-//                    'edit'      => 'M113',
-//                    'update'    => 'M114',
-//                    'destroy'    => 'M115',
-//                    'show'      => 'M116',
+                    'edit'      => 'M113',
+                    'update'    => 'M114',
+                    'destroy'    => 'M115',
+                    'show'      => 'M116',
                 ]
             ]);
 
@@ -109,8 +109,8 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
 
 
 //            Route::get('/external','StaffController@external')->name('M112');
-            Route::get('/stagista','StaffController@stagista')->name('M113');
-            Route::get('/teacher','StaffController@teacher')->name('M114');
+//            Route::get('/stagista','StaffController@stagista')->name('M113');
+//            Route::get('/teacher','StaffController@teacher')->name('M114');
 
             
         });
