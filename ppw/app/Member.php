@@ -21,6 +21,7 @@ class Member extends Model
             'user_site_id'
     ];
 
+    protected $hidden = ['pivot'];
 
     public function asd()
     {
