@@ -13,6 +13,14 @@ class CourseSeed extends Seeder
     {
         $course =  new App\Course(['nome_corso' => 'Danza moderna','costo_orario' => '5','discipline_id' => 1]);
         $course->save();
+        $course->user()->attach(1,
+            [
+                'user_id'=> 1,
+            'data_inizio'=>'2019-08-01',
+            'data_fine'=>'2019-09-01',
+                    ]);
+
+//        $course_user = \App\CourseUser::where('')
 
         $course =  new App\Course(['nome_corso' => 'Danza classica','costo_orario' => '10','discipline_id' => 1]);
         $course->save();

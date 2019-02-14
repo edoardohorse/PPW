@@ -11,13 +11,7 @@ class AsdSeed extends Seeder
      */
     public function run()
     {
-        factory(App\Asd::class, 1)->create()->each(function(App\Asd $asd)
-        {
-            foreach(range(1, 5) as $i)
-            {
-                $asd->transaction()->save(factory(App\Transaction::class)->make());
+        factory(App\Asd::class, 1)->create();
 
-            }
-        });
     }
 }

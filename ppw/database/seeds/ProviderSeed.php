@@ -13,14 +13,31 @@ class ProviderSeed extends Seeder
     {
         //factory(App\Provider::class, 1)->create();
 
-        factory(App\Provider::class, 10)->create()->each(function(App\Provider $provider)
-        {
+        $provider = new App\Provider([
+            'nome'=> 'Enel',
+            'ragione_sociale'=>'Enel & co',
+            'indirizzo'=>'Via Liguria 12',
+            'cap'=>'74121',
+            'citta'=>'Taranto',
+            'provincia'=>'TA',
+            'tipo_fornitura'=>'Elettricità',
+            'note'=>'Fornisce elettricità',
+            'member_id'=> 15
+        ]);
+        $provider->save();
 
-            foreach(range(1, 5) as $i)
-            {
-                $provider->transaction()->save(factory(App\Transaction::class)->make());
+        $provider = new App\Provider([
+            'nome'=> 'Eni',
+            'ragione_sociale'=>'Eni & co',
+            'indirizzo'=>'Via Campania 12',
+            'cap'=>'74121',
+            'citta'=>'Taranto',
+            'provincia'=>'TA',
+            'tipo_fornitura'=>'Gas',
+            'note'=>'Fornisce Gas',
+            'member_id'=> 16
+        ]);
+        $provider->save();
 
-            }
-        });
     }
 }

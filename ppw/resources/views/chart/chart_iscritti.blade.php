@@ -5,13 +5,14 @@
           <br>
           <div class="panel-body">
 
-              {!! $chart_iscritti->html() !!}
+              {!! $chart_iscritti->container() !!}
 
           </div>
      </div>
   </div>
   @push('lib_script')
-      <script src="https://code.highcharts.com/highcharts.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.0.2/echarts-en.min.js"></script>
       {!! $chart_iscritti->script() !!}
 
   @endpush
