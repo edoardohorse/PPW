@@ -70,10 +70,34 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
         Route::prefix('staff')->group(function(){
 
 
-            Route::get('/internal','StaffController@internal')->name('M111');
-            Route::get('/external','StaffController@external')->name('M112');
-            Route::get('/stagista','StaffController@stagista')->name('M113');
-            Route::get('/teacher','StaffController@teacher')->name('M114');
+
+            Route::resource('internal', 'StaffInternalController',[
+                'names' =>[
+                    'index'     => 'M110',
+                    'create'    => 'M111',
+                    'store'     => 'M112',
+                    'edit'      => 'M113',
+                    'update'    => 'M114',
+                    'destroy'    => 'M115',
+                    'show'      => 'M116',
+                ]
+            ]);
+
+            Route::resource('external', 'StaffExternalController',[
+                'names' =>[
+                    'index'     => 'M120',
+                    'create'    => 'M121',
+                    'store'     => 'M122',
+                    'edit'      => 'M123',
+                    'update'    => 'M124',
+                    'destroy'    => 'M125',
+                    'show'      => 'M126',
+                ]
+            ]);
+
+
+//            Route::get('/stagista','StaffController@stagista')->name('M113');
+//            Route::get('/teacher','StaffController@teacher')->name('M114');
 
             
         });
@@ -81,8 +105,8 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
         Route::prefix('payments')->group(function(){
 
 
-            Route::get('/made','PaymentController@made')->name('M121');
-            Route::get('/received','PaymentController@received')->name('M122');
+//            Route::get('/made','PaymentController@made')->name('M121');
+//            Route::get('/received','PaymentController@received')->name('M122');
 
 
         });

@@ -1,4 +1,4 @@
-$("#form").steps({
+$("form.form-group").steps({
     headerTag: "h3",
     bodyTag: "section",
     transitionEffect: "fade",
@@ -17,6 +17,9 @@ $("#form").steps({
     },
 
     onFinished: function(){
-        $("#form").submit()
+        if($("form.form-group").attr('method') == 'GET')
+            location.href = $("form").attr('action')
+        else
+            $("form.form-group").submit()
     }
 });

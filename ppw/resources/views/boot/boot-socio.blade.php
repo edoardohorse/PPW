@@ -4,7 +4,7 @@
 
 @push('lib_end_script')
     <script src="{{ asset('js/jquery.steps.js')  }}"></script>
-    <script src="{{ asset('js/formAsd.js')  }}"></script>
+    <script src="{{ asset('formStepped.jsd.js')  }}"></script>
 @endpush
 
 @section('title', 'Registrazione Socio Fondatore')
@@ -26,6 +26,7 @@
         <h3>Step</h3>
         <section>
             @include('forms/step2-member')
+            @include('forms/form-card')
         </section>
 
         <h3>Step</h3>
@@ -36,7 +37,7 @@
 
         <h3>Step</h3>
         <section>
-            @include('forms/form-card')
+            @include('forms/password-form')
         </section>
 
 
