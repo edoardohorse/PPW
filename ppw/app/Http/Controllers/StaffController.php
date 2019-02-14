@@ -16,7 +16,7 @@ WHERE m.id = u.member_id AND u.id = co.user_id AND
 co.id = i.collaborator_id AND co.esterno = 0 
  GROuP BY m.id ASC ");
 
-        return view('home/managment/staff/internal', compact('members'));
+        return view('home/managment/staff-internal/internal', compact('members'));
     }
 
     public function external()
@@ -27,7 +27,7 @@ FROM users u,cards c,members m,collaborators co,internals i
 WHERE m.id = u.member_id AND u.id = co.user_id AND co.esterno = 1 
  GROUP BY m.id ASC");
 
-        return view('home/managment/staff/external', compact('members'));
+        return view('home/managment/staff-internal/external', compact('members'));
     }
 
     public function stagista()
@@ -40,7 +40,7 @@ co.id = t.collaborator_id AND t.stagista = 1
 GROUP BY m.id ASC
 ");
 
-        return view('home/managment/staff/stagista', compact('members'));
+        return view('home/managment/staff-internal/stagista', compact('members'));
     }
 
     public function teacher()
@@ -53,6 +53,6 @@ co.id = t.collaborator_id AND t.stagista = 0
 GROUP BY m.id ASC   
 ");
 
-        return view('home/managment/staff/teacher', compact('members'));
+        return view('home/managment/staff-internal/teacher', compact('members'));
     }
 }
