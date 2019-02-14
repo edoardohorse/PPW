@@ -193,7 +193,7 @@ class BootController extends Controller
 
             $fieldsUser = $this->filterFieldsRequestFromFillable($fields, User::class);
             $fieldsUser['member_id'] = $member->id;
-            $fieldsUser['ruolo'] = 'fondatore';
+            $fieldsUser['tipo'] = 'fondatore';
 //            dd($fieldsUser );
             $user = new User($fieldsUser);
             $user->save();
