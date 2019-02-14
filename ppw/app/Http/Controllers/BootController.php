@@ -110,7 +110,7 @@ class BootController extends Controller
             // public_path() è un helper che ritorna il path intero della cartella public
             //  con move sposto il file nella directorty indicato nel primo parametro
             //  e assegno il nome con il secondo.
-            $file->move(public_path($destinationPath), $file->getClientOriginalName());
+            $file->move(public_path($destinationPath), 'logoasd.png');
             return $destinationPath.'/'.$file->getClientOriginalName();
         }
 
@@ -185,7 +185,6 @@ class BootController extends Controller
 //            var_dump($fieldsMember);
             $fieldsMember['user_site_id'] = $userSite->id;
             $member = new Member($fieldsMember);
-            $member->ruolo = 'fond';
             $member->save();
             $member->asd()->attach($asd_id);
 
@@ -194,6 +193,7 @@ class BootController extends Controller
 
             $fieldsUser = $this->filterFieldsRequestFromFillable($fields, User::class);
             $fieldsUser['member_id'] = $member->id;
+            $fieldsUser['ruolo'] = 'fondatore';
 //            dd($fieldsUser );
             $user = new User($fieldsUser);
             $user->save();

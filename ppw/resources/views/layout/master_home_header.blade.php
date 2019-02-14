@@ -13,7 +13,7 @@
     {{--<h1>HEADER</h1>--}}
 
     <div class="col-2 float-left">
-        <i id="logo" style="background-image: url(' {{ asset('img/logo.png')  }} ');" >ASD Bello culo</i>
+        <i id="logo" style="background-image: url(' {{ asset('uploads/logoasd.png')  }} ');" ></i>
 
     </div>
 
