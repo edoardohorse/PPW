@@ -12,7 +12,6 @@ Route::prefix('/welcome')->group(function(){
                                                         'redirected' => 'true'])    ->name('A001');
 
 });
-
 // A010
 Route::view('/boot',            'boot/boot')->name('A010');
 
@@ -71,10 +70,34 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
         Route::prefix('staff')->group(function(){
 
 
-            Route::get('/internal','StaffController@internal')->name('M111');
-            Route::get('/external','StaffController@external')->name('M112');
-            Route::get('/stagista','StaffController@stagista')->name('M113');
-            Route::get('/teacher','StaffController@teacher')->name('M114');
+
+            Route::resource('internal', 'StaffInternalController',[
+                'names' =>[
+                    'index'     => 'M110',
+                    'create'    => 'M111',
+                    'store'     => 'M112',
+                    'edit'      => 'M113',
+                    'update'    => 'M114',
+                    'destroy'    => 'M115',
+                    'show'      => 'M116',
+                ]
+            ]);
+
+            Route::resource('external', 'StaffExternalController',[
+                'names' =>[
+                    'index'     => 'M120',
+                    'create'    => 'M121',
+                    'store'     => 'M122',
+                    'edit'      => 'M123',
+                    'update'    => 'M124',
+                    'destroy'    => 'M125',
+                    'show'      => 'M126',
+                ]
+            ]);
+
+
+//            Route::get('/stagista','StaffController@stagista')->name('M113');
+//            Route::get('/teacher','StaffController@teacher')->name('M114');
 
             
         });
@@ -82,8 +105,8 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
         Route::prefix('payments')->group(function(){
 
 
-            Route::get('/made','PaymentController@made')->name('M121');
-            Route::get('/received','PaymentController@received')->name('M122');
+//            Route::get('/made','PaymentController@made')->name('M121');
+//            Route::get('/received','PaymentController@received')->name('M122');
 
 
         });
@@ -117,7 +140,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 'store'     => 'M312',
                 'edit'      => 'M313',
                 'update'    => 'M314',
-                'delete'    => 'M315',
+                'destroy'    => 'M315',
                 'show'      => 'M316',
             ]
         ]);
@@ -130,7 +153,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 'store'     => 'M322',
                 'edit'      => 'M323',
                 'update'    => 'M324',
-                'delete'    => 'M325',
+                'destroy'    => 'M325',
                 'show'      => 'M326',
             ]
         ]);
@@ -142,7 +165,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 'store'     => 'M332',
                 'edit'      => 'M333',
                 'update'    => 'M334',
-                'delete'    => 'M335',
+                'destroy'    => 'M335',
                 'show'      => 'M336',
                 ]
         ]);
@@ -154,7 +177,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 'store'     => 'M342',
                 'edit'      => 'M343',
                 'update'    => 'M344',
-                'delete'    => 'M345',
+                'destroy'    => 'M345',
                 'show'      => 'M346',
                 ]
         ]);
@@ -166,7 +189,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 'store'     => 'M352',
                 'edit'      => 'M353',
                 'update'    => 'M354',
-                'delete'    => 'M355',
+                'destroy'    => 'M355',
                 'show'      => 'M356',
             ]
         ]);

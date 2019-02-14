@@ -5,7 +5,7 @@
 
 
 @section('modal-body')
-    <form action="@yield('route')" method="@yield('method')">
+    <form action="@yield('route')" method="@yield('method')" id="show">
 
         @csrf
 
@@ -18,6 +18,11 @@
 
     </form>
 
+    <form class="d-inline" action="@yield('deleteFormAction')" id="deleteForm" method="POST">
+        @csrf
+        @method('DELETE')
+
+    </form>
 
     <script>
         $(document).ready(function(){

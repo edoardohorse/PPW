@@ -33,11 +33,11 @@ WHERE m.id = u.member_id AND u.id = co.user_id AND co.esterno = 1
     public function stagista()
     {
 
-        $members = DB::select("SELECT DISTINCT m.id,u.nome,u.cognome,m.cod_fiscale,u.data_nascita,c.scadenza_tesseramento,m.scadenza_ass,m.scadenza_cert_med 
+        $members = DB::select("SELECT DISTINCT u.nome,u.cognome,m.cod_fiscale,u.data_nascita,c.scadenza_tesseramento,m.scadenza_ass,m.scadenza_cert_med 
 FROM users u,cards c,members m,collaborators co,teachers t 
 WHERE m.id = u.member_id AND u.id = co.user_id AND 
 co.id = t.collaborator_id AND t.stagista = 1 
-GROUP BY m.id ASC   
+GROUP BY m.id ASC
 ");
 
         return view('home/managment/staff/stagista', compact('members'));
@@ -46,11 +46,11 @@ GROUP BY m.id ASC
     public function teacher()
     {
 
-        $members = DB::select("SELECT DISTINCT m.id,u.nome,u.cognome,m.cod_fiscale,u.data_nascita,c.scadenza_tesseramento,m.scadenza_ass,m.scadenza_cert_med 
+        $members = DB::select("SELECT DISTINCT u.nome,u.cognome,m.cod_fiscale,u.data_nascita,c.scadenza_tesseramento,m.scadenza_ass,m.scadenza_cert_med 
 FROM users u,cards c,members m,collaborators co,teachers t 
 WHERE m.id = u.member_id AND u.id = co.user_id AND 
 co.id = t.collaborator_id AND t.stagista = 0 
- GROUP BY m.id ASC 
+GROUP BY m.id ASC   
 ");
 
         return view('home/managment/staff/teacher', compact('members'));

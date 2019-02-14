@@ -36,6 +36,7 @@ class FounderFormRequest extends FormRequest
 //
 
                 // User fields (step 1)
+                '*'             => 'required',
                 'nome'                  =>  'max:50',
                 'cognome'               =>  'max:50',
                 'citta'                 =>  'max:150',
@@ -47,12 +48,15 @@ class FounderFormRequest extends FormRequest
 
 
                 // Member fields (step 2)
-                'cod_fiscale'           =>  'size:16',
+                'cod_fiscale'           =>  'required|size:16|unique:members',
                 'numero_cell'           =>  'regex:/[0-9]{9}/|unique:members',
                 'numero_tel'            =>  'regex:/[0-9]{9}/|unique:members',
+
+                // Password field (step 2)
                 'email'                 =>  'email|unique:users_site',
                 'password_conf'         =>  'same:password',
-                'note'                  =>  'string|max:250',
+
+                'note'                  =>  'nullable|string|max:250',
 
                 // Member fields (step 3)
                 'data_stipula_ass'      =>  'date',
@@ -60,7 +64,7 @@ class FounderFormRequest extends FormRequest
                 'numero_ass'            =>  'numeric',
                 'data_cert_medico'      =>  'date',
                 'scadenza_cert_med'     =>  'date|after:data_cert_medico',
-                'p_iva'                 =>  'digits:11|unique:members',
+                'p_iva'                 =>  'nullable|digits:11|unique:members',
 
                 // Card fields (step 4)
                 'data_tesseramento'     =>  'date',
@@ -70,7 +74,6 @@ class FounderFormRequest extends FormRequest
 
 
 
-                '*'             => 'required',
 
 
 

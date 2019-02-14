@@ -1,6 +1,11 @@
 body{
-
+    font-size: 15px;
     background-color: rgb(160, 246, 170);
+}
+
+
+body.font-large{
+    font-size:23px;
 }
 
 body:before{
@@ -19,6 +24,15 @@ body:before{
 body.overlay:before{
     pointer-events: auto;
     opacity: 1;
+}
+
+#font-large{
+    background-size: contain;
+    background-position: center center;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    cursor: pointer;
 }
 
 .disabled{

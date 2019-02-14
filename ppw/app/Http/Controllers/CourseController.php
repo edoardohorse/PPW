@@ -37,7 +37,7 @@ class CourseController extends Controller
     public function create()
     {
         $courses        = $this->fetchAll();
-        $disciplines    = DB::table('disciplines')->select('id','nome')->get()->toArray();
+        $disciplines    = Discipline::all(['id','nome'])->toArray();
         return view('home/mng-activity/course/course-create', compact('courses','disciplines'));
     }
 
@@ -85,7 +85,7 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         $courses = $this->fetchAll();
-        $disciplines    = DB::table('disciplines')->select('id','nome')->get()->toArray();
+        $disciplines    = Discipline::all(['id','nome'])->toArray();
         $discipline = Discipline::find( $course->discipline_id )->id;
         return view('home/mng-activity/course/course-show',
             compact('courses', 'disciplines'))
@@ -102,7 +102,7 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         $courses = $this->fetchAll();
-        $disciplines    = DB::table('disciplines')->select('id','nome')->get()->toArray();
+        $disciplines    = Discipline::all(['id','nome'])->toArray();
         $discipline = Discipline::find( $course->discipline_id )->id;
         return view('home/mng-activity/course/course-edit',
             compact('courses', 'disciplines'))
@@ -151,7 +151,7 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         $courses = $this->fetchAll();
-        $disciplines    = DB::table('disciplines')->select('id','nome')->get()->toArray();
+        $disciplines    = Discipline::all(['id','nome'])->toArray();
         $course->delete();
         $nome = $course->nome_corso;
         return view('home/mng-activity/course/course-delete',compact('courses', 'disciplines'))

@@ -26,7 +26,7 @@
 
     <main class="col-lg-9 col-sm-12 float-right container">
 
-        @include('layout.master_home_shortcuts')
+
 
 
 

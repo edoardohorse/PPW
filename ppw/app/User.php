@@ -16,6 +16,7 @@ class User extends Model
                 'provincia',
                 'data_nascita',
                 'genere',
+                'tipo',
                 'member_id'
     ];
     public function transaction(){
