@@ -149,11 +149,11 @@ class StaffExternalController extends Controller
     {
         $members        = $this->fetchAll();
         $member         = Member        ::find($id);
-        $user           = User          ::find($member->user_site_id);
+        $user           = User          ::where('member_id','=',$member->id)->first();
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
         $internal       = Internal      ::find($collaborator->id);
 
-        return view(StaffInternalController::$path.'-show',
+        return view(StaffExternalController::$path.'-show',
             compact('members','member','user',
                 'collaborator','internal'));
     }
@@ -168,11 +168,11 @@ class StaffExternalController extends Controller
     {
         $members        = $this->fetchAll();
         $member         = Member        ::find($id);
-        $user           = User          ::find($member->user_site_id);
+        $user           = User          ::where('member_id','=',$member->id)->first();
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
         $internal       = Internal      ::find($collaborator->id);
 
-        return view(StaffInternalController::$path.'-edit',
+        return view(StaffExternalController::$path.'-edit',
             compact('members','member','user',
                 'collaborator','internal'));
     }
@@ -188,7 +188,7 @@ class StaffExternalController extends Controller
     {
 
         $member         = Member        ::find($id);
-        $user           = User          ::find($member->user_site_id);
+        $user           = User          ::where('member_id','=',$member->id)->first();
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
         $internal       = Internal      ::find($collaborator->id);
 
@@ -274,23 +274,23 @@ class StaffExternalController extends Controller
     public function destroy($id)
     {
         $member         = Member        ::find($id);
-        $user           = User          ::find($member->user_site_id);
+        $user           = User          ::where('member_id','=',$member->id)->first();
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
         $internal       = Internal      ::find($collaborator->id);
 
 
         $member->delete();
 
-        return view(StaffInternalController::$path.'-delete',
+        return view(StaffExternalController::$path.'-delete',
             compact('members','member','user',
                 'collaborator','internal'));
     }
 
     private function fetchAll(){
         return DB::select('SELECT DISTINCT m.id,u.nome,u.cognome,m.cod_fiscale,u.data_nascita,m.scadenza_ass,m.scadenza_cert_med
-FROM users u,members m,collaborators co,internals i
-WHERE m.id = u.member_id AND u.id = co.user_id AND
-        co.id = i.collaborator_id AND co.esterno = 1
+FROM users u,members m,collaborators co
+WHERE m.id = u.member_id AND u.id = co.user_id 
+    AND co.esterno = 1
 ORDER BY m.id ASC');
     }
 }

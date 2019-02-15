@@ -95,6 +95,33 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 ]
             ]);
 
+            Route::resource('teacher', 'TeacherController',[
+                'names' =>[
+                    'index'     => 'M130',
+                    'create'    => 'M131',
+                    'store'     => 'M132',
+                    'edit'      => 'M133',
+                    'update'    => 'M134',
+                    'destroy'    => 'M135',
+                    'show'      => 'M136',
+
+                ]
+            ]);
+
+            Route::get('teacher/{id}/course', 'TeacherController@course')->name('M137');
+
+            Route::resource('stagista', 'StagistaController',[
+                'names' =>[
+                    'index'     => 'M140',
+                    'create'    => 'M141',
+                    'store'     => 'M142',
+                    'edit'      => 'M143',
+                    'update'    => 'M144',
+                    'destroy'    => 'M145',
+                    'show'      => 'M146',
+                ]
+            ]);
+
 
 //            Route::get('/stagista','StaffController@stagista')->name('M113');
 //            Route::get('/teacher','StaffController@teacher')->name('M114');

@@ -12,17 +12,18 @@ use App\User;
 use App\Member;
 use App\Card;
 use App\Asd;
-use App\UserSite;
+use App\Teacher;
 use Validator;
+use App\Course;
 use Illuminate\Support\Facades\Hash;
 
 
 
 
 
-class StaffInternalController extends Controller
+class TeacherController extends Controller
 {
-    static $path = 'home/managment/staff/internal/internal';
+    static $path = 'home/managment/staff/teacher/teacher';
 
     /**
      * Display a listing of the resource.
@@ -32,7 +33,7 @@ class StaffInternalController extends Controller
     public function index()
     {
         $members = $this->fetchAll();
-        return view(StaffInternalController::$path, compact('members'));
+        return view(TeacherController::$path, compact('members'));
     }
 
     /**
@@ -43,7 +44,7 @@ class StaffInternalController extends Controller
     public function create()
     {
         $members = $this->fetchAll();
-        return view(StaffInternalController::$path.'-create', compact('members'));
+        return view(TeacherController::$path.'-create', compact('members'));
     }
 
     /**
@@ -88,7 +89,7 @@ class StaffInternalController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('M111')
+            return redirect()->route('M131')
                 ->withErrors($validator)
                 ->withInput();
             //            dd('Fallito');
@@ -101,15 +102,11 @@ class StaffInternalController extends Controller
             //            var_dump($fields);
 
 
-            $fieldsUserSite = BootController::filterFieldsRequestFromFillable($fields, UserSite::class);
-            $userSite = new UserSite($fieldsUserSite);
-            $userSite->password = Hash::make($fieldsUserSite['password']);
-            $userSite->save();
 
 
             $fieldsMember = BootController::filterFieldsRequestFromFillable($fields, Member::class);
             //            var_dump($fieldsMember);
-            $fieldsMember['user_site_id'] = $userSite->id;
+
             $member = new Member($fieldsMember);
             $member->save();
             $member->asd()->attach($asd_id);
@@ -118,29 +115,31 @@ class StaffInternalController extends Controller
             $fieldsUser = BootController::filterFieldsRequestFromFillable($fields, User::class);
             $fieldsUser['member_id'] = $member->id;
             $fieldsUser['tipo'] = 'allievo';
-            //            dd($fieldsUser );
             $user = new User($fieldsUser);
+            //                        dd($user );
             $user->save();
 
 
             $fieldsCard = BootController::filterFieldsRequestFromFillable($fields, Card::class);
             $fieldsCard['user_id'] = $user->id;
             //            var_dump($fieldsCard);
-//            $card = new Card($fieldsCard);
-//            $card->user_id = $user->id;
-//            $card->save();
+            $card = new Card($fieldsCard);
+            $card->user_id = $user->id;
+            $card->save();
 
             $col = new Collaborator();
-            $col->esterno = 0;
+            $col->esterno = 1;
             $col->user_id = $user->id;
             $col->save();
 
-            $int = new Internal();
-            $int->collaborator_id = $col->id;
-            $int->save();
+
+            $teacher = new Teacher();
+            $teacher->stagista = 0;
+            $teacher->collaborator_id  =$col->id;
+            $teacher->save();
 
 
-            return redirect()->route('M110');
+            return redirect()->route('M130');
 
         }
     }
@@ -155,14 +154,13 @@ class StaffInternalController extends Controller
     {
         $members        = $this->fetchAll();
         $member         = Member        ::find($id);
-        $usersite       = Member        ::find($id)->user_site()->first();
         $user           = User          ::where('member_id','=',$member->id)->first();
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
-        $internal       = Internal      ::find($collaborator->id);
+        $card           = Card          ::where('user_id','=',$user->id)->first();
 
-        return view(StaffInternalController::$path.'-show',
+        return view(TeacherController::$path.'-show',
             compact('members','member','user',
-                'collaborator','internal','usersite'));
+                'collaborator','card'));
     }
 
     /**
@@ -175,14 +173,14 @@ class StaffInternalController extends Controller
     {
         $members        = $this->fetchAll();
         $member         = Member        ::find($id);
-        $usersite       = Member        ::find($id)->user_site()->first();
         $user           = User          ::where('member_id','=',$member->id)->first();
+        $card           = Card          ::where('user_id','=',$user->id)->first();
+//        dd($member);
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
-        $internal       = Internal      ::find($collaborator->id);
 
-        return view(StaffInternalController::$path.'-edit',
+        return view(TeacherController::$path.'-edit',
             compact('members','member','user',
-                'collaborator','internal','usersite'));
+                'collaborator','card'));
     }
 
     /**
@@ -196,10 +194,9 @@ class StaffInternalController extends Controller
     {
 
         $member         = Member        ::find($id);
-        $usersite       = Member        ::find($id)->user_site()->first();
         $user           = User          ::where('member_id','=',$member->id)->first();
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
-        $internal       = Internal      ::find($collaborator->id);
+        $card           = Card          ::where('user_id','=',$user->id)->first();
 
 
         $validator = Validator::make($request->all(), [
@@ -218,11 +215,6 @@ class StaffInternalController extends Controller
             'numero_cell'           =>   ['regex:/[0-9]{9}/',Rule::unique('members')->ignore($member->numero_cell, 'numero_cell')],
             'numero_tel'            =>  ['regex:/[0-9]{9}/',Rule::unique('members')->ignore($member->numero_tel, 'numero_tel')],
 
-            // Password field (step 2)
-            'email'                 =>  ['email', Rule::unique('users_site')->ignore($usersite->email, 'email')],
-            'password_conf'         =>  'same:password',
-
-            'note'                  =>  'nullable|string|max:250',
 
             // Member fields (step 3)
             'data_stipula_ass'      =>  'date',
@@ -236,7 +228,7 @@ class StaffInternalController extends Controller
 
 
         if ($validator->fails()) {
-            return redirect()->route('M113',$id)
+            return redirect()->route('M133',$id)
                 ->withErrors($validator)
                 ->withInput();
             //            dd('Fallito');
@@ -249,20 +241,10 @@ class StaffInternalController extends Controller
             $fields = $request->all();
             //            var_dump($fields);
 
-            $fieldsUserSite = BootController::filterFieldsRequestFromFillable($fields, UserSite::class);
-
-//            dd($fieldsUserSite);
-            if($fieldsUserSite['password'] != null){
-                $usersite->password = Hash::make($fieldsUserSite['password']);
-            }
-
-            $usersite->email = $fieldsUserSite['email'];
-            $usersite->save();
-
 
             $fieldsMember = BootController::filterFieldsRequestFromFillable($fields, Member::class);
             //            var_dump($fieldsMember);
-            $fieldsMember['user_site_id'] = $usersite->id;
+
 
             $member->fill($fieldsMember)->save();
 
@@ -284,7 +266,7 @@ class StaffInternalController extends Controller
 
 
 
-            return redirect()->route('M110');
+            return redirect()->route('M130');
 
         }
     }
@@ -297,26 +279,42 @@ class StaffInternalController extends Controller
      */
     public function destroy($id)
     {
+        $members        = $this->fetchAll();
+//        dd($members);
         $member         = Member        ::find($id);
-        $usersite       = Member        ::find($id)->user_site()->first();
         $user           = User          ::where('member_id','=',$member->id)->first();
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
-        $internal       = Internal      ::find($collaborator->id);
+        $card           = Card          ::where('user_id','=',$user->id)->first();
 
-        $id = $member->user_site_id;
-        $member->delete();
-        UserSite::find($id)->delete();
 
-        return view(StaffInternalController::$path.'-delete',
+//        $member->delete();
+
+        return view(TeacherController::$path.'-delete',
             compact('members','member','user',
-                'collaborator','internal','usersite'));
+                'collaborator','card'));
+    }
+
+    public function course($id){
+        $members        = $this->fetchAll();
+        $member         = Member        ::find($id);
+        $user           = User          ::where('member_id','=',$member->id)->first();
+        $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
+        $card           = Card          ::where('user_id','=',$user->id)->first();
+
+        $courses = Course::all()->toArray();
+        $courses_id = Teacher::where('collaborator_id','=','1')->first()->course()->get()->toArray();
+
+
+        return view(TeacherController::$path.'-course',compact('courses','$courses_id',
+                'members','member','user',
+                        'collaborator','card','courses','courses_id'));
     }
 
     private function fetchAll(){
-        return DB::select('SELECT DISTINCT m.id,u.nome,u.cognome,m.cod_fiscale,u.data_nascita,m.scadenza_ass,m.scadenza_cert_med 
-FROM users u,members m,collaborators co,internals i 
-WHERE m.id = u.member_id AND u.id = co.user_id AND 
-co.id = i.collaborator_id AND co.esterno = 0 
- ORDER BY m.id ASC ');
+        return DB::select('SELECT m.id,u.nome , u.cognome,m.cod_fiscale,u.data_nascita,c.scadenza_tesseramento,m.scadenza_ass,m.scadenza_cert_med
+FROM users u,cards c,members m,collaborators co,teachers t
+WHERE m.id = u.member_id AND u.id = co.user_id AND
+  co.id = t.collaborator_id AND t.stagista = 0
+GROUP BY m.id');
     }
 }

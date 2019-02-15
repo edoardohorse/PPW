@@ -3,7 +3,7 @@
 @section('title','Collaboratore esterno')
 
 @section('main')
-     <h1>Collabaoratore esterno</h1>
+     <h1>Collaboratore esterno</h1>
 
      @include('home-tables.staff-table')
 
