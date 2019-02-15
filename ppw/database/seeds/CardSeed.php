@@ -128,5 +128,78 @@ class CardSeed extends Seeder
             'user_id' => '13'
         ]);
         $card->save();
+
+        $card = new App\Card([
+            'data_tesseramento' => '2019-05-02',
+            'scadenza_tesseramento' => '2020-05-02',
+            'created_at' => '2019-02-11 09:03:16',
+            'updated_at' => '2019-02-11 09:03:16',
+            'user_id' => '14'
+        ]);
+        $card->save();
+
+        $card = new App\Card([
+            'data_tesseramento' => '2019-12-20',
+            'scadenza_tesseramento' => '2020-12-20',
+            'created_at' => '2019-02-11 09:03:16',
+            'updated_at' => '2019-02-11 09:03:16',
+            'user_id' => '15'
+        ]);
+        $card->save();
+
+        $card = new App\Card([
+            'data_tesseramento' => '2019-09-18',
+            'scadenza_tesseramento' => '2020-09-18',
+            'created_at' => '2019-02-11 09:03:16',
+            'updated_at' => '2019-02-11 09:03:16',
+            'user_id' => '16'
+        ]);
+        $card->save();
+
+        $card = new App\Card([
+            'data_tesseramento' => '2019-11-22',
+            'scadenza_tesseramento' => '2020-11-22',
+            'created_at' => '2019-02-11 09:03:16',
+            'updated_at' => '2019-02-11 09:03:16',
+            'user_id' => '17'
+        ]);
+        $card->save();
+
+        $card = new App\Card([
+            'data_tesseramento' => '2019-06-22',
+            'scadenza_tesseramento' => '2020-06-22',
+            'created_at' => '2019-02-11 09:03:16',
+            'updated_at' => '2019-02-11 09:03:16',
+            'user_id' => '18'
+        ]);
+        $card->save();
+
+        $card = new App\Card([
+            'data_tesseramento' => '2019-01-12',
+            'scadenza_tesseramento' => '2020-01-12',
+            'created_at' => '2019-02-11 09:03:16',
+            'updated_at' => '2019-02-11 09:03:16',
+            'user_id' => '19'
+        ]);
+        $card->save();
+
+        $card = new App\Card([
+            'data_tesseramento' => '2019-11-06',
+            'scadenza_tesseramento' => '2020-11-06',
+            'created_at' => '2019-02-11 09:03:16',
+            'updated_at' => '2019-02-11 09:03:16',
+            'user_id' => '20'
+        ]);
+        $card->save();
+
+        $card = new App\Card([
+            'data_tesseramento' => '2019-06-20',
+            'scadenza_tesseramento' => '2020-06-20',
+            'created_at' => '2019-02-11 09:03:16',
+            'updated_at' => '2019-02-11 09:03:16',
+            'user_id' => '21'
+        ]);
+        $card->save();
+
     }
 }
