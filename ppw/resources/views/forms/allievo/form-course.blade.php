@@ -1,4 +1,4 @@
-@extends('forms.stagista.form-stagista')
+@extends('forms.allievo.form-allievo')
 
 
 
@@ -13,18 +13,57 @@
 
 
 
-        @include('forms.input-checkbox',[
-                    'input_name'    => 'courses[]',
-                    'label'         => 'Corsi',
-                    'key'           =>  'id',
-                    'value'           =>  'nome_corso',
-                    'checkboxes'    => $courses,
-                    'checked'     =>  $courses_assigned_id,
-        ])
+    <h3>Step</h3>
+    <section>
+
+        @include('forms.input-form', [
+                                    'type'      =>      'date',
+                                    'label'     =>      'Data inizio',
+                                    'input_name' =>     'data_inizio',
+                                    ])
+
+        @include('forms.input-form', [
+                                     'type'      =>      'date',
+                                    'label'     =>      'Data fine',
+                                    'input_name' =>     'data_fine',
+                                    ])
 
 
 
-    <input type="submit" class="btn btn-lg btn-outline-primary float-right" value="@yield('modal-done-text','Invia')">
+        @include('forms.option-form',[
+                'input_name'        => 'course',
+                'options'           => $courses,
+                'option_default'   => '',
+                'label'             => 'Corsi',
+                'key'               => 'id',
+                'value'             =>  'nome_corso'
+            ])
+
+    </section>
+    <h3>Step</h3>
+    <section>
+
+        <div class="spinner-border text-info" style="margin-left:47%;" role="status" id="spinner">
+            <span class="sr-only">Loading...</span>
+        </div>
+
+        <div id="step2" class="d-none">
+            <label for="">Costo</label>
+            <input readonly class="form-control" id="costo" name="costo"></input>
+
+            <label for="">Numero lezioni</label>
+            <span class="form-control mt-2" id="lezioni"></span>
+
+
+            <label for="">Metodo di pagamento</label>
+            <select class="form-control mt-2" name="metodo" id="">
+                <option value="Carta di credito">Carta di credito</option>
+                <option value="Contanti">Contanti</option>
+            </select>
+
+        </div>
+    </section>
+
 
 
 @stop

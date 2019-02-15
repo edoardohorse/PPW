@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Scheduling;
+use App\Transaction;
 use Illuminate\Validation\Rule;
 use App\Collaborator;
 use App\Http\Requests\FounderFormRequest;
@@ -14,6 +16,7 @@ use App\Card;
 use App\Asd;
 use App\Teacher;
 use App\Course;
+use App\SchedulingCourse;
 use Validator;
 use Illuminate\Support\Facades\Hash;
 
@@ -23,6 +26,16 @@ use Illuminate\Support\Facades\Hash;
 
 class AllievoController extends Controller
 {
+
+    private static $WEEK = [
+        'Monday' => 'Lunedì',
+        'Tuesday' => 'Martedì',
+        'Wednesday' => 'Mercoledì',
+        'Thursday' => 'Giovedì',
+        'Friday' => 'Venerdì',
+        'Saturday' => 'Sabato',
+        'Sunday' => 'Domenica',
+        ];
     static $path = 'home/secretariat/members/allievo/allievo';
 
     /**
@@ -292,50 +305,63 @@ class AllievoController extends Controller
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
         $card           = Card          ::where('user_id','=',$user->id)->first();
 
-        $courses = Course::all()->toArray();
-        $teacher    = Teacher::where('collaborator_id','=',$collaborator->id)->first();
-        $courses_id = $teacher->course()->get(['id'])->toArray();
+        $courses = Course::all(['id','nome_corso'])->toArray();
 
 
-        $courses_assigned_id = [];
-        foreach ($courses_id as $course) {
-            array_push($courses_assigned_id, $course['id']);
-        }
+
+//        $courses_assigned_id = [];
+//        foreach ($courses_id as $course) {
+//            array_push($courses_assigned_id, $course['id']);
+//        }
 
 
         return view(AllievoController::$path.'-course',compact(
             'members','member','user',
-            'collaborator','card','courses','courses_assigned_id'));
+            'collaborator','card','courses'));
     }
 
     public function assignCourse(Request $request, $id){
 
 
+
         $member         = Member        ::find($id);
         $user           = User          ::where('member_id','=',$member->id)->first();
-        $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
-        $teacher        = Teacher       ::where('collaborator_id','=',$collaborator->id)->first();
 
 
-        $tmp      = $teacher->course()->get(['id'])->toArray();
+//        dd($user,$request->all());
+        $user->course()->attach($user->id,
+            ['data_inizio'=>$request->data_inizio,'data_fine'=>$request->data_fine,'course_id'=>$request->course]);
 
+        $t = new Transaction();
+        $t->modalita_pagamento  =  $request->metodo;
+        $t->descrizione     = 'Iscrizione al corso '.Course::find($request->course)->first()->nome_corso;
+        $t->file_fattura    =   "";
+        $t->data = date('Y-m-d');
+        $t->importo         = $request->costo;
+        $t->tipo_transazione    = 'entrata';
+        $t->tipo_ricevuta    = 'ricevuta';
+        $t->tipo_fattura       = '';
 
-        $coursesAssigned = [];
-        foreach ($tmp as $course) {
-            array_push($coursesAssigned, $course['id']);
-        }
+        $t->user_id         = $user->id;
+        $t->asd_id          = 1;
+        $t->save();
 
-        $flippedC = array_flip($coursesAssigned);
-        $flippedR = array_flip($request->courses);
+        $pdf = PdfController::pdf($t->id);
 
-        $courseIdToRemove   =  array_flip(array_diff_key($flippedC, $flippedR));
-        $courseIdToAdd      = array_flip(array_diff_key($flippedR, $flippedC));
+        $t->file_fattura    = public_path('\\uploads')."\\fattura\\pdf$t->id.pdf";
+        $t->save();
 
-        $teacher->course()->detach($courseIdToRemove);
-        $teacher->course()->attach($courseIdToAdd);
+        $pdf->download('ciao.pdf');
+        return redirect()->route('M220');
+    }
 
+    public function getHour(Request $req){
+//        return $req->courseId;
 
-        return redirect()->route('M140');
+            return [
+                'hour'      =>  $this->getHoursOfCourse($req->dataStart,$req->dataEnd,$req->courseId),
+                'cost'      =>  Course::find(1)->first()->costo_orario
+            ];
     }
 
     private function fetchAll(){
@@ -344,4 +370,77 @@ FROM users u,cards c,members m
 WHERE m.id = u.member_id AND u.tipo = 'allievo' 
  GROUP BY m.id ASC ");
     }
+
+    private function extractHourToInt($time){return (int)substr($time,0,2);}
+
+
+
+    private function getHoursOfCourse($dateStart,$dateEnd,$course_id){
+        $days = $this->getCourseDurationPerDay($course_id);
+//        dd($days);
+
+//        $data_i = date('d-m-Y');
+//        $data_f = '10-03-2019';
+
+//        dd($WEEK[date('l', strtotime($data_i))]);
+
+//        foreach
+//        dd($data_i,$data_f);
+        $next_day = $dateStart;
+        $dateEnd = date('Y-m-d', strtotime($dateEnd .' +1 day'));
+        $hour = 0;
+        do{
+            $dayOfWeek = $this->getDayofWeek($next_day);
+
+            $hour += $days[$dayOfWeek];
+
+            $next_day = date('Y-m-d', strtotime($next_day .' +1 day'));
+//            var_dump($next_day);
+//            var_dump($this->getDayofWeek($next_day));
+        }while($next_day != $dateEnd);
+
+//        dd($days,$hour,$dateEnd, $dateEnd);
+        return $hour;
+    }
+
+
+    private function getDayofWeek($date){
+        return AllievoController::$WEEK[date('l', strtotime($date))];
+    }
+
+
+
+    private function getCourseDurationPerDay($course_id){
+        $id_schedulings = SchedulingCourse::where('course_id','=',$course_id)->select('scheduling_id')->get()->toArray();
+        $days = [
+            'Lunedì'=> 0,
+            'Martedì'=> 0,
+            'Mercoledì'=> 0,
+            'Giovedì'=> 0,
+            'Venerdì'=> 0,
+            'Sabato'=> 0,
+            'Domenica'=> 0,
+        ];
+        foreach($id_schedulings as $id){
+
+            $scheduling = Scheduling::find($id)->first()->toArray();
+//            dd($scheduling);
+            $ora_inizio =  $this->extractHourToInt( $scheduling['ora_inizio']);
+            $ora_fine =   $this->extractHourToInt( $scheduling['ora_fine']);
+
+            $duration = $ora_fine - $ora_inizio;
+
+            $days[$scheduling['giorno']] += $duration;
+        }
+
+        return $days;
+
+    }
+
+
+
+
+
+
+
 }
