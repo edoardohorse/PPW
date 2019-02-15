@@ -84,11 +84,6 @@
                         'name'  => 'Effettuati',
                         'link'  => 'M710',
                         'level' =>  '3',
-                        ],
-                    [
-                        'name'   =>'Ricevuti',
-                        'link'  =>  'M122',
-                        'level' =>  '3'
                         ]
                 ]
             ])
