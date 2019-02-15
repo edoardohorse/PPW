@@ -225,7 +225,7 @@ class StagistaController extends Controller
             'numero_ass'            =>  'numeric',
             'data_cert_medico'      =>  'date',
             'scadenza_cert_med'     =>  'date|after:data_cert_medico',
-            'p_iva'                 =>  ['nullable','digits:11',Rule::unique('members')->ignore($member->p_iva, 'members')],
+            'p_iva'                 =>  ['nullable','digits:11',Rule::unique('members')->ignore($member->p_iva, 'p_iva')],
 
             // Card fields (step 4)
             'data_tesseramento'     =>  'date',
@@ -286,12 +286,19 @@ class StagistaController extends Controller
      */
     public function destroy($id)
     {
+        $members        = $this->fetchAll();
+
         $member         = Member        ::find($id);
         $user           = User          ::where('member_id','=',$member->id)->first();
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
         $card           = Card          ::where('user_id','=',$user->id)->first();
 
-        $member->delete();
+        $teacher    = Teacher::where('collaborator_id','=',$collaborator->id)->first();
+        $courses_id = $teacher->course()->get(['id'])->toArray();
+
+        $teacher->course()->detach($courses_id);
+
+//        $member->delete();
 
         return view(StagistaController::$path.'-delete',
             compact('members','member','user',
