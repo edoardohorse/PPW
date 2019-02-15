@@ -63,7 +63,8 @@ Route::view('/box','test-box/page');
 
 Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
 
-    Route::view('/homepage','home/homepage')->name('M000');
+//    Route::view('/homepage','home/homepage')->name('M000');
+
 
     Route::prefix('managment')->group(function(){
 
@@ -244,6 +245,8 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
 
 
     });
+
+    Route::redirect('/homepage', route('M350'));
 
 Route::get('/report-stats','ChartsController@charts')->name('M400');
 });

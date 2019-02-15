@@ -39,7 +39,7 @@ WHERE I.id=M.id AND I.id=A.id AND A.id=B.id AND tipo_transazione='entrata'");
 
     public function pdfverbals()
     {
-        $verbals =
+//        $verbals =
     }
 
 }
