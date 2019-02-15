@@ -63,7 +63,8 @@ Route::view('/box','test-box/page');
 
 Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
 
-    Route::view('/homepage','home/homepage')->name('M000');
+//    Route::view('/homepage','home/homepage')->name('M000');
+
 
     Route::prefix('managment')->group(function(){
 
@@ -164,6 +165,10 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 ]
             ]);
 
+            Route::get('member/{id}/course',   'AllievoController@course')->name('M227');
+            Route::post('member/{id}/course',  'AllievoController@assignCourse')->name('M228');
+            Route::get('hour',  'AllievoController@getHour');
+
             Route::get('/card', 'MemberController@datacard')->name('M211');
         });
 
@@ -240,6 +245,8 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
 
 
     });
+
+    Route::redirect('/homepage', route('M350'));
 
 Route::get('/report-stats','ChartsController@charts')->name('M400');
 });

@@ -2,7 +2,7 @@
 
 @push('lib_end_script')
     <script src="{{ asset('js/jquery.steps.js')  }}"></script>
-    <script src="{{ asset('js/formStepped.js')  }}"></script>
+    <script src="{{ asset('js/formSteppedAllievo.js')  }}"></script>
 @endpush
 
 

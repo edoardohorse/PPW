@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="invoice-title">
-                <h2>Ricevuta n.@yield('numero_fattura')</h2>
+                <h2>Fattura n.@yield('numero_fattura')</h2>
             </div>
         </div>
         <div class="col-md-6">

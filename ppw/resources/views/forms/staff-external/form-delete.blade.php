@@ -5,7 +5,7 @@
     Eliminazione effettuata
 @stop
 
-@section('route', route('M126'))
+@section('route', route('M120'))
 
 @section('modal-done-text', 'Finito')
 

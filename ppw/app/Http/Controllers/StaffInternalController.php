@@ -52,8 +52,13 @@ class StaffInternalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FounderFormRequest $request)
+    public function store(Request $request, $id)
     {
+
+        $member         = Member        ::find($id);
+        $user           = User          ::where('member_id','=',$member->id)->first();
+        $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
+        $internal       = Internal      ::find($collaborator->id);
 
         $validator = Validator::make($request->all(), [
             '*'                     => 'required',
@@ -68,9 +73,9 @@ class StaffInternalController extends Controller
 
 
             // Member fields (step 2)
-            'cod_fiscale'           =>  'required|size:16|unique:members',
-            'numero_cell'           =>  'regex:/[0-9]{9}/|unique:members',
-            'numero_tel'            =>  'regex:/[0-9]{9}/|unique:members',
+            'cod_fiscale'           =>  ['required','size:16',Rule::unique('members')->ignore($member->cod_fiscale, 'cod_fiscale')],
+            'numero_cell'           =>   ['regex:/[0-9]{9}/',Rule::unique('members')->ignore($member->numero_cell, 'numero_cell')],
+            'numero_tel'            =>  ['regex:/[0-9]{9}/',Rule::unique('members')->ignore($member->numero_tel, 'numero_tel')],
 
             // Password field (step 2)
             'email'                 =>  'email|unique:users_site',
@@ -84,7 +89,7 @@ class StaffInternalController extends Controller
             'numero_ass'            =>  'numeric',
             'data_cert_medico'      =>  'date',
             'scadenza_cert_med'     =>  'date|after:data_cert_medico',
-            'p_iva'                 =>  'nullable|digits:11|unique:members',
+            'p_iva'                 =>  ['nullable','digits:11',Rule::unique('members')->ignore($member->p_iva, 'members')],
         ]);
 
         if ($validator->fails()) {
@@ -194,7 +199,7 @@ class StaffInternalController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+//        dd($id);
         $member         = Member        ::find($id);
         $usersite       = Member        ::find($id)->user_site()->first();
         $user           = User          ::where('member_id','=',$member->id)->first();
@@ -230,7 +235,7 @@ class StaffInternalController extends Controller
             'numero_ass'            =>  'numeric',
             'data_cert_medico'      =>  'date',
             'scadenza_cert_med'     =>  'date|after:data_cert_medico',
-            'p_iva'                 =>  ['nullable','digits:11',Rule::unique('members')->ignore($member->p_iva, 'members')],
+            'p_iva'                 =>  ['nullable','digits:11',Rule::unique('members')->ignore($member->p_iva, 'p_iva')],
         ]);
 
 
@@ -297,6 +302,8 @@ class StaffInternalController extends Controller
      */
     public function destroy($id)
     {
+        $members        = $this->fetchAll();
+
         $member         = Member        ::find($id);
         $usersite       = Member        ::find($id)->user_site()->first();
         $user           = User          ::where('member_id','=',$member->id)->first();

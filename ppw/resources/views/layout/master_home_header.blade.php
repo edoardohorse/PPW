@@ -19,10 +19,10 @@
 
 
 
-    <div class="col-9 float-right" id="account">
+    <div class="col-9 float-right p-3" id="account">
 
         <div class="row float-right">
-            <span class="account_name">
+            <span class="account_name mr-2">
 
                 {{DB::table('users')
                                             ->where('member_id','=', Auth::user()->member->id)->first()->nome  }}
@@ -34,7 +34,19 @@
 
             <a href="{{route('logout')}}" id="btn-logout" class="btn btn-info btn-sm">Esci</a>
 
-
+            <div class="ml-2">
+                <i id="font-large" style="background-image: url(' {{ asset('img/font.png')  }} ')" onclick="changeFont()" title="Ingrandisci/Diminuisci font"></i>
+                <script>
+                    function changeFont(){
+                        if($('body').hasClass('font-large')){
+                            $('body').removeClass('font-large')
+                        }
+                        else{
+                            $('body').addClass('font-large')
+                        }
+                    }
+                </script>
+            </div>
         </div>
 
         {{--<div class="row float-right">--}}
@@ -43,21 +55,8 @@
 
 
 
-        <div>
-            <i id="font-large" style="background-image: url(' {{ asset('img/font.png')  }} ')" onclick="changeFont()" title="Ingrandisci/Diminuisci font"></i>
-            <script>
-                function changeFont(){
-                    if($('body').hasClass('font-large')){
-                        $('body').removeClass('font-large')
-                    }
-                    else{
-                        $('body').addClass('font-large')
-                    }
-                }
-            </script>
-        </div>
 
-        @include('layout.master_home_shortcuts')
+
 
     </div>
 

@@ -1,4 +1,4 @@
-@extends('forms.stagista.form-stagista')
+@extends('forms.allievo.form-allievo')
 
 
 @section('modal-title')
@@ -13,6 +13,6 @@
 
 @section('form')
 
-    <p>Stagista eliminato</p>
+    <p>Allievo eliminato</p>
 
 @stop
