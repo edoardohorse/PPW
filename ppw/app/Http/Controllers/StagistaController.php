@@ -86,10 +86,14 @@ class StagistaController extends Controller
             'data_cert_medico'      =>  'date',
             'scadenza_cert_med'     =>  'date|after:data_cert_medico',
             'p_iva'                 =>  'nullable|digits:11|unique:members',
+
+
+            'data_tesseramento'     =>  'date',
+            'scadenza_tesseramento' =>  'date|after:data_tesseramento',
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('M131')
+            return redirect()->route('M141')
                 ->withErrors($validator)
                 ->withInput();
             //            dd('Fallito');
@@ -139,7 +143,7 @@ class StagistaController extends Controller
             $teacher->save();
 
 
-            return redirect()->route('M130');
+            return redirect()->route('M140');
 
         }
     }
@@ -222,12 +226,16 @@ class StagistaController extends Controller
             'data_cert_medico'      =>  'date',
             'scadenza_cert_med'     =>  'date|after:data_cert_medico',
             'p_iva'                 =>  ['nullable','digits:11',Rule::unique('members')->ignore($member->p_iva, 'members')],
+
+            // Card fields (step 4)
+            'data_tesseramento'     =>  'date',
+            'scadenza_tesseramento' =>  'date|after:data_tesseramento',
         ]);
 
 
 
         if ($validator->fails()) {
-            return redirect()->route('M133',$id)
+            return redirect()->route('M143',$id)
                 ->withErrors($validator)
                 ->withInput();
             //            dd('Fallito');
@@ -259,13 +267,13 @@ class StagistaController extends Controller
             $fieldsCard = BootController::filterFieldsRequestFromFillable($fields, Card::class);
             $fieldsCard['user_id'] = $user->id;
             //            var_dump($fieldsCard);
-            //            $card = new Card($fieldsCard);
+            $card = new Card();
             //            $card->user_id = $user->id;
-            //            $card->save();
+            $card->fill($fieldsCard)->save();
 
 
 
-            return redirect()->route('M130');
+            return redirect()->route('M140');
 
         }
     }
