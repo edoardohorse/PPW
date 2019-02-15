@@ -10,7 +10,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class PdfController extends Controller
 {
-    public function pdf()
+    static public function pdf($id)
     {
 
         $payments = DB::select("SELECT I.id, I.data, I.modalita_pagamento, I.descrizione, I.importo, M.nome, M.indirizzo, M.citta, M.cod_fiscale, M.cap , M.provincia, I.created_at, M.numero_tel
@@ -21,7 +21,7 @@ WHERE I.asd_id=M.id AND tipo_transazione='entrata' AND tipo_ricevuta='ricevuta'"
 
 
 //        return view('Pdf/payments-pdf', compact('payments'));
-       $pdf = PDF::loadView('Pdf/payments-receipt-pdf', compact('payments'))->save( public_path('/uploads').'/pdfname.pdf' );
+       $pdf = PDF::loadView('Pdf/payments-receipt-pdf', compact('payments'))->save( public_path('/uploads/fattura/').'pdf'.$id.'.pdf' );
         return $pdf->download('ricevuta.pdf');
     }
 
@@ -34,6 +34,11 @@ WHERE I.id=M.id AND I.id=A.id AND A.id=B.id AND tipo_transazione='entrata'");
         $pdf = PDF::loadView('Pdf/payments-invoice-pdf', compact('invoices'))->save( public_path('/uploads').'/pdfname1.pdf' );
         return $pdf->download('fattura.pdf');
 
+    }
+
+    public function pdfverbals()
+    {
+        $verbals =
     }
 
 }
