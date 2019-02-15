@@ -11,6 +11,14 @@
 
 @section('form')
 
+    @include('forms.option-form',[
+        'label' => 'Tipo',
+        'input_name' => 'tipo_transazione',
+        'option_default'    => 'entrata',
+        'options'   => ['entrata','uscita'],
+
+    ])
+
     @include('forms.input-form',[
                 'type'  => 'text',
                 'label' => 'Descrizione',

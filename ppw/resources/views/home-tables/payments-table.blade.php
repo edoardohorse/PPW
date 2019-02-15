@@ -6,6 +6,8 @@
         <th>Importo</th>
         <th>Modalità di pagamento</th>
         <th>Data</th>
+        <td>Tipo transazione</td>
+
         {{--<th>File fattura</th>--}}
 
     </tr>
@@ -19,6 +21,7 @@
             <td>{{$transaction->importo}}</td>
             <td>{{$transaction->modalita_pagamento}}</td>
             <td>{{$transaction->created_at}}</td>
+            <td>{{$transaction->tipo_transazione}}</td>
             {{--<td>{{$transaction->file_fattura}}</td>--}}
             {{--<td><a href="{{action('PdfController@pdf')}}"> Esporta pdf</a></td>--}}
         </tr>

@@ -8,6 +8,15 @@
 
 @section('form')
 
+    @include('forms.option-form',[
+        'label' => 'Tipo',
+        'input_name' => 'tipo_fattura',
+        'option_default' => $transaction->tipo_transazione,
+        'options'   => ['entrata','uscita'],
+        'readonly'  => 'true',
+
+    ])
+
     @include('forms.input-form',[
                 'type'  => 'text',
                 'label' => 'Descrizione',

@@ -69,15 +69,15 @@ class PaymentMadeController extends Controller
             $t->file_fattura    =   "";
             $t->data = date('Y-m-d');
             $t->importo         = $request->importo;
-            $t->tipo_transazione    = 'entrata';
+            $t->tipo_transazione    = $request->tipo_transazione;
             $t->tipo_ricevuta    = 'ricevuta';
             $t->tipo_fattura       = '';
 
 
             $t->asd_id          = 1;
             $t->save();
-
-            $pdf = PdfController::pdf($t->id);
+            if($request->tipo_transazione == 'entrata')
+                $pdf = PdfController::pdf($t->id);
 //            else
 //                $pdf = PdfController::pdfinvoices($t->id,$request->tipo_ricevuta);
 
@@ -117,6 +117,6 @@ class PaymentMadeController extends Controller
     }
 
     private function fetch(){
-        return DB::select("SELECT id,descrizione,importo,modalita_pagamento,created_at,file_fattura FROM transactions WHERE tipo_transazione ='entrata'");
+        return DB::select("SELECT id,descrizione,importo,modalita_pagamento,created_at,file_fattura,tipo_transazione FROM transactions ");
     }
 }
