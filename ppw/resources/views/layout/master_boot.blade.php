@@ -8,6 +8,7 @@
 @section('body')
    @include('layout.master_boot_header')
 
+
     @include('layout.master_boot_box')
 @stop
 
