@@ -5,7 +5,7 @@
 
 
 @section('main')
-    <h1>Programmzione</h1>
+    <h1>Programmazione</h1>
 
 
 

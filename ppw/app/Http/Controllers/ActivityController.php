@@ -10,11 +10,12 @@ class ActivityController extends Controller
     public function discipline(){
 
 
+
     }
 
     public function course(){
 
-        $courses = DB::select("SELECT c.id,c.nome_corso,c.costo_orario,d.nome,c.created_at,c.updated_at FROM disciplines d,courses c WHERE d.id = c.discipline_id ORDER BY c.id");
+        $courses = DB::select("SELECT c.nome_corso,c.costo_orario,d.nome,c.created_at,c.updated_at FROM disciplines d,courses c WHERE d.id = c.discipline_id ORDER BY c.id");
 
         return view('home/mng-activity/course', compact('courses'));
 
@@ -22,7 +23,8 @@ class ActivityController extends Controller
 
     public function package(){
 
-        $packages = DB::select("SELECT p.id,p.nome_pacchetto,p.prezzo,c.nome_corso,p.created_at,p.updated_at FROM packages p,package_course pc,courses c WHERE c.id = pc.course_id ORDER BY p.id");
+        $packages = DB::select("SELECT SELECT p.nome_pacchetto,p.prezzo,c.nome_corso,p.created_at,p.updated_at FROM packages p,package_course pc,courses c WHERE c.id = pc.course_id AND p.id = pc.package_id AND c.id = pc.course_id
+GROUP BY p.id");
 
         return view('home/mng-activity/package', compact('packages'));
 

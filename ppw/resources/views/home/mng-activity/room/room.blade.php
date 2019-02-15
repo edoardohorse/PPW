@@ -1,6 +1,6 @@
 @extends('layout.master_home')
 
-@section('title','Programmazione')
+@section('title','Sale')
 
 
 
@@ -8,7 +8,7 @@
 @section('main')
     <h1>Sale</h1>
 
-    @include('layout.calendar_scheduling')
+    {{--@include('layout.calendar_scheduling')--}}
 
 
     @yield('modal')
