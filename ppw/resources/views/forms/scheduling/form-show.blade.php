@@ -10,14 +10,24 @@
 @section('form')
 
     {{--{{dd($orafine)}}--}}
-@include('forms.option-form',[
-                'label' => 'Giorno settimanale',
-                'input_name' => 'giorno',
-                'option_default' => $schedule->giorno,
+
+    @include('forms.input-form',[
+                'type'  => 'text',
+                'label' => 'Insegnante',
+                'input_name' => 'teacher',
                 'readonly'  => 'true',
-                'options'   => ['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica']
+                'value'     => $teacher,
 
     ])
+
+    @include('forms.option-form',[
+                    'label' => 'Giorno settimanale',
+                    'input_name' => 'giorno',
+                    'option_default' => $schedule->giorno,
+                    'readonly'  => 'true',
+                    'options'   => ['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica']
+
+        ])
 
 @include('forms.option-form',[
             'label' => 'Inizio lezione',

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Room;
 use App\Course;
 use App\Scheduling;
+use App\Collaborator;
+use App\User;
 use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -176,18 +178,29 @@ class SchedulingController extends Controller
         $orafine = substr($schedule->ora_fine,'0',5);
 
 
+
+
         $calendar = $this->fetch();
         $time = SchedulingController::$TIME;
         $rooms = Room::all(['id','nome'])->toArray();
         $courses =  Course::all(['id','nome_corso'])->toArray();
         //        dd($roomDefault);
 
+        $course = Scheduling::find($id)->course()->first();
 
+
+        $id =   Course::find($course->id)->teacher()->first();
+        $teacher = "Ancora nessun insegnante assegnato";
+        if($id){
+            $id = $id->collaborator_id;
+            $user = User::where('id','=',Collaborator::find($id)->user_id)->first();
+            $teacher    = $user->nome.' '.$user->cognome;
+        }
 
 
         return view(SchedulingController::$path . '-show',
             compact('calendar', 'schedule','time','orainizio','orafine',
-                'roomDefault','rooms', 'courseDefault','courses'));
+                'roomDefault','rooms', 'courseDefault','courses','teacher'));
     }
 
     /**
