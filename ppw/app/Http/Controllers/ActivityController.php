@@ -35,7 +35,7 @@ GROUP BY p.id");
         $rooms = DB::select("SELECT r.id,r.nome,c.nome_corso,r.created_at,r.updated_at
 FROM courses  c, scheduling_course sc, schedulings s,
 		(SELECT s.id, r.nome,r.created_at,r.updated_at
-			FROM rooms as r, room_scheduling as rs, schedulings as s
+			FROM  rooms as r, room_scheduling as rs, schedulings as s
 				WHERE 	r.id 				= rs.room_id
 				AND 	rs.scheduling_id	= s.id ) as r
 
