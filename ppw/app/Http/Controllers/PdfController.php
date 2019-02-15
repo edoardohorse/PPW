@@ -15,14 +15,15 @@ class PdfController extends Controller
 
         $payments = DB::select("SELECT I.id, I.data, I.modalita_pagamento, I.descrizione, I.importo, M.nome, M.indirizzo, M.citta, M.cod_fiscale, M.cap , M.provincia, I.created_at, M.numero_tel
 FROM transactions as I, asds as M
-WHERE I.asd_id=M.id AND tipo_transazione='entrata' AND tipo_ricevuta='ricevuta'");
+          WHERE I.asd_id=M.id AND i.id='$id'
+           AND tipo_transazione='entrata' AND tipo_ricevuta='ricevuta'");
 
 
 
 
 //        return view('Pdf/payments-pdf', compact('payments'));
-       $pdf = PDF::loadView('Pdf/payments-receipt-pdf', compact('payments'))->save( public_path('/uploads/fattura/').'pdf'.$id.'.pdf' );
-        return $pdf->download('ricevuta.pdf');
+       $pdf = PDF::loadView('Pdf/payments-receipt-pdf', compact('payments'))->save( public_path('/uploads')."/fattura/pdf$id.pdf" );
+        return $pdf;
     }
 
     public function pdfinvoices()

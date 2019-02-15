@@ -1,7 +1,7 @@
-@extends('forms.stagista.form-stagista')
+@extends('forms.allievo.form-allievo')
 
 @section('modal-title')
-    Aggiungi uno stagista
+    Aggiungi uno allievo
 @stop
 
 @section('route', route('M222'))

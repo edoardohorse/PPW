@@ -1,4 +1,4 @@
-@extends('forms.stagista.form-stagista')
+@extends('forms.allievo.form-allievo')
 
 
 

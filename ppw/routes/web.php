@@ -164,6 +164,10 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 ]
             ]);
 
+            Route::get('member/{id}/course',   'AllievoController@course')->name('M227');
+            Route::post('member/{id}/course',  'AllievoController@assignCourse')->name('M228');
+            Route::get('hour',  'AllievoController@getHour');
+
             Route::get('/card', 'MemberController@datacard')->name('M211');
         });
 
