@@ -81,7 +81,7 @@
             'id'    => 'ManagmentPayments',
             'items'=>[
                     [
-                        'name'  => 'Effettuati',
+                        'name'  => 'Transazioni',
                         'link'  => 'M710',
                         'level' =>  '3',
                         ]
