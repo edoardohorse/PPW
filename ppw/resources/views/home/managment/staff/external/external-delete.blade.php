@@ -2,7 +2,7 @@
 
 @section('modal')
 
-    @include('forms.staff-external.form-create')
+    @include('forms.staff-external.form-delete')
 
 
 

@@ -32,28 +32,16 @@ class DatabaseSeeder extends Seeder
             ProviderSeed::class,
             AsdMemberSeed::class,
             CourseUserSeed::class,
-//            CollaboratorSeed::class,
+            CollaboratorSeed::class,
             PackageCourseSeed::class,
             CardSeed::class,
-//            InternalSeed::class,
-//            TeacherSeed::class,
-//            InternalCourseSeed::class,
-//            TeacherCourseSeed::class,
+            InternalSeed::class,
+            TeacherSeed::class,
+            InternalCourseSeed::class,
+            TeacherCourseSeed::class,
             ReportSeed::class,
-//            TransactionSeed::class,
-            /*
+            TransactionSeed::class,
             TaxDataSeed::class,
-
-
-
-
-
-
-
-
-
-*/
-
 
 
 

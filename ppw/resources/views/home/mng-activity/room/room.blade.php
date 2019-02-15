@@ -4,17 +4,17 @@
 
 
 
-
 @section('main')
     <h1>Sale</h1>
 
-    {{--@include('layout.calendar_scheduling')--}}
 
+
+    @include('home-tables.room-table')
 
     @yield('modal')
 
     <a class="btn btn-lg btn-primary" id="redirect_create"
-            href="{{route('M351')}}">Nuova lezione</a>
+            href="{{route('M341')}}">Nuova sala</a>
 
 
     <a class="btn btn-lg btn-primary" id="redirect_show"
@@ -37,5 +37,5 @@
 
 
 @push('lib_end_script')
-    <script src="{{asset('js/it.js')}}"></script>
+    <script src="{{asset('js/room.js')}}"></script>
 @endpush

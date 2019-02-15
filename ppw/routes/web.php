@@ -129,8 +129,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
             Route::post('stagista/{id}/course',  'StagistaController@assignCourse')->name('M148');
 
 
-//            Route::get('/stagista','StaffController@stagista')->name('M113');
-//            Route::get('/teacher','StaffController@teacher')->name('M114');
+
 
             
         });
@@ -152,12 +151,24 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
         Route::prefix('members')->group(function(){
 
             Route::get('/founder','MemberController@founder')->name('M211');
-            Route::get('/member','MemberController@member')->name('M213');
-            Route::get('/card', 'MemberController@datacard')->name('M216');
+
+            Route::resource('member', 'AllievoController',[
+                'names' =>[
+                    'index'     => 'M220',
+                    'create'    => 'M221',
+                    'store'     => 'M222',
+                    'edit'      => 'M223',
+                    'update'    => 'M224',
+                    'destroy'    => 'M225',
+                    'show'      => 'M226',
+                ]
+            ]);
+
+            Route::get('/card', 'MemberController@datacard')->name('M211');
         });
 
 
-            Route::get('/provider','MemberController@provider')->name('M220');
+            Route::get('/provider','MemberController@provider')->name('M211');
     });
 
     Route::prefix('mngactivity')->group(function(){

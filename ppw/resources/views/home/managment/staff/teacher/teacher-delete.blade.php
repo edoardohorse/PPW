@@ -2,7 +2,7 @@
 
 @section('modal')
 
-    @include('forms.teacher.form-create')
+    @include('forms.teacher.form-delete')
 
 
 

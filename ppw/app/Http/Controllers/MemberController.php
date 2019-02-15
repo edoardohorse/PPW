@@ -13,8 +13,8 @@ class MemberController extends Controller
 
         $members = DB::select("SELECT DISTINCT m.id,u.nome,u.cognome,m.cod_fiscale,u.data_nascita,c.scadenza_tesseramento,m.scadenza_ass,m.scadenza_cert_med 
 FROM users u,cards c,members m 
-WHERE m.id = u.member_id AND u.tipo = 'socio fondatore' 
- ORDER BY m.id ASC ");
+WHERE m.id = u.member_id AND u.tipo = 'fondatore' 
+ GROUP BY m.id ASC ");
 
         return view('home/secretariat/members/founder', compact('members'));
     }
@@ -25,7 +25,7 @@ WHERE m.id = u.member_id AND u.tipo = 'socio fondatore'
         $members = DB::select("SELECT DISTINCT m.id,u.nome,u.cognome,m.cod_fiscale,u.data_nascita,c.scadenza_tesseramento,m.scadenza_ass,m.scadenza_cert_med 
 FROM users u,cards c,members m 
 WHERE m.id = u.member_id AND u.tipo = 'allievo' 
- ORDER BY m.id ASC ");
+ GROUP BY m.id ASC ");
 
         return view('home/secretariat/members/member', compact('members'));
     }
@@ -45,7 +45,7 @@ WHERE m.id = u.member_id AND u.tipo = 'allievo'
 
         $members = DB::select("SELECT DISTINCT m.id,u.nome,u.cognome,m.cod_fiscale,u.data_nascita,c.scadenza_tesseramento,m.scadenza_ass,m.scadenza_cert_med 
 FROM users u,cards c,members m,providers p 
-WHERE m.id = u.member_id AND m.id = p.member_id ORDER BY m.id ASC ");
+WHERE m.id = u.member_id AND m.id = p.member_id GROUP BY m.id ASC ");
 
         return view('home/secretariat/providers/provider', compact('members'));
 

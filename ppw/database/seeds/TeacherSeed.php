@@ -19,6 +19,7 @@ class TeacherSeed extends Seeder
             'created_at' => '2019-02-11 09:03:16',
             'updated_at' => '2019-02-11 09:03:16',
             'collaborator_id' => 1
+
         ]);
         $teacher->save();
         $teacher->course()->attach(1);
@@ -34,26 +35,15 @@ class TeacherSeed extends Seeder
         $teacher->course()->attach(2);
 
 
-        $teacher = new App\Teacher([
-
-            'stagista' => 0,
-            'created_at' => '2019-02-11 09:03:16',
-            'updated_at' => '2019-02-11 09:03:16',
-            'collaborator_id' => 3
-        ]);
-        $teacher->save();
-        $teacher->course()->attach(3);
-
-        $teacher = new App\Teacher([
-
-            'stagista' => 0,
-            'created_at' => '2019-02-11 09:03:16',
-            'updated_at' => '2019-02-11 09:03:16',
-            'collaborator_id' => 4
-        ]);
-        $teacher->save();
-        $teacher->course()->attach(4);
-
+//        $teacher = new App\Teacher([
+//
+//            'stagista' => 0,
+//            'created_at' => '2019-02-11 09:03:16',
+//            'updated_at' => '2019-02-11 09:03:16',
+//            'collaborator_id' => 3
+//        ]);
+//        $teacher->save();
+//        $teacher->course()->attach(3);
 
         $teacher = new App\Teacher([
 
@@ -63,7 +53,9 @@ class TeacherSeed extends Seeder
             'collaborator_id' => 5
         ]);
         $teacher->save();
-        $teacher->course()->attach(5);
+        $teacher->course()->attach(3);
+        $teacher->course()->attach(4);
+
 
         $teacher = new App\Teacher([
 
@@ -73,6 +65,18 @@ class TeacherSeed extends Seeder
             'collaborator_id' => 6
         ]);
         $teacher->save();
+
         $teacher->course()->attach(5);
+        $teacher->course()->attach(6);
+
+////        $teacher = new App\Teacher([
+//
+//            'stagista' => 0,
+//            'created_at' => '2019-02-11 09:03:16',
+//            'updated_at' => '2019-02-11 09:03:16',
+//            'collaborator_id' => 6
+//        ]);
+//        $teacher->save();
+//        $teacher->course()->attach(5);
     }
 }

@@ -315,6 +315,36 @@ class UserSeed extends Seeder
         ]);
         $user->save();
 
+        $user = new App\User([
+            "nome"=> "Giovanna",
+            "cognome"=> "Sarli",
+            "cap"=> "72021",
+            "indirizzo"=> "Via Madona delle grazie 157",
+            "citta"=> "Francavilla Fontana",
+            "provincia"=> "BR",
+            "data_nascita"=> "1991-10-23",
+            "genere"=> "Femmina",
+            "member_id"=> 19,
+            "created_at"=> "2019-02-11 09:03:16",
+            "updated_at"=> "2019-02-11 09:03:16",
+        ]);
+        $user->save();
+
+
+        $user = new App\User([
+            "nome"=> "Euprepio",
+            "cognome"=> "Di Noi",
+            "cap"=> "72021",
+            "indirizzo"=> "Via Mandala 57",
+            "citta"=> "Francavilla Fontana",
+            "provincia"=> "BR",
+            "data_nascita"=> "1996-12-23",
+            "genere"=> "Maschio",
+            "member_id"=> 20,
+            "created_at"=> "2019-02-11 09:03:16",
+            "updated_at"=> "2019-02-11 09:03:16",
+        ]);
+        $user->save();
 
     }
 }

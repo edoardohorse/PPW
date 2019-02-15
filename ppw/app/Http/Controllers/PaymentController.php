@@ -10,8 +10,7 @@ class PaymentController extends Controller
 
     public function made(){
 
-        $transactions = DB::select("SELECT id,descrizione,importo,modalita_pagamento,created_at,file_fattura FROM transactions WHERE tipo_transazione ='entrata'
-");
+        $transactions = DB::select("SELECT id,descrizione,importo,modalita_pagamento,created_at,file_fattura FROM transactions WHERE tipo_transazione ='entrata'");
 
 
         return view('home/managment/payments/made', compact('transactions'));

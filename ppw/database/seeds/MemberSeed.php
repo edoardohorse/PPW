@@ -252,6 +252,7 @@ class MemberSeed extends Seeder
             'p_iva' => '19097538910',
             'created_at' => '2019-02-11 09:03:16',
             'updated_at' => '2019-02-11 09:03:16',
+            'user_site_id' => 4
         ]);
         $member->save();
         $member->asd()->attach(1);
@@ -270,7 +271,8 @@ class MemberSeed extends Seeder
             'p_iva' => '19097538910',
             'created_at' => '2019-02-11 09:03:16',
             'updated_at' => '2019-02-11 09:03:16',
-            'user_site_id' => 4
+            'user_site_id' => 5
+
         ]);
         $member->save();
         $member->asd()->attach(1);
@@ -289,7 +291,7 @@ class MemberSeed extends Seeder
             'p_iva' => '19097538910',
             'created_at' => '2019-02-11 09:03:16',
             'updated_at' => '2019-02-11 09:03:16',
-            'user_site_id' => 5
+
         ]);
         $member->save();
         $member->asd()->attach(1);
@@ -311,15 +313,15 @@ class MemberSeed extends Seeder
         $member->asd()->attach(1);
 
         $member = new App\Member([
-            'cod_fiscale' => 'AFRDESAR57IGFF4R',
-            'numero_cell' => '32961247432',
-            'data_stipula_ass' => '2019-11-19',
-            'scadenza_ass' => '2020-11-19',
-            'numero_ass' => '101229',
+            'cod_fiscale' => 'FRCADFGR57IGFF4R',
+            'numero_cell' => '39312347432',
+            'data_stipula_ass' => '2019-05-19',
+            'scadenza_ass' => '2020-05-19',
+            'numero_ass' => '23561229',
             'data_cert_medico' => '2019-11-04',
             'scadenza_cert_med' => '2020-11-04',
             'note' => 'Iscrizione membro',
-            'p_iva' => '60097538910',
+            'p_iva' => '13496783910',
             'created_at' => '2019-02-11 09:03:16',
             'updated_at' => '2019-02-11 09:03:16',
         ]);
@@ -327,6 +329,35 @@ class MemberSeed extends Seeder
         $member->asd()->attach(1);
 
 
+        $member = new App\Member([
+            'cod_fiscale' => 'AFR56FDAR7IGFF4R',
+            'numero_cell' => '38912347432',
+            'data_stipula_ass' => '2019-03-19',
+            'scadenza_ass' => '2020-03-19',
+            'numero_ass' => '4201229',
+            'data_cert_medico' => '2019-10-04',
+            'scadenza_cert_med' => '2020-10-04',
+            'note' => 'Iscrizione membro',
+            'created_at' => '2019-02-11 09:03:16',
+            'updated_at' => '2019-02-11 09:03:16',
+        ]);
+        $member->save();
+        $member->asd()->attach(1);
 
+
+        $member = new App\Member([
+            'cod_fiscale' => 'AFR56FDAR7IGFF4R',
+            'numero_cell' => '38912347432',
+            'data_stipula_ass' => '2019-03-19',
+            'scadenza_ass' => '2020-03-19',
+            'numero_ass' => '4201229',
+            'data_cert_medico' => '2019-10-04',
+            'scadenza_cert_med' => '2020-10-04',
+            'note' => 'Iscrizione membro',
+            'created_at' => '2019-02-11 09:03:16',
+            'updated_at' => '2019-02-11 09:03:16',
+        ]);
+        $member->save();
+        $member->asd()->attach(1);
     }
 }
