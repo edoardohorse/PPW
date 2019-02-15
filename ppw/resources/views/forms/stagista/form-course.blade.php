@@ -1,9 +1,9 @@
-@extends('forms.teacher.form-teacher')
+@extends('forms.stagista.form-stagista')
 
 
 
 
-@section('route', route('M138', $member->id))
+@section('route', route('M148', $member->id))
 @section('method', 'POST')
 
 

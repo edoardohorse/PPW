@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Collaborator;
 use Illuminate\Validation\Rule;
 use Validator;
 use App\Course;

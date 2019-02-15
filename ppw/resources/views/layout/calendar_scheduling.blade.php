@@ -19,8 +19,8 @@
 
 
 @push('lib_script')
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script src="{{asset('js/fullcalendar.min.js')}}"></script>
+    <script src="{{asset('js/it.js')}}"></script>
     {!! $calendar->script() !!}
 @endpush

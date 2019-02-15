@@ -5,7 +5,7 @@
 
 
 @section('main')
-    <h1>Programmzione</h1>
+    <h1>Programmazione</h1>
 
 
 
@@ -26,7 +26,3 @@
 
 @stop
 
-
-@push('lib_end_script')
-    <script src="{{asset('js/scheduling.js')}}"></script>
-@endpush

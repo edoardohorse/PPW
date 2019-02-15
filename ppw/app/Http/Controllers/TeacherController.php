@@ -211,7 +211,7 @@ class TeacherController extends Controller
 
 
             // Member fields (step 2)
-            'cod_fiscale'           =>  'required|size:16|unique:members',
+            'cod_fiscale'           =>  ['required','size:16',Rule::unique('members')->ignore($member->cod_fiscale, 'cod_fiscale')],
             'numero_cell'           =>   ['regex:/[0-9]{9}/',Rule::unique('members')->ignore($member->numero_cell, 'numero_cell')],
             'numero_tel'            =>  ['regex:/[0-9]{9}/',Rule::unique('members')->ignore($member->numero_tel, 'numero_tel')],
 
@@ -302,12 +302,49 @@ class TeacherController extends Controller
         $card           = Card          ::where('user_id','=',$user->id)->first();
 
         $courses = Course::all()->toArray();
-        $courses_id = Teacher::where('collaborator_id','=','1')->first()->course()->get()->toArray();
+        $teacher    = Teacher::where('collaborator_id','=',$collaborator->id)->first();
+        $courses_id = $teacher->course()->get(['id'])->toArray();
 
 
-        return view(TeacherController::$path.'-course',compact('courses','$courses_id',
+        $courses_assigned_id = [];
+        foreach ($courses_id as $course) {
+            array_push($courses_assigned_id, $course['id']);
+        }
+
+
+        return view(TeacherController::$path.'-course',compact(
                 'members','member','user',
-                        'collaborator','card','courses','courses_id'));
+                        'collaborator','card','courses','courses_assigned_id'));
+    }
+
+    public function assignCourse(Request $request, $id){
+
+
+        $member         = Member        ::find($id);
+        $user           = User          ::where('member_id','=',$member->id)->first();
+        $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
+        $teacher        = Teacher       ::where('collaborator_id','=',$collaborator->id)->first();
+
+
+        $tmp      = $teacher->course()->get(['id'])->toArray();
+
+
+        $coursesAssigned = [];
+        foreach ($tmp as $course) {
+            array_push($coursesAssigned, $course['id']);
+        }
+
+        $flippedC = array_flip($coursesAssigned);
+        $flippedR = array_flip($request->courses);
+
+        $courseIdToRemove   =  array_flip(array_diff_key($flippedC, $flippedR));
+        $courseIdToAdd      = array_flip(array_diff_key($flippedR, $flippedC));
+
+        $teacher->course()->detach($courseIdToRemove);
+        $teacher->course()->attach($courseIdToAdd);
+
+
+        return redirect()->route('M130');
     }
 
     private function fetchAll(){
