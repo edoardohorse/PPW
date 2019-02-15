@@ -287,10 +287,17 @@ class StaffExternalController extends Controller
     }
 
     private function fetchAll(){
-        return DB::select('SELECT DISTINCT m.id,u.nome,u.cognome,m.cod_fiscale,u.data_nascita,m.scadenza_ass,m.scadenza_cert_med
+//            return DB::select('SELECT DISTINCT m.id,u.nome,u.cognome,m.cod_fiscale,u.data_nascita,m.scadenza_ass,m.scadenza_cert_med
+//    FROM users u,members m,collaborators co
+//    WHERE m.id = u.member_id AND u.id = co.user_id
+//        AND co.esterno = 1
+//    ORDER BY m.id ASC');
+
+        return DB::select('SELECT DISTINCT co.id,u.nome,u.cognome,m.cod_fiscale,u.data_nascita,m.scadenza_ass,m.scadenza_cert_med
 FROM users u,members m,collaborators co
 WHERE m.id = u.member_id AND u.id = co.user_id 
-    AND co.esterno = 1
-ORDER BY m.id ASC');
+AND co.esterno = 1   
+AND co.id NOT IN(SELECT t.collaborator_id FROM teachers t)
+GROUP BY m.id ');
     }
 }
