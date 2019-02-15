@@ -1,0 +1,6 @@
+SELECT u.nome, u.cognome, u.tipo 
+FROM members as m, users as u
+WHERE m.user_site_id=u.member_id AND u.tipo='fondatore' AND
+(SELECT u.nome, u.cognome, c.esterno
+ FROM users as u, collaborators as c, internals as i
+ WHERE u.id=c.user_id AND i.collaborator_id=c.id)

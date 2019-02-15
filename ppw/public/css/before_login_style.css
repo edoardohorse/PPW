@@ -1,0 +1,15 @@
+.nav-background {
+    background-color: #38c172;
+}
+
+.position-panel{
+    margin-top: 5%;
+}
+.position-button{
+    margin-top: 5%;
+}
+
+.progress.active .progress-bar {
+    -webkit-transition: none !important;
+    transition: none !important;
+}

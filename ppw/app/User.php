@@ -2,29 +2,56 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class User extends Model
 {
-    use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name', 'email', 'password',
+                'nome',
+                'cognome',
+                'cap',
+                'indirizzo',
+                'citta',
+                'provincia',
+                'data_nascita',
+                'genere',
+                'tipo',
+                'member_id'
     ];
+    public function transaction(){
+        return $this->hasMany('App\Transaction');
+    }
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function member(){
+        return $this->hasOne('App\Member');
+    }
+    public function taxdata(){
+        return $this->belongsTo('App\TaxData');
+    }
+
+    public function card(){
+        return $this->hasMany('App\User');
+    }
+
+    public function asd(){
+
+        return $this->belongsTo('App\Asd');
+    }
+
+
+    public function course(){
+
+    return $this->belongsToMany('App\Course','course_user','course_id','user_id');
+    }
+
+    public function collaborator(){
+
+        return $this->belongsTo('App\Collaborator');
+    }
+
+    public function package(){
+
+        return $this->belongsToMany('App\Package','package_user','package_id','user_id');
+    }
 }
