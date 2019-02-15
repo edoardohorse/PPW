@@ -137,7 +137,17 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
 
         Route::prefix('payments')->group(function(){
 
+        Route::resource('made', 'PaymentMadeController',[
+            'names' =>[
+                'index'     => 'M710',
+                'create'    => 'M711',
+                'store'     => 'M712',
+                'destroy'    => 'M715',
+                'show'      => 'M716',
+            ]
+        ]);
 
+//        Route::get('',);// TODO: scaricare pdf
 //            Route::get('/made','PaymentController@made')->name('M121');
 //            Route::get('/received','PaymentController@received')->name('M122');
 
