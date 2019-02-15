@@ -21,9 +21,9 @@ use Illuminate\Support\Facades\Hash;
 
 
 
-class StagistaController extends Controller
+class AllievoController extends Controller
 {
-    static $path = 'home/managment/staff/stagista/stagista';
+    static $path = 'home/secretariat/members/allievo/allievo';
 
     /**
      * Display a listing of the resource.
@@ -33,7 +33,7 @@ class StagistaController extends Controller
     public function index()
     {
         $members = $this->fetchAll();
-        return view(StagistaController::$path, compact('members'));
+        return view(AllievoController::$path, compact('members'));
     }
 
     /**
@@ -44,7 +44,7 @@ class StagistaController extends Controller
     public function create()
     {
         $members = $this->fetchAll();
-        return view(StagistaController::$path.'-create', compact('members'));
+        return view(AllievoController::$path.'-create', compact('members'));
     }
 
     /**
@@ -93,7 +93,7 @@ class StagistaController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('M141')
+            return redirect()->route('M221')
                 ->withErrors($validator)
                 ->withInput();
             //            dd('Fallito');
@@ -131,19 +131,8 @@ class StagistaController extends Controller
             $card->user_id = $user->id;
             $card->save();
 
-            $col = new Collaborator();
-            $col->esterno = 1;
-            $col->user_id = $user->id;
-            $col->save();
 
-
-            $teacher = new Teacher();
-            $teacher->stagista = 1;
-            $teacher->collaborator_id  =$col->id;
-            $teacher->save();
-
-
-            return redirect()->route('M140');
+            return redirect()->route('M220');
 
         }
     }
@@ -162,7 +151,7 @@ class StagistaController extends Controller
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
         $card           = Card          ::where('user_id','=',$user->id)->first();
 
-        return view(StagistaController::$path.'-show',
+        return view(AllievoController::$path.'-show',
             compact('members','member','user',
                 'collaborator','card'));
     }
@@ -181,7 +170,7 @@ class StagistaController extends Controller
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
         $card           = Card          ::where('user_id','=',$user->id)->first();
 
-        return view(StagistaController::$path.'-edit',
+        return view(AllievoController::$path.'-edit',
             compact('members','member','user',
                 'collaborator','card'));
     }
@@ -226,16 +215,12 @@ class StagistaController extends Controller
             'data_cert_medico'      =>  'date',
             'scadenza_cert_med'     =>  'date|after:data_cert_medico',
             'p_iva'                 =>  ['nullable','digits:11',Rule::unique('members')->ignore($member->p_iva, 'members')],
-
-            // Card fields (step 4)
-            'data_tesseramento'     =>  'date',
-            'scadenza_tesseramento' =>  'date|after:data_tesseramento',
         ]);
 
 
 
         if ($validator->fails()) {
-            return redirect()->route('M143',$id)
+            return redirect()->route('M223',$id)
                 ->withErrors($validator)
                 ->withInput();
             //            dd('Fallito');
@@ -267,13 +252,15 @@ class StagistaController extends Controller
             $fieldsCard = BootController::filterFieldsRequestFromFillable($fields, Card::class);
             $fieldsCard['user_id'] = $user->id;
             //            var_dump($fieldsCard);
+            //            $card = new Card($fieldsCard);
+            //            $card->user_id = $user->id;
             $card = new Card();
             //            $card->user_id = $user->id;
             $card->fill($fieldsCard)->save();
 
 
 
-            return redirect()->route('M140');
+            return redirect()->route('M220');
 
         }
     }
@@ -293,7 +280,7 @@ class StagistaController extends Controller
 
         $member->delete();
 
-        return view(StagistaController::$path.'-delete',
+        return view(AllievoController::$path.'-delete',
             compact('members','member','user',
                 'collaborator','card'));
     }
@@ -316,7 +303,7 @@ class StagistaController extends Controller
         }
 
 
-        return view(StagistaController::$path.'-course',compact(
+        return view(AllievoController::$path.'-course',compact(
             'members','member','user',
             'collaborator','card','courses','courses_assigned_id'));
     }
