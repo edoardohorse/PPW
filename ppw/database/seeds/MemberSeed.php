@@ -252,6 +252,7 @@ class MemberSeed extends Seeder
             'p_iva' => '19097538910',
             'created_at' => '2019-02-11 09:03:16',
             'updated_at' => '2019-02-11 09:03:16',
+            'user_site_id' => 4
         ]);
         $member->save();
         $member->asd()->attach(1);
@@ -270,7 +271,8 @@ class MemberSeed extends Seeder
             'p_iva' => '19097538910',
             'created_at' => '2019-02-11 09:03:16',
             'updated_at' => '2019-02-11 09:03:16',
-            'user_site_id' => 4
+            'user_site_id' => 5
+
         ]);
         $member->save();
         $member->asd()->attach(1);
@@ -289,7 +291,7 @@ class MemberSeed extends Seeder
             'p_iva' => '19097538910',
             'created_at' => '2019-02-11 09:03:16',
             'updated_at' => '2019-02-11 09:03:16',
-            'user_site_id' => 5
+
         ]);
         $member->save();
         $member->asd()->attach(1);
