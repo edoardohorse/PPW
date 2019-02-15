@@ -14,6 +14,7 @@ use App\Card;
 use App\Asd;
 use App\Teacher;
 use Validator;
+use App\Course;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -291,6 +292,22 @@ class TeacherController extends Controller
         return view(TeacherController::$path.'-delete',
             compact('members','member','user',
                 'collaborator','card'));
+    }
+
+    public function course($id){
+        $members        = $this->fetchAll();
+        $member         = Member        ::find($id);
+        $user           = User          ::where('member_id','=',$member->id)->first();
+        $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
+        $card           = Card          ::where('user_id','=',$user->id)->first();
+
+        $courses = Course::all()->toArray();
+        $courses_id = Teacher::where('collaborator_id','=','1')->first()->course()->get()->toArray();
+
+
+        return view(TeacherController::$path.'-course',compact('courses','$courses_id',
+                'members','member','user',
+                        'collaborator','card','courses','courses_id'));
     }
 
     private function fetchAll(){

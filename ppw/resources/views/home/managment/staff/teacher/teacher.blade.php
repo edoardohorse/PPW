@@ -18,6 +18,9 @@
     <a class="btn btn-lg btn-secondary disabled" id="redirect_edit"
        href="#">Modifica</a>
 
+    <a class="btn btn-lg btn-secondary disabled" id="redirect_course"
+       href="#">Assegna corso</a>
+
     <form class="d-inline" action="" method="POST">
         @csrf
         @method('DELETE')
@@ -31,5 +34,5 @@
 @stop
 
 @push('lib_end_script')
-    <script src="{{asset('js/course.js')}}"></script>
+    <script src="{{asset('js/teacher.js')}}"></script>
 @endpush

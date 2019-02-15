@@ -104,9 +104,11 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                     'update'    => 'M134',
                     'destroy'    => 'M135',
                     'show'      => 'M136',
+
                 ]
             ]);
 
+            Route::get('teacher/{id}/course', 'TeacherController@course')->name('M137');
 
             Route::resource('stagista', 'StagistaController',[
                 'names' =>[
