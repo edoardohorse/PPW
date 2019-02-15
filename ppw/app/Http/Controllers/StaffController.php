@@ -14,7 +14,7 @@ class StaffController extends Controller
 FROM users u,cards c,members m,collaborators co,internals i 
 WHERE m.id = u.member_id AND u.id = co.user_id AND 
 co.id = i.collaborator_id AND co.esterno = 0 
- GROuP BY m.id ASC ");
+ GROUP BY m.id ASC ");
 
         return view('home/managment/staff-internal/internal', compact('members'));
     }

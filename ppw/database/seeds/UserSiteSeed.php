@@ -43,6 +43,26 @@ class UserSiteSeed extends Seeder
                 "created_at" => "2019-02-11 09:03:16",
                 "updated_at" => "2019-02-11 09:03:16",
             ],
+                [
+                    "id" => 4,
+                    "email" => "manolo@email.it",
+                    "email_verified_at" => null,
+                    "password" => '$2y$10$LCkWZozXtkppYtMLD1iUfOksjO9CM22HFkeKo.Yo3pHcNfgKR07dK',
+                    "remember_token" => null,
+                    "created_at" => "2019-02-11 09:03:16",
+                    "updated_at" => "2019-02-11 09:03:16",
+                ],
+
+                [
+                    "id" => 5,
+                    "email" => "sandro@email.it",
+                    "email_verified_at" => null,
+                    "password" => '$2y$10$LCkWZozXtkppYtMLD1iUfOksjO9CM22HFkeKo.Yo3pHcNfgKR07dK',
+                    "remember_token" => null,
+                    "created_at" => "2019-02-11 09:03:16",
+                    "updated_at" => "2019-02-11 09:03:16",
+                ],
+
             ]
         );
     }
