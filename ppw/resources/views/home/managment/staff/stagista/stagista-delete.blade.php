@@ -2,7 +2,7 @@
 
 @section('modal')
 
-    @include('forms.stagista.form-create')
+    @include('forms.stagista.form-delete')
 
 
 

@@ -222,7 +222,7 @@ class TeacherController extends Controller
             'numero_ass'            =>  'numeric',
             'data_cert_medico'      =>  'date',
             'scadenza_cert_med'     =>  'date|after:data_cert_medico',
-            'p_iva'                 =>  ['nullable','digits:11',Rule::unique('members')->ignore($member->p_iva, 'members')],
+            'p_iva'                 =>  ['nullable','digits:11',Rule::unique('members')->ignore($member->p_iva, 'p_iva')],
         ]);
 
 
@@ -286,12 +286,16 @@ class TeacherController extends Controller
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
         $card           = Card          ::where('user_id','=',$user->id)->first();
 
-
-//        $member->delete();
+        $teacher    = Teacher::where('collaborator_id','=',$collaborator->id)->first();
+        $courses_id = $teacher->course()->get(['id'])->toArray();
+//        dd($teacher);
+//        dd($courses_id);
+        $teacher->course()->detach($courses_id);
+        $member->delete();
 
         return view(TeacherController::$path.'-delete',
             compact('members','member','user',
-                'collaborator','card'));
+        'collaborator','card'));
     }
 
     public function course($id){
