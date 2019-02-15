@@ -26,7 +26,3 @@
 
 @stop
 
-
-@push('lib_end_script')
-    <script src="{{asset('js/scheduling.js')}}"></script>
-@endpush

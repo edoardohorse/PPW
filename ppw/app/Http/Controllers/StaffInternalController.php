@@ -214,7 +214,7 @@ class StaffInternalController extends Controller
 
 
             // Member fields (step 2)
-            'cod_fiscale'           =>  'required|size:16|unique:members',
+            'cod_fiscale'           =>  ['required','size:16',Rule::unique('members')->ignore($member->cod_fiscale, 'cod_fiscale')],
             'numero_cell'           =>   ['regex:/[0-9]{9}/',Rule::unique('members')->ignore($member->numero_cell, 'numero_cell')],
             'numero_tel'            =>  ['regex:/[0-9]{9}/',Rule::unique('members')->ignore($member->numero_tel, 'numero_tel')],
 
