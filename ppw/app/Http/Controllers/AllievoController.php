@@ -347,11 +347,11 @@ class AllievoController extends Controller
         $t->save();
 
         $pdf = PdfController::pdf($t->id);
-
-        $t->file_fattura    = public_path('\\uploads')."\\fattura\\pdf$t->id.pdf";
+        
+        $t->file_fattura    = "/uploads/ricevuta/pdf$t->id.pdf";
         $t->save();
 
-        $pdf->download('ciao.pdf');
+//        $pdf->download('ciao.pdf');
         return redirect()->route('M220');
     }
 
