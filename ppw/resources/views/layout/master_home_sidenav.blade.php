@@ -99,11 +99,7 @@
                     'menu'  => 'Members',
                     'level' =>  '2',
                     ],
-                [
-                    'name'   =>'Fornitori',
-                    'link'  =>  'M220',
-                    'level' =>  '2',
-                    ],
+
             ]
     ])
 
@@ -112,11 +108,7 @@
     @include('layout.navbar.list-group', [
             'id'    => 'SecretariatMembers',
             'items'=>[
-                    [
-                        'name'  => 'Fondatori',
-                        'link'  => 'M220',
-                        'level' =>  '3',
-                        ],
+
                     [
                         'name'   =>'Allievi',
                         'link'  =>  'M220',
@@ -124,7 +116,7 @@
                         ],
                     [
                         'name'   =>'Tessere',
-                        'link'  =>  'M220',
+                        'link'  =>  'M800',
                         'level' =>  '3',
                         ],
                 ]
