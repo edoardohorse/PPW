@@ -294,6 +294,6 @@ class StagistaController extends Controller
 FROM users u,cards c,members m,collaborators co,teachers t 
 WHERE m.id = u.member_id AND u.id = co.user_id AND 
 co.id = t.collaborator_id AND t.stagista = 1 
- ORDER BY m.id ASC ');
+ GROUP BY m.id ASC ');
     }
 }

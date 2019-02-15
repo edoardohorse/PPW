@@ -173,13 +173,13 @@ class TeacherController extends Controller
         $members        = $this->fetchAll();
         $member         = Member        ::find($id);
         $user           = User          ::where('member_id','=',$member->id)->first();
-
-        dd($member);
+        $card           = Card          ::where('user_id','=',$user->id)->first();
+//        dd($member);
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
 
         return view(TeacherController::$path.'-edit',
             compact('members','member','user',
-                'collaborator'));
+                'collaborator','card'));
     }
 
     /**
@@ -278,13 +278,15 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
+        $members        = $this->fetchAll();
+//        dd($members);
         $member         = Member        ::find($id);
         $user           = User          ::where('member_id','=',$member->id)->first();
         $collaborator   = Collaborator  ::where('user_id','=',$user->id)->first();
         $card           = Card          ::where('user_id','=',$user->id)->first();
 
 
-        $member->delete();
+//        $member->delete();
 
         return view(TeacherController::$path.'-delete',
             compact('members','member','user',
@@ -292,10 +294,10 @@ class TeacherController extends Controller
     }
 
     private function fetchAll(){
-        return DB::select('SELECT DISTINCT m.id,u.nome,u.cognome,m.cod_fiscale,u.data_nascita,c.scadenza_tesseramento,m.scadenza_ass,m.scadenza_cert_med 
-FROM users u,cards c,members m,collaborators co,teachers t 
-WHERE m.id = u.member_id AND u.id = co.user_id AND 
-co.id = t.collaborator_id AND t.stagista = 0
- ORDER BY m.id ASC ');
+        return DB::select('SELECT m.id,u.nome , u.cognome,m.cod_fiscale,u.data_nascita,c.scadenza_tesseramento,m.scadenza_ass,m.scadenza_cert_med
+FROM users u,cards c,members m,collaborators co,teachers t
+WHERE m.id = u.member_id AND u.id = co.user_id AND
+  co.id = t.collaborator_id AND t.stagista = 0
+GROUP BY m.id');
     }
 }
