@@ -1,4 +1,4 @@
-@extends('home.managment.staff.external.external')
+@extends('home.managment.staff.teacher.teacher')
 
 @section('modal')
 

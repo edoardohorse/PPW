@@ -13,6 +13,6 @@ class Teacher extends Model
 
     public function course(){
 
-        return $this->belongsToMany('App\Course','teacher_course','course_id','teacher_id');
+        return $this->belongsToMany('App\Course','teacher_course','teacher_id','course_id');
     }
 }

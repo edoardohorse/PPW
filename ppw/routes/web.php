@@ -95,6 +95,8 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 ]
             ]);
 
+
+
             Route::resource('teacher', 'TeacherController',[
                 'names' =>[
                     'index'     => 'M130',
@@ -108,7 +110,8 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                 ]
             ]);
 
-            Route::get('teacher/{id}/course', 'TeacherController@course')->name('M137');
+            Route::get('teacher/{id}/course',   'TeacherController@course')->name('M137');
+            Route::post('teacher/{id}/course',  'TeacherController@assignCourse')->name('M138');
 
             Route::resource('stagista', 'StagistaController',[
                 'names' =>[
@@ -121,6 +124,9 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
                     'show'      => 'M146',
                 ]
             ]);
+
+            Route::get('stagista/{id}/course',   'StagistaController@course')->name('M147');
+            Route::post('stagista/{id}/course',  'StagistaController@assignCourse')->name('M148');
 
 
 //            Route::get('/stagista','StaffController@stagista')->name('M113');
