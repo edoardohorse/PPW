@@ -328,13 +328,13 @@ class AllievoController extends Controller
         $user           = User          ::where('member_id','=',$member->id)->first();
 
 
-//        dd($user,$request->all());
+    //    dd($user,$request->all(),Course::find($request->course)->nome_corso);
         $user->course()->attach($user->id,
             ['data_inizio'=>$request->data_inizio,'data_fine'=>$request->data_fine,'course_id'=>$request->course]);
 
         $t = new Transaction();
         $t->modalita_pagamento  =  $request->metodo;
-        $t->descrizione     = 'Iscrizione al corso '.Course::find($request->course)->first()->nome_corso;
+        $t->descrizione     = 'Iscrizione al corso '.Course::find($request->course)->nome_corso;
         $t->file_fattura    =   "";
         $t->data = date('Y-m-d');
         $t->importo         = $request->costo;
