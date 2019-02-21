@@ -9,11 +9,11 @@
 
 
 @if( $route   == 'B005')
-    @section('redirect', '/login')
+    @section('redirect', route('login'))
     @section('redirect-text', 'Login Gestionale')
 
 @else
-    @section('redirect', '/boot')
+    @section('redirect', route('A010'))
     @section('redirect-text', 'Registrazione ASD')
 
 

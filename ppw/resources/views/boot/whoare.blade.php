@@ -63,7 +63,7 @@
     <div class="text">
     <h1 style="">Chi siamo</h1>
     </div>
-    <a href="/home/homepage"><button class="btn btn-primary btn-lg">Torna Indietro</button></a>
+    <a href="{{route('M350')}}"><button class="btn btn-primary btn-lg">Torna Indietro</button></a>
     <div class="foto  py-5 " >
         <div class="facolta">
             <h5 >Il gestionale è stato sviluppato da quattro studenti

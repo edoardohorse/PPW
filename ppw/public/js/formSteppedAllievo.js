@@ -35,7 +35,7 @@ $("form.form-group").steps({
 });
 
 function fetchHour(){
-    $.get('/home/secretariat/members/hour',
+    $.get(ROUTECORSO,
         {
             dataStart   :dataInizio.value,
             dataEnd     :dataFine.value,

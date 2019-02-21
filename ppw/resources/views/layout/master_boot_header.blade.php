@@ -14,10 +14,10 @@
     <nav class="navbar navbar-expand-lg navbar-light  nav-background">
         <div class="container col-md-12 col-sm-12 text-center">
             <div class="col-md-6 col-sm-6">
-                <a class="navbar-brand" href="/contact">Contatti</a>
+                <a class="navbar-brand" href="{{route('C000')}}">Contatti</a>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6">
-                <a class="navbar-brand" href="/whoare">Chi siamo</a>
+                <a class="navbar-brand" href="{{route('C010')}}">Chi siamo</a>
             </div>
         </div>
     </nav>

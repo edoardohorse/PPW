@@ -64,7 +64,9 @@
         </div>
     </section>
 
-
+    <script>
+        var ROUTECORSO = "{{route('M229')}}"
+    </script>
 
 @stop
 

@@ -1,8 +1,8 @@
 <?php
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::redirect('/', '/welcome');
-Route::prefix('/welcome')->group(function(){
+// Route::get('/', '/welcome');
+Route::prefix('/')->group(function(){
 
         // A000
         Route::get('/',             'BootController@firstSignInASD')                ->name('A000');
@@ -177,7 +177,7 @@ Route::group(['prefix' => 'home',  'middleware' => 'auth'],function(){
 
             Route::get('member/{id}/course',   'AllievoController@course')->name('M227');
             Route::post('member/{id}/course',  'AllievoController@assignCourse')->name('M228');
-            Route::get('hour',  'AllievoController@getHour');
+            Route::get('hour',  'AllievoController@getHour')->name('M229');
 
             Route::get('/card', 'MemberController@datacard')->name('M800');
         });

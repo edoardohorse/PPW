@@ -55,7 +55,7 @@
         <h1 style="">Contatti</h1>
     </div>
 
-    <a href="/home/homepage"><button class="btn btn-primary btn-lg">Torna Indietro</button></a>
+    <a href="{{route('M350')}}"><button class="btn btn-primary btn-lg">Torna Indietro</button></a>
 
     <h5 align="center">Per informazioni sui nostri servizi potete
         <br>
